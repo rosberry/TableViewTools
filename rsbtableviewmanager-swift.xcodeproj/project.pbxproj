@@ -12,20 +12,40 @@
 		6D45B0931CCE60DB00A9FB4A /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0921CCE60DB00A9FB4A /* Array+Additions.swift */; };
 		6D45B0951CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0941CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift */; };
 		6D45B0971CCE61DE00A9FB4A /* RSBTableViewCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0961CCE61DE00A9FB4A /* RSBTableViewCellItem.swift */; };
+		6D45B0A71CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */; };
+		6D45B0A91CCFB95500A9FB4A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D45B0A81CCFB95500A9FB4A /* Quick.framework */; };
+		6D45B0AB1CCFB95B00A9FB4A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D45B0AA1CCFB95B00A9FB4A /* Nimble.framework */; };
 		6D59B6101CBFF8DD00602638 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59B60F1CBFF8DD00602638 /* AppDelegate.swift */; };
 		6D59B6121CBFF8DD00602638 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59B6111CBFF8DD00602638 /* ViewController.swift */; };
 		6D59B6151CBFF8DD00602638 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D59B6131CBFF8DD00602638 /* Main.storyboard */; };
 		6D59B6171CBFF8DD00602638 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D59B6161CBFF8DD00602638 /* Assets.xcassets */; };
 		6D59B61A1CBFF8DD00602638 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D59B6181CBFF8DD00602638 /* LaunchScreen.storyboard */; };
 		6D59B6231CBFF9EB00602638 /* RSBTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59B6221CBFF9EB00602638 /* RSBTableViewManager.swift */; };
+		BF94F3139EDB305274ECAE23 /* Pods_rsbtableviewmanager_swiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFE563F3FC56270A1235B0A /* Pods_rsbtableviewmanager_swiftTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		6D45B0A11CCFB57500A9FB4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D59B6041CBFF8DD00602638 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D59B60B1CBFF8DD00602638;
+			remoteInfo = "rsbtableviewmanager-swift";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0A89758C5157482B2DC0A36C /* Pods-rsbtableviewmanager-swiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rsbtableviewmanager-swiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rsbtableviewmanager-swiftTests/Pods-rsbtableviewmanager-swiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D45B08B1CC679B800A9FB4A /* RSBTableViewSectionItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItemProtocol.swift; sourceTree = "<group>"; };
 		6D45B08F1CC679EB00A9FB4A /* RSBTableViewCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItemProtocol.swift; sourceTree = "<group>"; };
 		6D45B0921CCE60DB00A9FB4A /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
 		6D45B0941CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItem.swift; sourceTree = "<group>"; };
 		6D45B0961CCE61DE00A9FB4A /* RSBTableViewCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItem.swift; sourceTree = "<group>"; };
+		6D45B09C1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rsbtableviewmanager-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D45B0A01CCFB57500A9FB4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManagerSpec.swift; sourceTree = "<group>"; };
+		6D45B0A81CCFB95500A9FB4A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
+		6D45B0AA1CCFB95B00A9FB4A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Pods/../build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
 		6D59B60C1CBFF8DD00602638 /* rsbtableviewmanager-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rsbtableviewmanager-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D59B60F1CBFF8DD00602638 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D59B6111CBFF8DD00602638 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -34,9 +54,21 @@
 		6D59B6191CBFF8DD00602638 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D59B61B1CBFF8DD00602638 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D59B6221CBFF9EB00602638 /* RSBTableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManager.swift; sourceTree = "<group>"; };
+		8EFE563F3FC56270A1235B0A /* Pods_rsbtableviewmanager_swiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rsbtableviewmanager_swiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1F9F001CB9BF5FA55E0FE35 /* Pods-rsbtableviewmanager-swiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rsbtableviewmanager-swiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-rsbtableviewmanager-swiftTests/Pods-rsbtableviewmanager-swiftTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6D45B0991CCFB57500A9FB4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D45B0AB1CCFB95B00A9FB4A /* Nimble.framework in Frameworks */,
+				6D45B0A91CCFB95500A9FB4A /* Quick.framework in Frameworks */,
+				BF94F3139EDB305274ECAE23 /* Pods_rsbtableviewmanager_swiftTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D59B6091CBFF8DD00602638 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +79,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2974F44D40BC136F04D68C39 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D45B0AA1CCFB95B00A9FB4A /* Nimble.framework */,
+				6D45B0A81CCFB95500A9FB4A /* Quick.framework */,
+				8EFE563F3FC56270A1235B0A /* Pods_rsbtableviewmanager_swiftTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36763285DCF70FB485DADEEC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A89758C5157482B2DC0A36C /* Pods-rsbtableviewmanager-swiftTests.debug.xcconfig */,
+				C1F9F001CB9BF5FA55E0FE35 /* Pods-rsbtableviewmanager-swiftTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6D45B0881CC6797200A9FB4A /* Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,11 +124,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		6D45B09D1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				6D45B0A01CCFB57500A9FB4A /* Info.plist */,
+				6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */,
+			);
+			path = "rsbtableviewmanager-swiftTests";
+			sourceTree = "<group>";
+		};
 		6D59B6031CBFF8DD00602638 = {
 			isa = PBXGroup;
 			children = (
 				6D59B60E1CBFF8DD00602638 /* rsbtableviewmanager-swift */,
+				6D45B09D1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */,
 				6D59B60D1CBFF8DD00602638 /* Products */,
+				36763285DCF70FB485DADEEC /* Pods */,
+				2974F44D40BC136F04D68C39 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				6D59B60C1CBFF8DD00602638 /* rsbtableviewmanager-swift.app */,
+				6D45B09C1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +181,27 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6D45B09B1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D45B0A51CCFB57500A9FB4A /* Build configuration list for PBXNativeTarget "rsbtableviewmanager-swiftTests" */;
+			buildPhases = (
+				0A8540EB950DE72F74B0C3D8 /* Check Pods Manifest.lock */,
+				6D45B0981CCFB57500A9FB4A /* Sources */,
+				6D45B0991CCFB57500A9FB4A /* Frameworks */,
+				6D45B09A1CCFB57500A9FB4A /* Resources */,
+				5E9094C9E7F0EBAA3E5ED17D /* Embed Pods Frameworks */,
+				0A4C988766BDBA55CCA580E2 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D45B0A21CCFB57500A9FB4A /* PBXTargetDependency */,
+			);
+			name = "rsbtableviewmanager-swiftTests";
+			productName = "rsbtableviewmanager-swiftTests";
+			productReference = 6D45B09C1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6D59B60B1CBFF8DD00602638 /* rsbtableviewmanager-swift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D59B61E1CBFF8DD00602638 /* Build configuration list for PBXNativeTarget "rsbtableviewmanager-swift" */;
@@ -140,10 +225,14 @@
 		6D59B6041CBFF8DD00602638 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Rosberry;
 				TargetAttributes = {
+					6D45B09B1CCFB57500A9FB4A = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 6D59B60B1CBFF8DD00602638;
+					};
 					6D59B60B1CBFF8DD00602638 = {
 						CreatedOnToolsVersion = 7.2;
 					};
@@ -163,11 +252,19 @@
 			projectRoot = "";
 			targets = (
 				6D59B60B1CBFF8DD00602638 /* rsbtableviewmanager-swift */,
+				6D45B09B1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6D45B09A1CCFB57500A9FB4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D59B60A1CBFF8DD00602638 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -180,7 +277,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A4C988766BDBA55CCA580E2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rsbtableviewmanager-swiftTests/Pods-rsbtableviewmanager-swiftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0A8540EB950DE72F74B0C3D8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E9094C9E7F0EBAA3E5ED17D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rsbtableviewmanager-swiftTests/Pods-rsbtableviewmanager-swiftTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		6D45B0981CCFB57500A9FB4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D45B0A71CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D59B6081CBFF8DD00602638 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,6 +350,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D45B0A21CCFB57500A9FB4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D59B60B1CBFF8DD00602638 /* rsbtableviewmanager-swift */;
+			targetProxy = 6D45B0A11CCFB57500A9FB4A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6D59B6131CBFF8DD00602638 /* Main.storyboard */ = {
@@ -218,6 +379,47 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6D45B0A31CCFB57500A9FB4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A89758C5157482B2DC0A36C /* Pods-rsbtableviewmanager-swiftTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "rsbtableviewmanager-swiftTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanager-swiftTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rsbtableviewmanager-swift.app/rsbtableviewmanager-swift";
+			};
+			name = Debug;
+		};
+		6D45B0A41CCFB57500A9FB4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1F9F001CB9BF5FA55E0FE35 /* Pods-rsbtableviewmanager-swiftTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = "rsbtableviewmanager-swiftTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanager-swiftTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rsbtableviewmanager-swift.app/rsbtableviewmanager-swift";
+			};
+			name = Release;
+		};
 		6D59B61C1CBFF8DD00602638 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,7 +507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "rsbtableviewmanager-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Rosberry.rsbtableviewmanager-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanager-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -316,7 +518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "rsbtableviewmanager-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Rosberry.rsbtableviewmanager-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanager-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -324,6 +526,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6D45B0A51CCFB57500A9FB4A /* Build configuration list for PBXNativeTarget "rsbtableviewmanager-swiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D45B0A31CCFB57500A9FB4A /* Debug */,
+				6D45B0A41CCFB57500A9FB4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6D59B6071CBFF8DD00602638 /* Build configuration list for PBXProject "rsbtableviewmanager-swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
