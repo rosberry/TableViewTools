@@ -13,6 +13,9 @@ import UIKit
     var headerTitle: String?
     var footerTitle: String?
     
+    override init() {
+    }
+    
     init(cellItems: [RSBTableViewCellItemProtocol]) {
         self.cellItems = cellItems
     }

@@ -9,29 +9,44 @@
 import UIKit
 import Quick
 import Nimble
+@testable import rsbtableviewmanager_swift
 
 class RSBTableViewManagerSpec: QuickSpec {
-
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    override func spec() {
+        var subject: RSBTableViewManagerFake!
+        var tableView: UITableView?
+        
+        beforeEach {
+            tableView = UITableView()
+            subject = RSBTableViewManagerFake(tableView: tableView!)
+        }
+        
+        describe("storing/releasing tableView with weak reference") {
+            it("should store tableView, passed in initializer") {
+                expect(subject.tableView).notTo(beNil())
+            }
+            
+            it("tableView property in manager should became nil after its releasing from owner object") {
+                tableView = nil
+                expect(subject.tableView).to(beNil())
+            }
+        }
+        
+        describe("set/get section items") {
+            beforeEach {
+                let cellItems = [RSBTableViewCellItem]()
+                let sectionItem = RSBTableViewSectionItem(cellItems: cellItems)
+                subject.sectionItems = [sectionItem]
+            }
+            
+            it("should save passed section items") {
+                expect(subject.sectionItems).notTo(beNil())
+            }
+            
+            it("should call registerSectionItem for passed section items as setter args") {
+                expect(subject.registerSectionItem_wasCalled).to(beTrue())
+            }
         }
     }
-
 }
