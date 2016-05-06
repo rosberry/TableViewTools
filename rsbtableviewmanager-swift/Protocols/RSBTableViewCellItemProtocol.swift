@@ -7,11 +7,22 @@
 
 import UIKit
 
-@objc protocol RSBTableViewCellItemProtocol {
+extension RSBTableViewCellItemProtocol {
+    func didSelectInTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) {
+        itemDidSelectHandler?(tableView, indexPath)
+    }
+    
+    func willDisplayCell(cell: UITableViewCell, forTableView tableView: UITableView, atIndexPath indexPath: NSIndexPath) {}
+    func configureCell(cell: UITableViewCell) {}
+}
+
+protocol RSBTableViewCellItemProtocol: AnyObject {
+    var itemDidSelectHandler: ((UITableView, NSIndexPath) -> Void)? { get set }
+    
     func heightForTableView(tableView: UITableView) -> CGFloat
     func cellForTableView(tableView: UITableView) -> UITableViewCell
-    static func registerCellForTableView(tableView : UITableView)
     func didSelectInTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath)
-    optional func willDisplayCell(cell: UITableViewCell, forTableView tableView: UITableView, atIndexPath indexPath: NSIndexPath)
-    optional func configureCell(cell: UITableViewCell)
+    func willDisplayCell(cell: UITableViewCell, forTableView tableView: UITableView, atIndexPath indexPath: NSIndexPath)
+    func configureCell(cell: UITableViewCell)
+    static func registerCellForTableView(tableView : UITableView)
 }

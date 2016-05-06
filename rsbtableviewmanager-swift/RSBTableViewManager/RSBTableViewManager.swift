@@ -228,14 +228,14 @@ class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         let sectionItem = self.sectionItems[indexPath.section]
         let cellItem = sectionItem.cellItems![indexPath.row]
-        cellItem.willDisplayCell?(cell, forTableView: tableView, atIndexPath: indexPath)
+        cellItem.willDisplayCell(cell, forTableView: tableView, atIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let sectionItem = sectionItems[indexPath.section]
         let cellItem = sectionItem.cellItems![indexPath.row]
         let cell = cellItem.cellForTableView(tableView)
-        cellItem.configureCell?(cell)
+        cellItem.configureCell(cell)
         return cell
     }
     
@@ -247,38 +247,32 @@ class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate 
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let sectionItem = sectionItems[section]
-        if let height = sectionItem.heightForHeaderInTableView?(tableView) {
-            return height
-        }
-        return 0.0
+        return sectionItem.heightForHeaderInTableView(tableView)
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let sectionItem = sectionItems[section]
-        if let height = sectionItem.heightForFooterInTableView?(tableView) {
-            return height
-        }
-        return 0.0
+        return sectionItem.heightForFooterInTableView(tableView)
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionItem = sectionItems[section]
-        return sectionItem.viewForHeaderInTableView?(tableView)
+        return sectionItem.viewForHeaderInTableView(tableView)
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let sectionItem = sectionItems[section]
-        return sectionItem.viewForFooterInTableView?(tableView)
+        return sectionItem.viewForFooterInTableView(tableView)
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionItem = sectionItems[section]
-        return sectionItem.titleForHeaderInTableView?(tableView)
+        return sectionItem.titleForHeaderInTableView(tableView)
     }
     
     func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let sectionItem = sectionItems[section]
-        return sectionItem.titleForFooterInTableView?(tableView)
+        return sectionItem.titleForFooterInTableView(tableView)
     }
     
         // MARK: UIScrollViewDelegate

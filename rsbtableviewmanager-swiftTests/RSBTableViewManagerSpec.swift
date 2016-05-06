@@ -14,12 +14,12 @@ import Nimble
 class RSBTableViewManagerSpec: QuickSpec {
     
     override func spec() {
-        var subject: RSBTableViewManagerFake!
+        var subject: RSBTableViewManager!
         var tableView: UITableView?
         
         beforeEach {
             tableView = UITableView()
-            subject = RSBTableViewManagerFake(tableView: tableView!)
+            subject = RSBTableViewManager(tableView: tableView!)
         }
         
         describe("storing/releasing tableView with weak reference") {
@@ -27,7 +27,7 @@ class RSBTableViewManagerSpec: QuickSpec {
                 expect(subject.tableView).notTo(beNil())
             }
             
-            it("tableView property in manager should became nil after its releasing from owner object") {
+            it("tableView property in manager should became nil after its releasing from owner") {
                 tableView = nil
                 expect(subject.tableView).to(beNil())
             }
@@ -35,8 +35,8 @@ class RSBTableViewManagerSpec: QuickSpec {
         
         describe("set/get section items") {
             beforeEach {
-                let cellItems = [RSBTableViewCellItem]()
-                let sectionItem = RSBTableViewSectionItem(cellItems: cellItems)
+                let cellItems = [RSBTableViewCellItemFake()]
+                let sectionItem = RSBTableViewSectionItemFake(cellItems: cellItems)
                 subject.sectionItems = [sectionItem]
             }
             
@@ -45,7 +45,8 @@ class RSBTableViewManagerSpec: QuickSpec {
             }
             
             it("should call registerSectionItem for passed section items as setter args") {
-                expect(subject.registerSectionItem_wasCalled).to(beTrue())
+                let cell = subject.tableView(tableView!, cellForRowAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+                expect(cell).notTo(beNil())
             }
         }
     }

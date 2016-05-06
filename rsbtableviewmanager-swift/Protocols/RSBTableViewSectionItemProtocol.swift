@@ -7,13 +7,56 @@
 
 import UIKit
 
-@objc protocol RSBTableViewSectionItemProtocol {
-    var cellItems : [RSBTableViewCellItemProtocol]?  { get set }
+extension RSBTableViewSectionItemProtocol {
+
+    init(cellItems: [RSBTableViewCellItemProtocol]) {
+        self.init()
+        self.cellItems = cellItems
+    }
     
-    optional func heightForHeaderInTableView(tableView: UITableView) -> CGFloat
-    optional func viewForHeaderInTableView(tableView: UITableView) -> UIView?
-    optional func heightForFooterInTableView(tableView: UITableView) -> CGFloat
-    optional func viewForFooterInTableView(tableView: UITableView) -> UIView?
-    optional func titleForHeaderInTableView(tableView: UITableView) -> String?
-    optional func titleForFooterInTableView(tableView: UITableView) -> String?
+    func titleForHeaderInTableView(tableView: UITableView) -> String? {
+        return headerTitle!
+    }
+    
+    func heightForHeaderInTableView(tableView: UITableView) -> CGFloat {
+        if headerTitle != nil {
+            return 22.0
+        }
+        return 0.0
+    }
+    
+    func viewForHeaderInTableView(tableView: UITableView) -> UIView? {
+        return nil
+    }
+    
+    func titleForFooterInTableView(tableView: UITableView) -> String? {
+        return footerTitle!
+    }
+    
+    func heightForFooterInTableView(tableView: UITableView) -> CGFloat {
+        if footerTitle != nil {
+            return 22.0
+        }
+        return 0.0
+    }
+    
+    func viewForFooterInTableView(tableView: UITableView) -> UIView? {
+        return nil
+    }
+}
+
+protocol RSBTableViewSectionItemProtocol: AnyObject {
+    var cellItems : [RSBTableViewCellItemProtocol]?  { get set }
+    var headerTitle: String? { get set }
+    var footerTitle: String? { get set }
+    
+    init()
+    
+    func titleForHeaderInTableView(tableView: UITableView) -> String?
+    func heightForHeaderInTableView(tableView: UITableView) -> CGFloat
+    func viewForHeaderInTableView(tableView: UITableView) -> UIView?
+    
+    func titleForFooterInTableView(tableView: UITableView) -> String?
+    func heightForFooterInTableView(tableView: UITableView) -> CGFloat
+    func viewForFooterInTableView(tableView: UITableView) -> UIView?
 }

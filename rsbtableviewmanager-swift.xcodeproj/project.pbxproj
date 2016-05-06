@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A7A32301CDC49D400477377 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A322F1CDC49D400477377 /* Nimble.framework */; };
+		0A7A32321CDC49D800477377 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A32311CDC49D800477377 /* Quick.framework */; };
+		0A7A32351CDC4B9500477377 /* RSBTableViewCellItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A32341CDC4B9500477377 /* RSBTableViewCellItemFake.swift */; };
+		0A7A32371CDC5BBF00477377 /* RSBTableViewSectionItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A32361CDC5BBF00477377 /* RSBTableViewSectionItemFake.swift */; };
 		6D45B08C1CC679B800A9FB4A /* RSBTableViewSectionItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B08B1CC679B800A9FB4A /* RSBTableViewSectionItemProtocol.swift */; };
 		6D45B0901CC679EB00A9FB4A /* RSBTableViewCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B08F1CC679EB00A9FB4A /* RSBTableViewCellItemProtocol.swift */; };
 		6D45B0931CCE60DB00A9FB4A /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0921CCE60DB00A9FB4A /* Array+Additions.swift */; };
-		6D45B0951CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0941CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift */; };
-		6D45B0971CCE61DE00A9FB4A /* RSBTableViewCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0961CCE61DE00A9FB4A /* RSBTableViewCellItem.swift */; };
 		6D45B0A71CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */; };
-		6D45B0B01CCFD88F00A9FB4A /* RSBTableViewManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0AF1CCFD88F00A9FB4A /* RSBTableViewManagerFake.swift */; };
 		6D59B6101CBFF8DD00602638 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59B60F1CBFF8DD00602638 /* AppDelegate.swift */; };
 		6D59B6121CBFF8DD00602638 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59B6111CBFF8DD00602638 /* ViewController.swift */; };
 		6D59B6151CBFF8DD00602638 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D59B6131CBFF8DD00602638 /* Main.storyboard */; };
@@ -33,16 +34,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A7A322B1CDC479B00477377 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
+		0A7A322D1CDC479F00477377 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "Pods/../build/Debug-iphoneos/Nimble.framework"; sourceTree = "<group>"; };
+		0A7A322F1CDC49D400477377 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = "../../Library/Developer/Xcode/DerivedData/rsbtableviewmanager-swift-gfodxzkolyyhwneakolatplhotgc/Build/Products/Debug-iphonesimulator/Nimble.framework"; sourceTree = "<group>"; };
+		0A7A32311CDC49D800477377 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "../../Library/Developer/Xcode/DerivedData/rsbtableviewmanager-swift-gfodxzkolyyhwneakolatplhotgc/Build/Products/Debug-iphonesimulator/Quick.framework"; sourceTree = "<group>"; };
+		0A7A32341CDC4B9500477377 /* RSBTableViewCellItemFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItemFake.swift; sourceTree = "<group>"; };
+		0A7A32361CDC5BBF00477377 /* RSBTableViewSectionItemFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItemFake.swift; sourceTree = "<group>"; };
 		0A89758C5157482B2DC0A36C /* Pods-rsbtableviewmanager-swiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rsbtableviewmanager-swiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rsbtableviewmanager-swiftTests/Pods-rsbtableviewmanager-swiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D45B08B1CC679B800A9FB4A /* RSBTableViewSectionItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItemProtocol.swift; sourceTree = "<group>"; };
 		6D45B08F1CC679EB00A9FB4A /* RSBTableViewCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItemProtocol.swift; sourceTree = "<group>"; };
 		6D45B0921CCE60DB00A9FB4A /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
-		6D45B0941CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItem.swift; sourceTree = "<group>"; };
-		6D45B0961CCE61DE00A9FB4A /* RSBTableViewCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItem.swift; sourceTree = "<group>"; };
 		6D45B09C1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rsbtableviewmanager-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D45B0A01CCFB57500A9FB4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManagerSpec.swift; sourceTree = "<group>"; };
-		6D45B0AF1CCFD88F00A9FB4A /* RSBTableViewManagerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManagerFake.swift; sourceTree = "<group>"; };
 		6D59B60C1CBFF8DD00602638 /* rsbtableviewmanager-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rsbtableviewmanager-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D59B60F1CBFF8DD00602638 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D59B6111CBFF8DD00602638 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,15 +70,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7A32321CDC49D800477377 /* Quick.framework in Frameworks */,
+				0A7A32301CDC49D400477377 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A7A32331CDC4B8200477377 /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				0A7A32361CDC5BBF00477377 /* RSBTableViewSectionItemFake.swift */,
+				0A7A32341CDC4B9500477377 /* RSBTableViewCellItemFake.swift */,
+			);
+			path = Fakes;
+			sourceTree = "<group>";
+		};
 		2974F44D40BC136F04D68C39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A7A32311CDC49D800477377 /* Quick.framework */,
+				0A7A322F1CDC49D400477377 /* Nimble.framework */,
+				0A7A322D1CDC479F00477377 /* Nimble.framework */,
+				0A7A322B1CDC479B00477377 /* Quick.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -91,8 +110,6 @@
 		6D45B0881CC6797200A9FB4A /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				6D45B0941CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift */,
-				6D45B0961CCE61DE00A9FB4A /* RSBTableViewCellItem.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -117,19 +134,11 @@
 		6D45B09D1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				6D45B0AE1CCFD80800A9FB4A /* Fakes */,
+				0A7A32331CDC4B8200477377 /* Fakes */,
 				6D45B0A01CCFB57500A9FB4A /* Info.plist */,
 				6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */,
 			);
 			path = "rsbtableviewmanager-swiftTests";
-			sourceTree = "<group>";
-		};
-		6D45B0AE1CCFD80800A9FB4A /* Fakes */ = {
-			isa = PBXGroup;
-			children = (
-				6D45B0AF1CCFD88F00A9FB4A /* RSBTableViewManagerFake.swift */,
-			);
-			path = Fakes;
 			sourceTree = "<group>";
 		};
 		6D59B6031CBFF8DD00602638 = {
@@ -329,8 +338,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D45B0B01CCFD88F00A9FB4A /* RSBTableViewManagerFake.swift in Sources */,
+				0A7A32371CDC5BBF00477377 /* RSBTableViewSectionItemFake.swift in Sources */,
 				6D45B0A71CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift in Sources */,
+				0A7A32351CDC4B9500477377 /* RSBTableViewCellItemFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +354,6 @@
 				6D45B0931CCE60DB00A9FB4A /* Array+Additions.swift in Sources */,
 				6D45B0901CC679EB00A9FB4A /* RSBTableViewCellItemProtocol.swift in Sources */,
 				6D59B6101CBFF8DD00602638 /* AppDelegate.swift in Sources */,
-				6D45B0971CCE61DE00A9FB4A /* RSBTableViewCellItem.swift in Sources */,
-				6D45B0951CCE61CE00A9FB4A /* RSBTableViewSectionItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +513,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "rsbtableviewmanager-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanager-swift";
@@ -516,6 +528,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "rsbtableviewmanager-swift/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanager-swift";
