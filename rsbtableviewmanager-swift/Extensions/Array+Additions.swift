@@ -15,8 +15,11 @@ extension Array {
     }
     
     mutating func insertElements(elements: [Element], atIndexes indexes: NSIndexSet) {
-        indexes.enumerateIndexesUsingBlock { (index, stop) in
-            self.insert(elements[index], atIndex: index)
+        var index = indexes.firstIndex
+        for element in elements {
+            indexes.indexGreaterThanOrEqualToIndex(index)
+            self.insert(element, atIndex: index)
+            index = index.successor()
         }
     }
 }

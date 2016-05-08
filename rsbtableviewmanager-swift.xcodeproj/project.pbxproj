@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A7A32301CDC49D400477377 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A322F1CDC49D400477377 /* Nimble.framework */; };
-		0A7A32321CDC49D800477377 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A7A32311CDC49D800477377 /* Quick.framework */; };
 		0A7A32351CDC4B9500477377 /* RSBTableViewCellItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A32341CDC4B9500477377 /* RSBTableViewCellItemFake.swift */; };
 		0A7A32371CDC5BBF00477377 /* RSBTableViewSectionItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A32361CDC5BBF00477377 /* RSBTableViewSectionItemFake.swift */; };
 		6D45B08C1CC679B800A9FB4A /* RSBTableViewSectionItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B08B1CC679B800A9FB4A /* RSBTableViewSectionItemProtocol.swift */; };
@@ -70,8 +68,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A7A32321CDC49D800477377 /* Quick.framework in Frameworks */,
-				0A7A32301CDC49D400477377 /* Nimble.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

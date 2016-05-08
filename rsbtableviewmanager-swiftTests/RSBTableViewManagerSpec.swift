@@ -35,18 +35,50 @@ class RSBTableViewManagerSpec: QuickSpec {
         
         describe("set/get section items") {
             beforeEach {
-                let cellItems = [RSBTableViewCellItemFake()]
-                let sectionItem = RSBTableViewSectionItemFake(cellItems: cellItems)
-                subject.sectionItems = [sectionItem]
+                var sectionItems = [RSBTableViewSectionItemProtocol]()
+                for _ in 0...4 {
+                    var cellItems = [RSBTableViewCellItemProtocol]()
+                    for _ in 0...9 {
+                        cellItems.append(RSBTableViewCellItemFake())
+                    }
+                    sectionItems.append(RSBTableViewSectionItemFake(cellItems: cellItems))
+                }
+                subject.sectionItems = sectionItems
             }
             
             it("should save passed section items") {
                 expect(subject.sectionItems).notTo(beNil())
-            }
+            }   
             
-            it("should call registerSectionItem for passed section items as setter args") {
-                let cell = subject.tableView(tableView!, cellForRowAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
-                expect(cell).notTo(beNil())
+            it("should return cells for passed section items as setter args") {
+                for (sectionIndex, sectionItem) in subject.sectionItems.enumerate() {
+                    for (cellIndex, _) in (sectionItem.cellItems!.enumerate()) {
+                        let cell = subject.tableView(tableView!, cellForRowAtIndexPath: NSIndexPath(forItem: cellIndex, inSection: sectionIndex))
+                        expect(cell).notTo(beNil())
+                    }
+                }
+            }
+        }
+        
+        describe("adding/removing cells") {
+            it("should add celItems for specific indexes") {
+                var cellItems = [RSBTableViewCellItemProtocol]()
+                for _ in 0...8 {
+                    cellItems.append(RSBTableViewCellItemFake())
+                }
+                subject.sectionItems = [RSBTableViewSectionItemFake(cellItems: cellItems)]
+                
+                let countBefore = subject.sectionItems[0].cellItems?.count
+                
+                let cellItemsToAppend = [RSBTableViewCellItemFake() as RSBTableViewCellItemProtocol]
+                subject.insertCellItems(cellItemsToAppend,
+                                        toSectionItem: &subject.sectionItems[0],
+                                        atIndexes: NSIndexSet(indexesInRange: NSMakeRange(5, 1)),
+                                        withRowAnimation: UITableViewRowAnimation.None)
+                let contains = subject.sectionItems[0].cellItems!.contains({$0 === cellItemsToAppend[0]})
+                expect(contains).to(beTrue())
+                let isEqualCount = countBefore! == subject.sectionItems[0].cellItems!.count - cellItemsToAppend.count
+                expect(isEqualCount).to(beTrue())
             }
         }
     }
