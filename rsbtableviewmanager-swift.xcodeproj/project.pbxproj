@@ -13,6 +13,9 @@
 		6D45B0901CC679EB00A9FB4A /* RSBTableViewCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B08F1CC679EB00A9FB4A /* RSBTableViewCellItemProtocol.swift */; };
 		6D45B0931CCE60DB00A9FB4A /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0921CCE60DB00A9FB4A /* Array+Additions.swift */; };
 		6D45B0A71CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */; };
+		6D45B1121CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.h in Headers */ = {isa = PBXBuildFile; fileRef = 6D45B1111CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6D45B1161CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D45B10F1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework */; };
+		6D45B1171CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D45B10F1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D59B6101CBFF8DD00602638 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59B60F1CBFF8DD00602638 /* AppDelegate.swift */; };
 		6D59B6121CBFF8DD00602638 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59B6111CBFF8DD00602638 /* ViewController.swift */; };
 		6D59B6151CBFF8DD00602638 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D59B6131CBFF8DD00602638 /* Main.storyboard */; };
@@ -29,7 +32,28 @@
 			remoteGlobalIDString = 6D59B60B1CBFF8DD00602638;
 			remoteInfo = "rsbtableviewmanager-swift";
 		};
+		6D45B1141CE0981C00A9FB4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D59B6041CBFF8DD00602638 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D45B10E1CE0981C00A9FB4A;
+			remoteInfo = "rsbtableviewmanagerframework-swift";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6D45B11B1CE0981C00A9FB4A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				6D45B1171CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0A7A322B1CDC479B00477377 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = "Pods/../build/Debug-iphoneos/Quick.framework"; sourceTree = "<group>"; };
@@ -45,6 +69,9 @@
 		6D45B09C1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rsbtableviewmanager-swiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D45B0A01CCFB57500A9FB4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D45B0A61CCFB81800A9FB4A /* RSBTableViewManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManagerSpec.swift; sourceTree = "<group>"; };
+		6D45B10F1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "rsbtableviewmanagerframework-swift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D45B1111CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rsbtableviewmanagerframework-swift.h"; sourceTree = "<group>"; };
+		6D45B1131CE0981C00A9FB4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D59B60C1CBFF8DD00602638 /* rsbtableviewmanager-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rsbtableviewmanager-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D59B60F1CBFF8DD00602638 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6D59B6111CBFF8DD00602638 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,10 +91,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6D45B10B1CE0981C00A9FB4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D59B6091CBFF8DD00602638 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D45B1161CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,11 +172,21 @@
 			path = "rsbtableviewmanager-swiftTests";
 			sourceTree = "<group>";
 		};
+		6D45B1101CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift */ = {
+			isa = PBXGroup;
+			children = (
+				6D45B1111CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.h */,
+				6D45B1131CE0981C00A9FB4A /* Info.plist */,
+			);
+			path = "rsbtableviewmanagerframework-swift";
+			sourceTree = "<group>";
+		};
 		6D59B6031CBFF8DD00602638 = {
 			isa = PBXGroup;
 			children = (
 				6D59B60E1CBFF8DD00602638 /* rsbtableviewmanager-swift */,
 				6D45B09D1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */,
+				6D45B1101CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift */,
 				6D59B60D1CBFF8DD00602638 /* Products */,
 				36763285DCF70FB485DADEEC /* Pods */,
 				2974F44D40BC136F04D68C39 /* Frameworks */,
@@ -153,6 +198,7 @@
 			children = (
 				6D59B60C1CBFF8DD00602638 /* rsbtableviewmanager-swift.app */,
 				6D45B09C1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests.xctest */,
+				6D45B10F1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +230,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		6D45B10C1CE0981C00A9FB4A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D45B1121CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		6D45B09B1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */ = {
 			isa = PBXNativeTarget;
@@ -206,6 +263,24 @@
 			productReference = 6D45B09C1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6D45B10E1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D45B11A1CE0981C00A9FB4A /* Build configuration list for PBXNativeTarget "rsbtableviewmanagerframework-swift" */;
+			buildPhases = (
+				6D45B10A1CE0981C00A9FB4A /* Sources */,
+				6D45B10B1CE0981C00A9FB4A /* Frameworks */,
+				6D45B10C1CE0981C00A9FB4A /* Headers */,
+				6D45B10D1CE0981C00A9FB4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "rsbtableviewmanagerframework-swift";
+			productName = "rsbtableviewmanagerframework-swift";
+			productReference = 6D45B10F1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		6D59B60B1CBFF8DD00602638 /* rsbtableviewmanager-swift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D59B61E1CBFF8DD00602638 /* Build configuration list for PBXNativeTarget "rsbtableviewmanager-swift" */;
@@ -213,10 +288,12 @@
 				6D59B6081CBFF8DD00602638 /* Sources */,
 				6D59B6091CBFF8DD00602638 /* Frameworks */,
 				6D59B60A1CBFF8DD00602638 /* Resources */,
+				6D45B11B1CE0981C00A9FB4A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6D45B1151CE0981C00A9FB4A /* PBXTargetDependency */,
 			);
 			name = "rsbtableviewmanager-swift";
 			productName = "rsbtableviewmanager-swift";
@@ -236,6 +313,9 @@
 					6D45B09B1CCFB57500A9FB4A = {
 						CreatedOnToolsVersion = 7.3;
 						TestTargetID = 6D59B60B1CBFF8DD00602638;
+					};
+					6D45B10E1CE0981C00A9FB4A = {
+						CreatedOnToolsVersion = 7.3;
 					};
 					6D59B60B1CBFF8DD00602638 = {
 						CreatedOnToolsVersion = 7.2;
@@ -257,12 +337,20 @@
 			targets = (
 				6D59B60B1CBFF8DD00602638 /* rsbtableviewmanager-swift */,
 				6D45B09B1CCFB57500A9FB4A /* rsbtableviewmanager-swiftTests */,
+				6D45B10E1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6D45B09A1CCFB57500A9FB4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D45B10D1CE0981C00A9FB4A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -340,6 +428,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6D45B10A1CE0981C00A9FB4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D59B6081CBFF8DD00602638 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +455,11 @@
 			isa = PBXTargetDependency;
 			target = 6D59B60B1CBFF8DD00602638 /* rsbtableviewmanager-swift */;
 			targetProxy = 6D45B0A11CCFB57500A9FB4A /* PBXContainerItemProxy */;
+		};
+		6D45B1151CE0981C00A9FB4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D45B10E1CE0981C00A9FB4A /* rsbtableviewmanagerframework-swift */;
+			targetProxy = 6D45B1141CE0981C00A9FB4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -421,6 +521,50 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanager-swiftTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rsbtableviewmanager-swift.app/rsbtableviewmanager-swift";
+			};
+			name = Release;
+		};
+		6D45B1181CE0981C00A9FB4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "rsbtableviewmanagerframework-swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanagerframework-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6D45B1191CE0981C00A9FB4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "rsbtableviewmanagerframework-swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rosberry.rsbtableviewmanagerframework-swift";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -546,6 +690,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6D45B11A1CE0981C00A9FB4A /* Build configuration list for PBXNativeTarget "rsbtableviewmanagerframework-swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D45B1181CE0981C00A9FB4A /* Debug */,
+				6D45B1191CE0981C00A9FB4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		6D59B6071CBFF8DD00602638 /* Build configuration list for PBXProject "rsbtableviewmanager-swift" */ = {
 			isa = XCConfigurationList;
