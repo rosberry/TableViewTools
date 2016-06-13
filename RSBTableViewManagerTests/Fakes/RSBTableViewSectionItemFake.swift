@@ -7,7 +7,7 @@
 //
 
 import UIKit
-@testable import rsbtableviewmanager_swift
+@testable import RSBTableViewManager
 
 class RSBTableViewSectionItemFake: RSBTableViewSectionItemProtocol {
     var cellItems : [RSBTableViewCellItemProtocol]?

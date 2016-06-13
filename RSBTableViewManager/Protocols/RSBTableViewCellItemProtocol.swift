@@ -16,7 +16,7 @@ extension RSBTableViewCellItemProtocol {
     func configureCell(cell: UITableViewCell) {}
 }
 
-protocol RSBTableViewCellItemProtocol: AnyObject {
+public protocol RSBTableViewCellItemProtocol: AnyObject {
     var itemDidSelectHandler: ((UITableView, NSIndexPath) -> Void)? { get set }
     
     func heightForTableView(tableView: UITableView) -> CGFloat

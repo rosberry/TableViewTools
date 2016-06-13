@@ -7,7 +7,7 @@
 //
 
 import UIKit
-@testable import rsbtableviewmanager_swift
+@testable import RSBTableViewManager
 
 class RSBTableViewCellItemFake: RSBTableViewCellItemProtocol {
     var itemDidSelectHandler: ((UITableView, NSIndexPath) -> Void)?

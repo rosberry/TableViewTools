@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0A6F1C231CE987CD00067C18"
+               BlueprintIdentifier = "6D9DB6931D0EACEE002F1F7F"
                BuildableName = "RSBTableViewManager.framework"
                BlueprintName = "RSBTableViewManager"
-               ReferencedContainer = "container:rsbtableviewmanager-swift.xcodeproj">
+               ReferencedContainer = "container:RSBTableViewManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0A6F1C231CE987CD00067C18"
+            BlueprintIdentifier = "6D9DB6931D0EACEE002F1F7F"
             BuildableName = "RSBTableViewManager.framework"
             BlueprintName = "RSBTableViewManager"
-            ReferencedContainer = "container:rsbtableviewmanager-swift.xcodeproj">
+            ReferencedContainer = "container:RSBTableViewManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0A6F1C231CE987CD00067C18"
+            BlueprintIdentifier = "6D9DB6931D0EACEE002F1F7F"
             BuildableName = "RSBTableViewManager.framework"
             BlueprintName = "RSBTableViewManager"
-            ReferencedContainer = "container:rsbtableviewmanager-swift.xcodeproj">
+            ReferencedContainer = "container:RSBTableViewManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

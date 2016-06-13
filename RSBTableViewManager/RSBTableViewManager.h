@@ -2,7 +2,7 @@
 //  RSBTableViewManager.h
 //  RSBTableViewManager
 //
-//  Created by Dmitry Frishbuter on 16/05/16.
+//  Created by Damien on 13/06/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 

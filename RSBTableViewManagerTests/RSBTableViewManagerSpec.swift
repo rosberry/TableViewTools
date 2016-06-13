@@ -9,7 +9,7 @@
 import UIKit
 import Quick
 import Nimble
-@testable import rsbtableviewmanager_swift
+@testable import RSBTableViewManager
 
 class RSBTableViewManagerSpec: QuickSpec {
     

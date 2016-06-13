@@ -45,7 +45,7 @@ extension RSBTableViewSectionItemProtocol {
     }
 }
 
-protocol RSBTableViewSectionItemProtocol: AnyObject {
+public protocol RSBTableViewSectionItemProtocol: AnyObject {
     var cellItems : [RSBTableViewCellItemProtocol]?  { get set }
     var headerTitle: String? { get set }
     var footerTitle: String? { get set }
