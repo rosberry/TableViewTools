@@ -8,18 +8,18 @@
 import Foundation
 
 extension Array {
-    mutating func removeElementsAtIndexes(indexes: NSIndexSet) {
-        indexes.sort(>).forEach {
-            removeAtIndex($0)
+    mutating func removeElementsAt(indexes: NSIndexSet) {
+        indexes.sorted(by: >).forEach {
+            remove(at: $0)
         }
     }
     
-    mutating func insertElements(elements: [Element], atIndexes indexes: NSIndexSet) {
+    mutating func insert(elements: [Element], at indexes: NSIndexSet) {
         var index = indexes.firstIndex
         for element in elements {
-            indexes.indexGreaterThanOrEqualToIndex(index)
-            self.insert(element, atIndex: index)
-            index = index.successor()
+            indexes.indexGreaterThanOrEqual(to: index)
+            self.insert(element, at: index)
+            index = index + 1
         }
     }
 }

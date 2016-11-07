@@ -16,7 +16,7 @@ public class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDe
         set {
             _sectionItems = newValue
             for sectionItem in _sectionItems {
-                 self.registerSectionItem(sectionItem)
+                 self.register(sectionItem: sectionItem)
             }
             tableView!.reloadData();
         }
@@ -37,73 +37,73 @@ public class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDe
         // MARK: Cell Items
     
     public func removeCellItems(cellItems: [RSBTableViewCellItemProtocol],
-                         inout fromSectionItem sectionItem: RSBTableViewSectionItemProtocol,
+                         fromSectionItem sectionItem: inout RSBTableViewSectionItemProtocol,
                                                withRowAnimation animation: UITableViewRowAnimation) {
-        let section = sectionItems.indexOf({$0 === sectionItem})!
-        var indexPaths = [NSIndexPath]()
+        let section = sectionItems.index(where: {$0 === sectionItem})!
+        var indexPaths = [IndexPath]()
         let indexes = NSMutableIndexSet()
         
         for cellItem in cellItems {
-            let row  = sectionItem.cellItems!.indexOf({$0 === cellItem})
+            let row  = sectionItem.cellItems!.index(where: {$0 === cellItem})
             precondition(row != nil, "It's impossible to remove cell items that are not contained in section item")
 
-            indexPaths.append(NSIndexPath(forRow: row!, inSection: section))
-            indexes.addIndex(row!)
+            indexPaths.append(IndexPath(row: row!, section: section))
+            indexes.add(row!)
         }
         
         tableView!.beginUpdates()
         
-        sectionItem.cellItems!.removeElementsAtIndexes(indexes)
-        tableView!.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+        sectionItem.cellItems!.removeElementsAt(indexes: indexes)
+        tableView!.deleteRows(at: indexPaths as [IndexPath], with: animation)
         
         tableView!.endUpdates()
     }
     
     public func insertCellItems(cellItems: [RSBTableViewCellItemProtocol],
-                         inout toSectionItem sectionItem: RSBTableViewSectionItemProtocol,
+                         toSectionItem sectionItem: inout RSBTableViewSectionItemProtocol,
                                              atIndexes indexes: NSIndexSet,
                                                        withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.firstIndex <= sectionItem.cellItems!.count, "It's impossible to insert item at index that is larger than count of cell items in this section")
         for cellItem in cellItems {
-            cellItem.dynamicType.registerCellForTableView(tableView!)
+            type(of: cellItem).registerCellFor(tableView: tableView!)
         }
-        guard let section = sectionItems.indexOf({$0 === sectionItem}) else {
+        guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
             return
         }
         
         tableView!.beginUpdates()
         
-        sectionItem.cellItems!.insertElements(cellItems, atIndexes: indexes)
+        sectionItem.cellItems!.insert(elements: cellItems, at: indexes)
         
-        var indexPaths = [NSIndexPath]()
+        var indexPaths = [IndexPath]()
         for idx in indexes {
-            indexPaths.append(NSIndexPath(forRow: idx, inSection: section))
+            indexPaths.append(IndexPath(row: idx, section: section))
         }
-        tableView!.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+        tableView!.insertRows(at: indexPaths as [IndexPath], with: animation)
         
         tableView!.endUpdates()
     }
     
     public func replaceCellItemsAtIndexes(indexes: NSIndexSet,
                                    withCellItems cellItems: [RSBTableViewCellItemProtocol],
-                                                 inout inSectionItem sectionItem: RSBTableViewSectionItemProtocol,
+                                                 inSectionItem sectionItem: inout RSBTableViewSectionItemProtocol,
                                                                      withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == cellItems.count, "It's impossible to replace not equal count of cell items")
         for cellItem in cellItems {
-            cellItem.dynamicType.registerCellForTableView(tableView!)
+            type(of: cellItem).registerCellFor(tableView: tableView!)
         }
         
         tableView!.beginUpdates()
         
-        sectionItem.cellItems!.replaceRange(indexes.firstIndex ..< indexes.lastIndex, with: cellItems)
-        guard let section = sectionItems.indexOf({$0 === sectionItem}) else {
+        sectionItem.cellItems!.replaceSubrange(indexes.firstIndex ..< indexes.lastIndex, with: cellItems)
+        guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
             return
         }
-        var indexPaths = [NSIndexPath]()
-        indexes.enumerateIndexesUsingBlock { (index, stop) in
-            indexPaths.append(NSIndexPath(forRow: index, inSection: section))
+        var indexPaths = [IndexPath]()
+        for index in indexes {
+            indexPaths.append(IndexPath(row: index, section: section))
         }
-        tableView!.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+        tableView!.reloadRows(at: indexPaths as [IndexPath], with: animation)
         
         tableView!.endUpdates()
     }
@@ -114,15 +114,15 @@ public class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDe
                                    withRowAnimation animation: UITableViewRowAnimation) {
         let indexes = NSMutableIndexSet()
         for sectionItem in sectionItems {
-            let section = self.sectionItems.indexOf({$0 === sectionItem})
+            let section = self.sectionItems.index(where: {$0 === sectionItem})
             precondition(section != nil, "It's impossible to remove section items that are not contained in section items array")
-            indexes.addIndex(section!)
+            indexes.add(section!)
         }
         
         tableView!.beginUpdates()
         
-        self.sectionItems.removeElementsAtIndexes(indexes)
-        tableView!.deleteSections(indexes, withRowAnimation: animation)
+        self.sectionItems.removeElementsAt(indexes: indexes)
+        tableView!.deleteSections(indexes as IndexSet, with: animation)
         
         tableView!.endUpdates()
     }
@@ -132,13 +132,13 @@ public class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDe
                                              withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.firstIndex <= self.sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
         for sectionItem in sectionItems {
-            registerSectionItem(sectionItem)
+            register(sectionItem: sectionItem)
         }
         
         tableView!.beginUpdates()
         
-        self.sectionItems.insertElements(sectionItems, atIndexes: indexes)
-        tableView!.insertSections(indexes, withRowAnimation: animation)
+        self.sectionItems.insert(elements: sectionItems, at: indexes)
+        tableView!.insertSections(indexes as IndexSet, with: animation)
         
         tableView!.endUpdates()
     }
@@ -148,13 +148,13 @@ public class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDe
                                                               rowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == sectionItems.count, "It's impossible to replace not equal count of section items")
         for sectionItem in sectionItems {
-            registerSectionItem(sectionItem)
+            register(sectionItem: sectionItem)
         }
         
         tableView!.beginUpdates()
         
-        self.sectionItems.replaceRange(indexes.firstIndex ..< indexes.lastIndex, with: sectionItems)
-        tableView!.reloadSections(indexes, withRowAnimation: animation)
+        self.sectionItems.replaceSubrange(indexes.firstIndex ..< indexes.lastIndex, with: sectionItems)
+        tableView!.reloadSections(indexes as IndexSet, with: animation)
         
         tableView!.endUpdates()
     }
@@ -163,28 +163,28 @@ public class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDe
     
     public func frameForCellItem(cellItem: RSBTableViewCellItemProtocol,
                                  inSectionItem sectionItem: RSBTableViewSectionItemProtocol) -> CGRect? {
-        guard let sectionItemIndex = sectionItems.indexOf({$0 === sectionItem}) else {
+        guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}) else {
             return nil
         }
-        guard let cellItemIndex = sectionItem.cellItems!.indexOf({$0 === cellItem}) else {
+        guard let cellItemIndex = sectionItem.cellItems!.index(where: {$0 === cellItem}) else {
             return nil
         }
-        let indexPath = NSIndexPath(forRow: cellItemIndex, inSection: sectionItemIndex)
-        return tableView!.rectForRowAtIndexPath(indexPath)
+        let indexPath = IndexPath(row: cellItemIndex, section: sectionItemIndex)
+        return tableView!.rectForRow(at: indexPath as IndexPath)
     }
     
     public func scrollToCellItem(cellItem: RSBTableViewCellItemProtocol,
                                  inSectionItem sectionItem: RSBTableViewSectionItemProtocol,
                                                atScrollPosition scrollPosition: UITableViewScrollPosition,
                                                                 animated: Bool) {
-        guard let sectionItemIndex = sectionItems.indexOf({$0 === sectionItem}) else {
+        guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}) else {
             return
         }
-        guard let cellItemIndex = sectionItem.cellItems!.indexOf({$0 === cellItem}) else {
+        guard let cellItemIndex = sectionItem.cellItems!.index(where: {$0 === cellItem}) else {
             return
         }
-        let indexPath = NSIndexPath(forRow: cellItemIndex, inSection: sectionItemIndex)
-        tableView!.scrollToRowAtIndexPath(indexPath, atScrollPosition: scrollPosition, animated: animated)
+        let indexPath = IndexPath(row: cellItemIndex, section: sectionItemIndex)
+        tableView!.scrollToRow(at: indexPath as IndexPath, at: scrollPosition, animated: animated)
     }
     
     public func scrollToTopAnimated(animated: Bool) {
@@ -194,141 +194,141 @@ public class RSBTableViewManager: NSObject, UITableViewDataSource, UITableViewDe
         guard let cellItem = sectionItem.cellItems!.first else {
             return
         }
-        scrollToCellItem(cellItem,
+        scrollToCellItem(cellItem: cellItem,
                          inSectionItem: sectionItem,
-                         atScrollPosition: UITableViewScrollPosition.Top,
+                         atScrollPosition: UITableViewScrollPosition.top,
                          animated: animated)
     }
     
         // MARK: Helpers
     
-    func registerSectionItem(sectionItem : RSBTableViewSectionItemProtocol) {
+    func register(sectionItem : RSBTableViewSectionItemProtocol) {
         for cellItem in sectionItem.cellItems! {
-            cellItem.dynamicType.registerCellForTableView(tableView!)
+            type(of: cellItem).registerCellFor(tableView: tableView!)
         }
     }
     
         // MARK: UITableViewDelegate/UITableViewDataSource
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return sectionItems.count
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionItem = sectionItems[section]
         return sectionItem.cellItems!.count
     }
     
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionItem = sectionItems[indexPath.section]
         let cellItem = sectionItem.cellItems![indexPath.row]
-        return cellItem.heightForTableView(tableView)
+        return cellItem.heightFor(tableView: tableView)
     }
     
-    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let sectionItem = self.sectionItems[indexPath.section]
         let cellItem = sectionItem.cellItems![indexPath.row]
-        cellItem.willDisplayCell(cell, forTableView: tableView, atIndexPath: indexPath)
+        cellItem.willDisplay(cell: cell, forTableView: tableView, atIndexPath: indexPath)
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionItem = sectionItems[indexPath.section]
         let cellItem = sectionItem.cellItems![indexPath.row]
-        let cell = cellItem.cellForTableView(tableView)
-        cellItem.configureCell(cell)
+        let cell = cellItem.cellFor(tableView: tableView)
+        cellItem.configure(cell: cell)
         return cell
     }
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sectionItem = sectionItems[indexPath.section]
         let cellItem = sectionItem.cellItems![indexPath.row]
-        cellItem.didSelectInTableView(tableView, atIndexPath: indexPath)
+        cellItem.didSelectIn(tableView: tableView, atIndexPath: indexPath)
     }
     
-    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let sectionItem = sectionItems[section]
-        return sectionItem.heightForHeaderInTableView(tableView)
+        return sectionItem.heightForHeaderIn(tableView: tableView)
     }
     
-    public func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         let sectionItem = sectionItems[section]
-        return sectionItem.heightForFooterInTableView(tableView)
+        return sectionItem.heightForFooterIn(tableView: tableView)
     }
     
-    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionItem = sectionItems[section]
-        return sectionItem.viewForHeaderInTableView(tableView)
+        return sectionItem.viewForHeaderIn(tableView: tableView)
     }
     
-    public func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let sectionItem = sectionItems[section]
-        return sectionItem.viewForFooterInTableView(tableView)
+        return sectionItem.viewForFooterIn(tableView: tableView)
     }
     
-    public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionItem = sectionItems[section]
-        return sectionItem.titleForHeaderInTableView(tableView)
+        return sectionItem.titleForHeaderIn(tableView: tableView)
     }
     
-    public func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let sectionItem = sectionItems[section]
-        return sectionItem.titleForFooterInTableView(tableView)
+        return sectionItem.titleForFooterIn(tableView: tableView)
     }
     
         // MARK: UIScrollViewDelegate
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewDidScroll?(scrollView)
     }
     
-    public func scrollViewDidZoom(scrollView: UIScrollView) {
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewDidZoom?(scrollView)
     }
     
-    public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewWillBeginDragging?(scrollView)
     }
     
-    public func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         scrollDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
     }
     
-    public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         scrollDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
     }
     
-    public func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
+    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewWillBeginDecelerating?(scrollView)
     }
     
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewDidEndDecelerating?(scrollView)
     }
     
-    public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
     }
     
-    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return scrollDelegate?.viewForZoomingInScrollView?(scrollView)
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollDelegate?.viewForZooming?(in: scrollView)
     }
     
-    public func scrollViewWillBeginZooming(scrollView: UIScrollView, withView view: UIView?) {
-        scrollDelegate?.scrollViewWillBeginZooming?(scrollView, withView: view)
+    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        scrollDelegate?.scrollViewWillBeginZooming?(scrollView, with: view)
     }
     
-    public func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
-        scrollDelegate?.scrollViewDidEndZooming?(scrollView, withView: view, atScale: scale)
+    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        scrollDelegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
     }
     
-    public func scrollViewShouldScrollToTop(scrollView: UIScrollView) -> Bool {
+    public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
         if let shouldScroll = scrollDelegate?.scrollViewShouldScrollToTop?(scrollView) {
             return shouldScroll
         }
         return true
     }
     
-    public func scrollViewDidScrollToTop(scrollView: UIScrollView) {
+    public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
         scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
 }

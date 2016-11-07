@@ -8,21 +8,21 @@
 import UIKit
 
 extension RSBTableViewCellItemProtocol {
-    func didSelectInTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) {
+    func didSelectIn(tableView: UITableView, atIndexPath indexPath: IndexPath) {
         itemDidSelectHandler?(tableView, indexPath)
     }
     
-    func willDisplayCell(cell: UITableViewCell, forTableView tableView: UITableView, atIndexPath indexPath: NSIndexPath) {}
-    func configureCell(cell: UITableViewCell) {}
+    func willDisplay(cell: UITableViewCell, forTableView tableView: UITableView, atIndexPath indexPath: IndexPath) {}
+    func configure(cell: UITableViewCell) {}
 }
 
 public protocol RSBTableViewCellItemProtocol: AnyObject {
-    var itemDidSelectHandler: ((UITableView, NSIndexPath) -> Void)? { get set }
+    var itemDidSelectHandler: ((UITableView, IndexPath) -> Void)? { get set }
     
-    func heightForTableView(tableView: UITableView) -> CGFloat
-    func cellForTableView(tableView: UITableView) -> UITableViewCell
-    func didSelectInTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath)
-    func willDisplayCell(cell: UITableViewCell, forTableView tableView: UITableView, atIndexPath indexPath: NSIndexPath)
-    func configureCell(cell: UITableViewCell)
-    static func registerCellForTableView(tableView : UITableView)
+    func heightFor(tableView: UITableView) -> CGFloat
+    func cellFor(tableView: UITableView) -> UITableViewCell
+    func didSelectIn(tableView: UITableView, atIndexPath indexPath: IndexPath)
+    func willDisplay(cell: UITableViewCell, forTableView tableView: UITableView, atIndexPath indexPath: IndexPath)
+    func configure(cell: UITableViewCell)
+    static func registerCellFor(tableView : UITableView)
 }

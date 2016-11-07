@@ -14,33 +14,33 @@ extension RSBTableViewSectionItemProtocol {
         self.cellItems = cellItems
     }
     
-    func titleForHeaderInTableView(tableView: UITableView) -> String? {
+    func titleForHeaderIn(tableView: UITableView) -> String? {
         return headerTitle!
     }
     
-    func heightForHeaderInTableView(tableView: UITableView) -> CGFloat {
+    func heightForHeaderIn(tableView: UITableView) -> CGFloat {
         if headerTitle != nil {
             return 22.0
         }
         return 0.0
     }
     
-    func viewForHeaderInTableView(tableView: UITableView) -> UIView? {
+    func viewForHeaderIn(tableView: UITableView) -> UIView? {
         return nil
     }
     
-    func titleForFooterInTableView(tableView: UITableView) -> String? {
+    func titleForFooterIn(tableView: UITableView) -> String? {
         return footerTitle!
     }
     
-    func heightForFooterInTableView(tableView: UITableView) -> CGFloat {
+    func heightForFooterIn(tableView: UITableView) -> CGFloat {
         if footerTitle != nil {
             return 22.0
         }
         return 0.0
     }
     
-    func viewForFooterInTableView(tableView: UITableView) -> UIView? {
+    func viewForFooterIn(tableView: UITableView) -> UIView? {
         return nil
     }
 }
@@ -52,11 +52,11 @@ public protocol RSBTableViewSectionItemProtocol: AnyObject {
     
     init()
     
-    func titleForHeaderInTableView(tableView: UITableView) -> String?
-    func heightForHeaderInTableView(tableView: UITableView) -> CGFloat
-    func viewForHeaderInTableView(tableView: UITableView) -> UIView?
+    func titleForHeaderIn(tableView: UITableView) -> String?
+    func heightForHeaderIn(tableView: UITableView) -> CGFloat
+    func viewForHeaderIn(tableView: UITableView) -> UIView?
     
-    func titleForFooterInTableView(tableView: UITableView) -> String?
-    func heightForFooterInTableView(tableView: UITableView) -> CGFloat
-    func viewForFooterInTableView(tableView: UITableView) -> UIView?
+    func titleForFooterIn(tableView: UITableView) -> String?
+    func heightForFooterIn(tableView: UITableView) -> CGFloat
+    func viewForFooterIn(tableView: UITableView) -> UIView?
 }
