@@ -9,15 +9,15 @@ import UIKit
 
 open class TableViewSectionItem: TableViewSectionItemProtocol {
     
-    public var cellItems : [TableViewCellItemProtocol]?
+    public var cellItems : [TableViewCellItemProtocol]
     public var headerTitle: String?
     public var footerTitle: String?
     
     convenience init() {
-        self.init(cellItems: nil)
+        self.init(cellItems: [])
     }
     
-    init(cellItems: [TableViewCellItemProtocol]?) {
+    init(cellItems: [TableViewCellItemProtocol]) {
         self.cellItems = cellItems
     }
     

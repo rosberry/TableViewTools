@@ -9,7 +9,7 @@ import UIKit
 
 public protocol TableViewSectionItemProtocol: AnyObject {
     
-    var cellItems : [TableViewCellItemProtocol]?  { get set }
+    var cellItems : [TableViewCellItemProtocol]  { get set }
 
     func titleForHeader(in tableView: UITableView) -> String?
     func heightForHeader(in tableView: UITableView) -> CGFloat

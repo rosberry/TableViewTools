@@ -15,7 +15,6 @@
 		6DF0D4B51D0EAE7100E7C132 /* RSBTableViewManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */; };
 		6DF0D4C11D0EAEDD00E7C132 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */; };
 		6DF0D4C31D0EAEE600E7C132 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C21D0EAEE600E7C132 /* Quick.framework */; };
-		6DF0D4CF1D0EAF3B00E7C132 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF0D4C71D0EAF3B00E7C132 /* Info.plist */; };
 		6DF0D4D81D0EB12800E7C132 /* RSBTableViewCellItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D51D0EB12800E7C132 /* RSBTableViewCellItemFake.swift */; };
 		6DF0D4D91D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D61D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift */; };
 		6DF0D4DA1D0EB12800E7C132 /* RSBTableViewManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D71D0EB12800E7C132 /* RSBTableViewManagerSpec.swift */; };
@@ -217,11 +216,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Rosberry;
 				TargetAttributes = {
 					6D9DB6931D0EACEE002F1F7F = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					6DF0D4AF1D0EAE7100E7C132 = {
 						CreatedOnToolsVersion = 7.3;
@@ -251,7 +251,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DF0D4CF1D0EAF3B00E7C132 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,8 +311,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -361,8 +362,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -382,6 +385,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -392,6 +396,7 @@
 		6D9DB69D1D0EACEE002F1F7F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -402,12 +407,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.RSBTableViewManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		6D9DB69E1D0EACEE002F1F7F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -418,6 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.RSBTableViewManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

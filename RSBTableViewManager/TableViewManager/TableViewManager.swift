@@ -32,15 +32,15 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Cell Items
     
-    public func removeCellItems(cellItems: [TableViewCellItemProtocol],
-                         fromSectionItem sectionItem: inout TableViewSectionItemProtocol,
-                                               withRowAnimation animation: UITableViewRowAnimation) {
+    public func removeCellItems(_ cellItems: [TableViewCellItemProtocol],
+                                fromSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                                withRowAnimation animation: UITableViewRowAnimation) {
         let section = sectionItems.index(where: {$0 === sectionItem})!
         var indexPaths = [IndexPath]()
         var indexes = IndexSet()
         
         for cellItem in cellItems {
-            guard let row = sectionItem.cellItems!.index(where: {$0 === cellItem}) else {
+            guard let row = sectionItem.cellItems.index(where: {$0 === cellItem}) else {
                 fatalError("It's impossible to remove cell items that are not contained in section item")
             }
             indexPaths.append(IndexPath(row: row, section: section))
@@ -49,7 +49,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        sectionItem.cellItems!.removeElements(at: indexes)
+        sectionItem.cellItems.removeElements(at: indexes)
         tableView.deleteRows(at: indexPaths, with: animation)
         
         tableView.endUpdates()
@@ -61,17 +61,17 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         let indexPaths = cellIndexes.map { IndexPath(row: $0, section: sectionIndex) }
         tableView.beginUpdates()
         
-        sectionItems[sectionIndex].cellItems!.removeElements(at: cellIndexes)
+        sectionItems[sectionIndex].cellItems.removeElements(at: cellIndexes)
         tableView.deleteRows(at: indexPaths, with: animation)
         
         tableView.endUpdates()
     }
     
-    public func insertCellItems(cellItems: [TableViewCellItemProtocol],
-                         toSectionItem sectionItem: inout TableViewSectionItemProtocol,
-                                             atIndexes indexes: IndexSet,
-                                                       withRowAnimation animation: UITableViewRowAnimation) {
-        precondition(indexes.first! <= sectionItem.cellItems!.count, "It's impossible to insert item at index that is larger than count of cell items in this section")
+    public func insertCellItems(_ cellItems: [TableViewCellItemProtocol],
+                                toSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                                atIndexes indexes: IndexSet,
+                                withRowAnimation animation: UITableViewRowAnimation) {
+        precondition(indexes.first! <= sectionItem.cellItems.count, "It's impossible to insert item at index that is larger than count of cell items in this section")
         for cellItem in cellItems {
             type(of: cellItem).registerCell(for: tableView)
         }
@@ -82,16 +82,16 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        sectionItem.cellItems!.insertElements(cellItems, at: indexes)
+        sectionItem.cellItems.insertElements(cellItems, at: indexes)
         tableView.insertRows(at: indexPaths, with: animation)
         
         tableView.endUpdates()
     }
     
-    public func replaceCellItemsAtIndexes(indexes: IndexSet,
-                                   withCellItems cellItems: [TableViewCellItemProtocol],
-                                                 inSectionItem sectionItem: inout TableViewSectionItemProtocol,
-                                                                     withRowAnimation animation: UITableViewRowAnimation) {
+    public func replaceCellItems(at indexes: IndexSet,
+                                 withCellItems cellItems: [TableViewCellItemProtocol],
+                                 inSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                                 withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == cellItems.count, "It's impossible to replace not equal count of cell items")
         for cellItem in cellItems {
             type(of: cellItem).registerCell(for: tableView)
@@ -99,7 +99,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        sectionItem.cellItems!.replaceSubrange(indexes.first!...indexes.last!, with: cellItems)
+        sectionItem.cellItems.replaceSubrange(indexes.first!...indexes.last!, with: cellItems)
         guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
             return
         }
@@ -111,7 +111,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Section Items
     
-    public func removeSectionItems(sectionItems: [TableViewSectionItemProtocol],
+    public func removeSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                    withRowAnimation animation: UITableViewRowAnimation) {
         var indexes = IndexSet()
         for sectionItem in sectionItems {
@@ -128,9 +128,9 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.endUpdates()
     }
     
-    public func insertSectionItems(sectionItems: [TableViewSectionItemProtocol],
+    public func insertSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                    atIndexes indexes: IndexSet,
-                                             withRowAnimation animation: UITableViewRowAnimation) {
+                                   withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.first! <= self.sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
         for sectionItem in sectionItems {
             register(sectionItem: sectionItem)
@@ -144,9 +144,9 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.endUpdates()
     }
     
-    public func replaceSectionItemsAtIndexes(indexes: IndexSet,
-                                             withSectionItems sectionItems: [TableViewSectionItemProtocol],
-                                                              rowAnimation animation: UITableViewRowAnimation) {
+    public func replaceSectionItems(at indexes: IndexSet,
+                                    withSectionItems sectionItems: [TableViewSectionItemProtocol],
+                                    rowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == sectionItems.count, "It's impossible to replace not equal count of section items")
         for sectionItem in sectionItems {
             register(sectionItem: sectionItem)
@@ -162,23 +162,23 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Others
     
-    public func frameForCellItem(cellItem: TableViewCellItemProtocol,
+    public func frameForCellItem(_ cellItem: TableViewCellItemProtocol,
                                  inSectionItem sectionItem: TableViewSectionItemProtocol) -> CGRect? {
         guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}),
-            let cellItemIndex = sectionItem.cellItems!.index(where: {$0 === cellItem}) else {
-            return nil
+            let cellItemIndex = sectionItem.cellItems.index(where: {$0 === cellItem}) else {
+                return nil
         }
         let indexPath = IndexPath(row: cellItemIndex, section: sectionItemIndex)
         return tableView.rectForRow(at: indexPath)
     }
     
-    public func scrollToCellItem(cellItem: TableViewCellItemProtocol,
+    public func scrollToCellItem(_ cellItem: TableViewCellItemProtocol,
                                  inSectionItem sectionItem: TableViewSectionItemProtocol,
-                                               atScrollPosition scrollPosition: UITableViewScrollPosition,
-                                                                animated: Bool) {
+                                 atScrollPosition scrollPosition: UITableViewScrollPosition,
+                                 animated: Bool) {
         guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}),
-            let cellItemIndex = sectionItem.cellItems!.index(where: {$0 === cellItem}) else {
-            return
+            let cellItemIndex = sectionItem.cellItems.index(where: {$0 === cellItem}) else {
+                return
         }
         let indexPath = IndexPath(row: cellItemIndex, section: sectionItemIndex)
         tableView.scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
@@ -186,13 +186,10 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     public func scrollToTopAnimated(animated: Bool) {
         guard let sectionItem = self.sectionItems.first,
-            let cellItem = sectionItem.cellItems!.first else {
-            return
+            let cellItem = sectionItem.cellItems.first else {
+                return
         }
-        scrollToCellItem(cellItem: cellItem,
-                         inSectionItem: sectionItem,
-                         atScrollPosition: .top,
-                         animated: animated)
+        scrollToCellItem(cellItem, inSectionItem: sectionItem, atScrollPosition: .top, animated: animated)
     }
     
     // MARK: Helpers
@@ -214,7 +211,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     }
     
     private func register(sectionItem : TableViewSectionItemProtocol) {
-        for cellItem in sectionItem.cellItems! {
+        for cellItem in sectionItem.cellItems {
             type(of: cellItem).registerCell(for: tableView)
         }
     }
@@ -227,7 +224,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionItem = sectionItems[section]
-        return sectionItem.cellItems!.count
+        return sectionItem.cellItems.count
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -247,20 +244,20 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionItem = sectionItems[indexPath.section]
-        let cellItem = sectionItem.cellItems![indexPath.row]
+        let cellItem = sectionItem.cellItems[indexPath.row]
         let cell = cellItem.cell(for: tableView, at: indexPath)
         return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let sectionItem = sectionItems[indexPath.section]
-        let cellItem = sectionItem.cellItems![indexPath.row]
+        let cellItem = sectionItem.cellItems[indexPath.row]
         cellItem.didSelectCell(in: tableView, at: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let sectionItem = sectionItems[indexPath.section]
-        let cellItem = sectionItem.cellItems![indexPath.row]
+        let cellItem = sectionItem.cellItems[indexPath.row]
         cellItem.didDeselectCell(in: tableView, at: indexPath)
     }
     
@@ -351,4 +348,4 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
 }
-    
+
