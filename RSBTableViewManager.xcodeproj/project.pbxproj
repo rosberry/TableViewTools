@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1851DB1DF164C9004190FA /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D31DF164C9004190FA /* Array+Additions.swift */; };
+		0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D51DF164C9004190FA /* TableViewSectionItem.swift */; };
+		0A1851DD1DF164C9004190FA /* TableViewCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */; };
+		0A1851DE1DF164C9004190FA /* TableViewSectionItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D81DF164C9004190FA /* TableViewSectionItemProtocol.swift */; };
+		0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851DA1DF164C9004190FA /* TableViewManager.swift */; };
 		6DF0D4B51D0EAE7100E7C132 /* RSBTableViewManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */; };
 		6DF0D4C11D0EAEDD00E7C132 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */; };
 		6DF0D4C31D0EAEE600E7C132 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C21D0EAEE600E7C132 /* Quick.framework */; };
-		6DF0D4CE1D0EAF3B00E7C132 /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4C61D0EAF3B00E7C132 /* Array+Additions.swift */; };
 		6DF0D4CF1D0EAF3B00E7C132 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DF0D4C71D0EAF3B00E7C132 /* Info.plist */; };
-		6DF0D4D01D0EAF3B00E7C132 /* RSBTableViewCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4C91D0EAF3B00E7C132 /* RSBTableViewCellItemProtocol.swift */; };
-		6DF0D4D11D0EAF3B00E7C132 /* RSBTableViewSectionItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4CA1D0EAF3B00E7C132 /* RSBTableViewSectionItemProtocol.swift */; };
-		6DF0D4D21D0EAF3B00E7C132 /* RSBTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4CC1D0EAF3B00E7C132 /* RSBTableViewManager.swift */; };
-		6DF0D4D31D0EAF3B00E7C132 /* RSBTableViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DF0D4CD1D0EAF3B00E7C132 /* RSBTableViewManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6DF0D4D81D0EB12800E7C132 /* RSBTableViewCellItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D51D0EB12800E7C132 /* RSBTableViewCellItemFake.swift */; };
 		6DF0D4D91D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D61D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift */; };
 		6DF0D4DA1D0EB12800E7C132 /* RSBTableViewManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D71D0EB12800E7C132 /* RSBTableViewManagerSpec.swift */; };
@@ -32,17 +32,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A1851D31DF164C9004190FA /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
+		0A1851D51DF164C9004190FA /* TableViewSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionItem.swift; sourceTree = "<group>"; };
+		0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemProtocol.swift; sourceTree = "<group>"; };
+		0A1851D81DF164C9004190FA /* TableViewSectionItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionItemProtocol.swift; sourceTree = "<group>"; };
+		0A1851DA1DF164C9004190FA /* TableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
 		6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSBTableViewManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF0D4B01D0EAE7100E7C132 /* RSBTableViewManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSBTableViewManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF0D4B41D0EAE7100E7C132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		6DF0D4C21D0EAEE600E7C132 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		6DF0D4C61D0EAF3B00E7C132 /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
 		6DF0D4C71D0EAF3B00E7C132 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DF0D4C91D0EAF3B00E7C132 /* RSBTableViewCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItemProtocol.swift; sourceTree = "<group>"; };
-		6DF0D4CA1D0EAF3B00E7C132 /* RSBTableViewSectionItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItemProtocol.swift; sourceTree = "<group>"; };
-		6DF0D4CC1D0EAF3B00E7C132 /* RSBTableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManager.swift; sourceTree = "<group>"; };
-		6DF0D4CD1D0EAF3B00E7C132 /* RSBTableViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSBTableViewManager.h; sourceTree = "<group>"; };
 		6DF0D4D51D0EB12800E7C132 /* RSBTableViewCellItemFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItemFake.swift; sourceTree = "<group>"; };
 		6DF0D4D61D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItemFake.swift; sourceTree = "<group>"; };
 		6DF0D4D71D0EB12800E7C132 /* RSBTableViewManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManagerSpec.swift; sourceTree = "<group>"; };
@@ -69,6 +69,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1851D21DF164C8004190FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0A1851D31DF164C9004190FA /* Array+Additions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0A1851D41DF164C9004190FA /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				0A1851D51DF164C9004190FA /* TableViewSectionItem.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		0A1851D61DF164C9004190FA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */,
+				0A1851D81DF164C9004190FA /* TableViewSectionItemProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0A1851D91DF164C9004190FA /* TableViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				0A1851DA1DF164C9004190FA /* TableViewManager.swift */,
+			);
+			path = TableViewManager;
+			sourceTree = "<group>";
+		};
 		6D9DB68A1D0EACEE002F1F7F = {
 			isa = PBXGroup;
 			children = (
@@ -110,36 +143,11 @@
 		6DF0D4C41D0EAF3B00E7C132 /* RSBTableViewManager */ = {
 			isa = PBXGroup;
 			children = (
-				6DF0D4CD1D0EAF3B00E7C132 /* RSBTableViewManager.h */,
 				6DF0D4C71D0EAF3B00E7C132 /* Info.plist */,
-				6DF0D4CB1D0EAF3B00E7C132 /* RSBTableViewManager */,
-				6DF0D4C81D0EAF3B00E7C132 /* Protocols */,
-				6DF0D4C51D0EAF3B00E7C132 /* Extensions */,
-			);
-			path = RSBTableViewManager;
-			sourceTree = "<group>";
-		};
-		6DF0D4C51D0EAF3B00E7C132 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				6DF0D4C61D0EAF3B00E7C132 /* Array+Additions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		6DF0D4C81D0EAF3B00E7C132 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				6DF0D4C91D0EAF3B00E7C132 /* RSBTableViewCellItemProtocol.swift */,
-				6DF0D4CA1D0EAF3B00E7C132 /* RSBTableViewSectionItemProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		6DF0D4CB1D0EAF3B00E7C132 /* RSBTableViewManager */ = {
-			isa = PBXGroup;
-			children = (
-				6DF0D4CC1D0EAF3B00E7C132 /* RSBTableViewManager.swift */,
+				0A1851D91DF164C9004190FA /* TableViewManager */,
+				0A1851D61DF164C9004190FA /* Protocols */,
+				0A1851D41DF164C9004190FA /* Items */,
+				0A1851D21DF164C8004190FA /* Extensions */,
 			);
 			path = RSBTableViewManager;
 			sourceTree = "<group>";
@@ -160,7 +168,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DF0D4D31D0EAF3B00E7C132 /* RSBTableViewManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,10 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DF0D4D11D0EAF3B00E7C132 /* RSBTableViewSectionItemProtocol.swift in Sources */,
-				6DF0D4D21D0EAF3B00E7C132 /* RSBTableViewManager.swift in Sources */,
-				6DF0D4D01D0EAF3B00E7C132 /* RSBTableViewCellItemProtocol.swift in Sources */,
-				6DF0D4CE1D0EAF3B00E7C132 /* Array+Additions.swift in Sources */,
+				0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */,
+				0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */,
+				0A1851DB1DF164C9004190FA /* Array+Additions.swift in Sources */,
+				0A1851DE1DF164C9004190FA /* TableViewSectionItemProtocol.swift in Sources */,
+				0A1851DD1DF164C9004190FA /* TableViewCellItemProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +424,7 @@
 		6DF0D4B81D0EAE7100E7C132 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -430,6 +439,7 @@
 		6DF0D4B91D0EAE7100E7C132 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
