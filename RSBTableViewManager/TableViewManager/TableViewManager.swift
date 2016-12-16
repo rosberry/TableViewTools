@@ -189,7 +189,10 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
             let cellItem = sectionItem.cellItems.first else {
                 return
         }
-        scrollToCellItem(cellItem, inSectionItem: sectionItem, atScrollPosition: .top, animated: animated)
+        scrollToCellItem(cellItem: cellItem,
+                         inSectionItem: sectionItem,
+                         atScrollPosition: .top,
+                         animated: animated)
     }
     
     // MARK: Helpers
@@ -243,22 +246,50 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sectionItem = sectionItems[indexPath.section]
-        let cellItem = sectionItem.cellItems[indexPath.row]
+        let cellItem = self.cellItem(by: indexPath)!
         let cell = cellItem.cell(for: tableView, at: indexPath)
         return cell
     }
     
+    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if let cellItem = self.cellItem(by: indexPath) {
+            return cellItem.shouldHighlightCell(in: tableView, at: indexPath)
+        }
+        return true
+    }
+    
+    public func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cellItem = self.cellItem(by: indexPath)
+        cellItem?.didHighlightCell(in: tableView, at: indexPath)
+    }
+    
+    public func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cellItem = self.cellItem(by: indexPath)
+        cellItem?.didUnhighlightCell(in: tableView, at: indexPath)
+    }
+    
+    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let cellItem = self.cellItem(by: indexPath) {
+            return cellItem.willSelectCell(in: tableView, at: indexPath)
+        }
+        return indexPath
+    }
+    
+    public func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let cellItem = self.cellItem(by: indexPath) {
+            return cellItem.willDeselectCell(in: tableView, at: indexPath)
+        }
+        return indexPath
+    }
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sectionItem = sectionItems[indexPath.section]
-        let cellItem = sectionItem.cellItems[indexPath.row]
-        cellItem.didSelectCell(in: tableView, at: indexPath)
+        let cellItem = self.cellItem(by: indexPath)
+        cellItem?.didSelectCell(in: tableView, at: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let sectionItem = sectionItems[indexPath.section]
-        let cellItem = sectionItem.cellItems[indexPath.row]
-        cellItem.didDeselectCell(in: tableView, at: indexPath)
+        let cellItem = self.cellItem(by: indexPath)
+        cellItem?.didDeselectCell(in: tableView, at: indexPath)
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -348,4 +379,4 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
 }
-
+    
