@@ -12,6 +12,8 @@
 		0A1851DD1DF164C9004190FA /* TableViewCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */; };
 		0A1851DE1DF164C9004190FA /* TableViewSectionItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D81DF164C9004190FA /* TableViewSectionItemProtocol.swift */; };
 		0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851DA1DF164C9004190FA /* TableViewManager.swift */; };
+		0A5832091E0A35D2000714A5 /* ClosureWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5832081E0A35D2000714A5 /* ClosureWrapper.swift */; };
+		0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */; };
 		6DF0D4B51D0EAE7100E7C132 /* RSBTableViewManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */; };
 		6DF0D4C11D0EAEDD00E7C132 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */; };
 		6DF0D4C31D0EAEE600E7C132 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C21D0EAEE600E7C132 /* Quick.framework */; };
@@ -36,6 +38,8 @@
 		0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemProtocol.swift; sourceTree = "<group>"; };
 		0A1851D81DF164C9004190FA /* TableViewSectionItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionItemProtocol.swift; sourceTree = "<group>"; };
 		0A1851DA1DF164C9004190FA /* TableViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewManager.swift; sourceTree = "<group>"; };
+		0A5832081E0A35D2000714A5 /* ClosureWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureWrapper.swift; sourceTree = "<group>"; };
+		0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewManagerDelegate.swift; sourceTree = "<group>"; };
 		6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSBTableViewManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF0D4B01D0EAE7100E7C132 /* RSBTableViewManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSBTableViewManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF0D4B41D0EAE7100E7C132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			children = (
 				0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */,
 				0A1851D81DF164C9004190FA /* TableViewSectionItemProtocol.swift */,
+				0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -99,6 +104,14 @@
 				0A1851DA1DF164C9004190FA /* TableViewManager.swift */,
 			);
 			path = TableViewManager;
+			sourceTree = "<group>";
+		};
+		0A5832071E0A35D2000714A5 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				0A5832081E0A35D2000714A5 /* ClosureWrapper.swift */,
+			);
+			path = Additions;
 			sourceTree = "<group>";
 		};
 		6D9DB68A1D0EACEE002F1F7F = {
@@ -147,6 +160,7 @@
 				0A1851D61DF164C9004190FA /* Protocols */,
 				0A1851D41DF164C9004190FA /* Items */,
 				0A1851D21DF164C8004190FA /* Extensions */,
+				0A5832071E0A35D2000714A5 /* Additions */,
 			);
 			path = RSBTableViewManager;
 			sourceTree = "<group>";
@@ -269,6 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */,
+				0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */,
+				0A5832091E0A35D2000714A5 /* ClosureWrapper.swift in Sources */,
 				0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */,
 				0A1851DB1DF164C9004190FA /* Array+Additions.swift in Sources */,
 				0A1851DE1DF164C9004190FA /* TableViewSectionItemProtocol.swift in Sources */,

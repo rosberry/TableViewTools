@@ -24,8 +24,12 @@ public protocol TableViewCellItemProtocol: AnyObject {
     var itemWillSelectHandler:   SelectionResolver? { get set }
     var itemWillDeselectHandler: SelectionResolver? { get set }
     
-    func height(for tableView: UITableView) -> CGFloat
-    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
+    func storyboardPrototypeTableViewCellReuseIdentifier() -> String?
+    func registeredTableViewCellNib() -> UINib?
+    func registeredTableViewCellClass() -> AnyClass?
+    
+    func height(in tableView: UITableView) -> CGFloat
+    func configureCell(_ cell: UITableViewCell, in tableView: UITableView, at indexPath: IndexPath)
     
     func shouldHighlightCell(in tableView: UITableView, at indexPath: IndexPath) -> Bool
     func didHighlightCell(in tableView: UITableView, at indexPath: IndexPath)
@@ -38,6 +42,13 @@ public protocol TableViewCellItemProtocol: AnyObject {
     
     func willDisplayCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath)
     func didEndDisplayingCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath)
+    func canEdit(in tableView: UITableView) -> Bool
+    func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool
+    func editActions(in tableView: UITableView) -> [UITableViewRowAction]?
+    func indentationLevel(in tableView: UITableView, at indexPath: IndexPath) -> Int
+    func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool
+    func didRemove(from tableView: UITableView, at indexPath: IndexPath)
+    func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath)
 
     static func registerCell(for tableView : UITableView)
 }
@@ -90,6 +101,10 @@ extension TableViewCellItemProtocol {
         set { ClosureWrapper<SelectionHandler>.setHandler(newValue, for: self, key: &AssociatedKeys.didDeselectHandler) }
     }
     
+    func storyboardPrototypeTableViewCellReuseIdentifier() -> String? { return nil }
+    func registeredTableViewCellNib() -> UINib? { return nil }
+    func registeredTableViewCellClass() -> AnyClass? { return nil }
+    
     // MARK: - Highlighting
     func shouldHighlightCell(in tableView: UITableView, at indexPath: IndexPath) -> Bool {
         if let itemShouldHighlightHandler = itemShouldHighlightHandler {
@@ -121,4 +136,15 @@ extension TableViewCellItemProtocol {
     // MARK: - Displaying
     func willDisplayCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath) {}
     func didEndDisplayingCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath) {}
+    
+    // MARK: - Editing
+    func canEditInTableView(_ tableView: UITableView) -> Bool { return false }
+    func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
+    func editActions(in tableView: UITableView) -> [UITableViewRowAction]? { return nil }
+    func indentationLevel(in tableView: UITableView, at indexPath: IndexPath) -> Int {
+        fatalError("Method should implemented in protocol inheritor")
+    }
+    func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool { return false }
+    func didRemove(from tableView: UITableView, at indexPath: IndexPath) {}
+    func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}
 }
