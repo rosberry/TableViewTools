@@ -12,7 +12,7 @@ public typealias SelectionResolver = ((UITableView, IndexPath) -> IndexPath?)
 public typealias HighlightingHandler = ((UITableView, IndexPath) -> Void)
 public typealias HighlightingResolver = ((UITableView, IndexPath) -> Bool)
 
-public protocol TableViewCellItemProtocol: AnyObject {
+public protocol TableViewCellItemProtocol: AnyObject, TableViewCellItemDataSourcePrefetching {
     
     var itemShouldHighlightHandler: HighlightingResolver? { get set }
     var itemDidHighlightHandler:    HighlightingHandler? { get set }
@@ -147,4 +147,7 @@ extension TableViewCellItemProtocol {
     func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool { return false }
     func didRemove(from tableView: UITableView, at indexPath: IndexPath) {}
     func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}
+    
+    // MARK: - Prefetching
+    
 }

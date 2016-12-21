@@ -7,10 +7,11 @@
 
 import UIKit
 
-public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate {
+public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
     unowned let tableView: UITableView
     weak var delegate: TableViewManagerDelegate?
     weak var scrollDelegate: UIScrollViewDelegate?
+    weak var prefetchDataSource: TableViewManagerDataSourcePrefetching?
     
     var sectionItems: [TableViewSectionItemProtocol] = [TableViewSectionItemProtocol]() {
         didSet {
@@ -27,6 +28,11 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         super.init()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        if #available(iOS 10.0, *) {
+            self.tableView.prefetchDataSource = self
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     // MARK: - Public Methods
@@ -115,6 +121,13 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.insertRows(at: indexPaths, with: animation)
         
         tableView.endUpdates()
+    }
+    
+    public func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
+                                toSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                                withRowAnimation animation: UITableViewRowAnimation) {
+        let indexSet = IndexSet(integersIn: sectionItem.cellItems.count...sectionItem.cellItems.count + cellItems.count)
+        insertCellItems(cellItems, toSectionItem: &sectionItem, atIndexes: indexSet, withRowAnimation: animation)
     }
     
     public func replaceCellItems(at indexes: IndexSet,
@@ -450,6 +463,27 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         delegate?.tableView(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
+    }
+    
+    // MARK: - UITableViewDataSourcePrefetching
+    
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if let prefetchDataSource = prefetchDataSource {
+            let cellItems = prefetchDataSource.cellItemsForPrefetching(in: tableView, at: indexPaths)
+            for (index, cellItem) in cellItems.enumerated() {
+                var section = self[indexPaths[index].section]
+                insertCellItems([cellItem], toSectionItem: &section, atIndexes: [indexPaths[index].row], withRowAnimation: .none)
+                cellItem.prefetchData(for: tableView, at: indexPaths[index])
+            }
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        if prefetchDataSource != nil {
+            for indexPath in indexPaths {
+                self[indexPath]?.cancelPrefetchingData(for: tableView, at: indexPath)
+            }
+        }
     }
     
     // MARK: UIScrollViewDelegate
