@@ -11,7 +11,18 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     unowned let tableView: UITableView
     weak var delegate: TableViewManagerDelegate?
     weak var scrollDelegate: UIScrollViewDelegate?
-    weak var prefetchDataSource: TableViewManagerDataSourcePrefetching?
+    var isPrefetchingEnabled = false {
+        didSet {
+            if isPrefetchingEnabled {
+                if #available(iOS 10.0, *) {
+                    self.tableView.prefetchDataSource = self
+                }
+                else {
+                    fatalError("Prefetching allowed only on iOS versions greater than or equal to iOS 10.0")
+                }
+            }
+        }
+    }
     
     var sectionItems: [TableViewSectionItemProtocol] = [TableViewSectionItemProtocol]() {
         didSet {
@@ -28,11 +39,6 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         super.init()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        if #available(iOS 10.0, *) {
-            self.tableView.prefetchDataSource = self
-        } else {
-            // Fallback on earlier versions
-        }
     }
     
     // MARK: - Public Methods
@@ -468,21 +474,20 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     // MARK: - UITableViewDataSourcePrefetching
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        if let prefetchDataSource = prefetchDataSource {
-            let cellItems = prefetchDataSource.cellItemsForPrefetching(in: tableView, at: indexPaths)
-            for (index, cellItem) in cellItems.enumerated() {
-                var section = self[indexPaths[index].section]
-                insertCellItems([cellItem], toSectionItem: &section, atIndexes: [indexPaths[index].row], withRowAnimation: .none)
-                cellItem.prefetchData(for: tableView, at: indexPaths[index])
+        var cellItems = [TableViewCellItemProtocol]()
+        for indexPath in indexPaths {
+            if let cellItem = self[indexPath] {
+                cellItems.append(cellItem)
             }
+        }
+        for (index, cellItem) in cellItems.enumerated() {
+            cellItem.prefetchData(for: tableView, at: indexPaths[index])
         }
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        if prefetchDataSource != nil {
-            for indexPath in indexPaths {
-                self[indexPath]?.cancelPrefetchingData(for: tableView, at: indexPath)
-            }
+        for indexPath in indexPaths {
+            self[indexPath]?.cancelPrefetchingData(for: tableView, at: indexPath)
         }
     }
     
