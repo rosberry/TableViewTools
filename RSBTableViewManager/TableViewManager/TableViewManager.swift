@@ -176,6 +176,16 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.endUpdates()
     }
     
+    public func removeSectionItems(at indexes: IndexSet,
+                                   withRowAnimation animation: UITableViewRowAnimation) {
+        tableView.beginUpdates()
+        
+        self.sectionItems.removeElements(at: indexes)
+        tableView.deleteSections(indexes, with: animation)
+        
+        tableView.endUpdates()
+    }
+    
     public func insertSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                    atIndexes indexes: IndexSet,
                                    withRowAnimation animation: UITableViewRowAnimation) {
@@ -190,6 +200,13 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.insertSections(indexes, with: animation)
         
         tableView.endUpdates()
+    }
+    
+    public func appendSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
+                                   atIndexes indexes: IndexSet,
+                                   withRowAnimation animation: UITableViewRowAnimation) {
+        let indexSet = IndexSet(integersIn: self.sectionItems.count...self.sectionItems.count + sectionItems.count)
+        insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
     }
     
     public func replaceSectionItems(at indexes: IndexSet,
