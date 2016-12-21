@@ -49,8 +49,6 @@ public protocol TableViewCellItemProtocol: AnyObject, TableViewCellItemDataSourc
     func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool
     func didRemove(from tableView: UITableView, at indexPath: IndexPath)
     func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath)
-
-    static func registerCell(for tableView : UITableView)
 }
 
 private struct AssociatedKeys {
@@ -138,7 +136,7 @@ extension TableViewCellItemProtocol {
     func didEndDisplayingCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath) {}
     
     // MARK: - Editing
-    func canEditInTableView(_ tableView: UITableView) -> Bool { return false }
+    func canEdit(in tableView: UITableView) -> Bool { return false }
     func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
     func editActions(in tableView: UITableView) -> [UITableViewRowAction]? { return nil }
     func indentationLevel(in tableView: UITableView, at indexPath: IndexPath) -> Int {
@@ -149,5 +147,6 @@ extension TableViewCellItemProtocol {
     func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}
     
     // MARK: - Prefetching
-    
+    func prefetchData(for tableView: UITableView, at indexPath: IndexPath) {}
+    func cancelPrefetchingData(for tableView: UITableView, at indexPath: IndexPath) {}
 }

@@ -114,7 +114,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
                                 withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.first! <= sectionItem.cellItems.count, "It's impossible to insert item at index that is larger than count of cell items in this section")
         for cellItem in cellItems {
-            type(of: cellItem).registerCell(for: tableView)
+            registerCellItem(cellItem)
         }
         guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
             return
@@ -142,7 +142,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
                                  withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == cellItems.count, "It's impossible to replace not equal count of cell items")
         for cellItem in cellItems {
-            type(of: cellItem).registerCell(for: tableView)
+            registerCellItem(cellItem)
         }
         
         tableView.beginUpdates()
@@ -263,7 +263,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     private func registerSectionItem(_ sectionItem : TableViewSectionItemProtocol) {
         for cellItem in sectionItem.cellItems {
-            type(of: cellItem).registerCell(for: tableView)
+            registerCellItem(cellItem)
         }
     }
     
@@ -385,7 +385,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if let cellItem = self[indexPath] {
-            return cellItem.canEditInTableView(tableView)
+            return cellItem.canEdit(in: tableView)
         }
         return false
     }
