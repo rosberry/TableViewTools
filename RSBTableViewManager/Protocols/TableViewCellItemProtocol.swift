@@ -139,9 +139,7 @@ extension TableViewCellItemProtocol {
     func canEdit(in tableView: UITableView) -> Bool { return false }
     func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
     func editActions(in tableView: UITableView) -> [UITableViewRowAction]? { return nil }
-    func indentationLevel(in tableView: UITableView, at indexPath: IndexPath) -> Int {
-        fatalError("Method should implemented in protocol inheritor")
-    }
+    func indentationLevel(in tableView: UITableView, at indexPath: IndexPath) -> Int { return 0 }
     func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool { return false }
     func didRemove(from tableView: UITableView, at indexPath: IndexPath) {}
     func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}
