@@ -16,23 +16,7 @@
 		0A5832091E0A35D2000714A5 /* ClosureWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5832081E0A35D2000714A5 /* ClosureWrapper.swift */; };
 		0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */; };
 		0A58320F1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58320E1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift */; };
-		6DF0D4B51D0EAE7100E7C132 /* RSBTableViewManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */; };
-		6DF0D4C11D0EAEDD00E7C132 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */; };
-		6DF0D4C31D0EAEE600E7C132 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DF0D4C21D0EAEE600E7C132 /* Quick.framework */; };
-		6DF0D4D81D0EB12800E7C132 /* RSBTableViewCellItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D51D0EB12800E7C132 /* RSBTableViewCellItemFake.swift */; };
-		6DF0D4D91D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D61D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift */; };
-		6DF0D4DA1D0EB12800E7C132 /* RSBTableViewManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF0D4D71D0EB12800E7C132 /* RSBTableViewManagerSpec.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		6DF0D4B61D0EAE7100E7C132 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6D9DB68B1D0EACEE002F1F7F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6D9DB6931D0EACEE002F1F7F;
-			remoteInfo = RSBTableViewManager;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		068F55B61E0BAD2000301D0F /* UITableView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
@@ -45,14 +29,9 @@
 		0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewManagerDelegate.swift; sourceTree = "<group>"; };
 		0A58320E1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemDataSourcePrefetching.swift; sourceTree = "<group>"; };
 		6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSBTableViewManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DF0D4B01D0EAE7100E7C132 /* RSBTableViewManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSBTableViewManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DF0D4B41D0EAE7100E7C132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		6DF0D4C21D0EAEE600E7C132 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		6DF0D4C71D0EAF3B00E7C132 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6DF0D4D51D0EB12800E7C132 /* RSBTableViewCellItemFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewCellItemFake.swift; sourceTree = "<group>"; };
-		6DF0D4D61D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewSectionItemFake.swift; sourceTree = "<group>"; };
-		6DF0D4D71D0EB12800E7C132 /* RSBTableViewManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSBTableViewManagerSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,16 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DF0D4AD1D0EAE7100E7C132 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DF0D4C31D0EAEE600E7C132 /* Quick.framework in Frameworks */,
-				6DF0D4C11D0EAEDD00E7C132 /* Nimble.framework in Frameworks */,
-				6DF0D4B51D0EAE7100E7C132 /* RSBTableViewManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				6DF0D4C41D0EAF3B00E7C132 /* RSBTableViewManager */,
-				6DF0D4B11D0EAE7100E7C132 /* RSBTableViewManagerTests */,
 				6DF0D4BF1D0EAEC800E7C132 /* Frameworks */,
 				6D9DB6951D0EACEE002F1F7F /* Products */,
 			);
@@ -134,19 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */,
-				6DF0D4B01D0EAE7100E7C132 /* RSBTableViewManagerTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		6DF0D4B11D0EAE7100E7C132 /* RSBTableViewManagerTests */ = {
-			isa = PBXGroup;
-			children = (
-				6DF0D4D41D0EB12800E7C132 /* Fakes */,
-				6DF0D4D71D0EB12800E7C132 /* RSBTableViewManagerSpec.swift */,
-				6DF0D4B41D0EAE7100E7C132 /* Info.plist */,
-			);
-			path = RSBTableViewManagerTests;
 			sourceTree = "<group>";
 		};
 		6DF0D4BF1D0EAEC800E7C132 /* Frameworks */ = {
@@ -169,15 +126,6 @@
 				0A5832071E0A35D2000714A5 /* Additions */,
 			);
 			path = RSBTableViewManager;
-			sourceTree = "<group>";
-		};
-		6DF0D4D41D0EB12800E7C132 /* Fakes */ = {
-			isa = PBXGroup;
-			children = (
-				6DF0D4D51D0EB12800E7C132 /* RSBTableViewCellItemFake.swift */,
-				6DF0D4D61D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift */,
-			);
-			path = Fakes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,24 +159,6 @@
 			productReference = 6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		6DF0D4AF1D0EAE7100E7C132 /* RSBTableViewManagerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6DF0D4BA1D0EAE7100E7C132 /* Build configuration list for PBXNativeTarget "RSBTableViewManagerTests" */;
-			buildPhases = (
-				6DF0D4AC1D0EAE7100E7C132 /* Sources */,
-				6DF0D4AD1D0EAE7100E7C132 /* Frameworks */,
-				6DF0D4AE1D0EAE7100E7C132 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6DF0D4B71D0EAE7100E7C132 /* PBXTargetDependency */,
-			);
-			name = RSBTableViewManagerTests;
-			productName = RSBTableViewManagerTests;
-			productReference = 6DF0D4B01D0EAE7100E7C132 /* RSBTableViewManagerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -242,9 +172,6 @@
 					6D9DB6931D0EACEE002F1F7F = {
 						CreatedOnToolsVersion = 7.3;
 						LastSwiftMigration = 0800;
-					};
-					6DF0D4AF1D0EAE7100E7C132 = {
-						CreatedOnToolsVersion = 7.3;
 					};
 				};
 			};
@@ -261,20 +188,12 @@
 			projectRoot = "";
 			targets = (
 				6D9DB6931D0EACEE002F1F7F /* RSBTableViewManager */,
-				6DF0D4AF1D0EAE7100E7C132 /* RSBTableViewManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6D9DB6921D0EACEE002F1F7F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6DF0D4AE1D0EAE7100E7C132 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,25 +219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6DF0D4AC1D0EAE7100E7C132 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DF0D4DA1D0EB12800E7C132 /* RSBTableViewManagerSpec.swift in Sources */,
-				6DF0D4D91D0EB12800E7C132 /* RSBTableViewSectionItemFake.swift in Sources */,
-				6DF0D4D81D0EB12800E7C132 /* RSBTableViewCellItemFake.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		6DF0D4B71D0EAE7100E7C132 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6D9DB6931D0EACEE002F1F7F /* RSBTableViewManager */;
-			targetProxy = 6DF0D4B61D0EAE7100E7C132 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		6D9DB69A1D0EACEE002F1F7F /* Debug */ = {
@@ -453,36 +354,6 @@
 			};
 			name = Release;
 		};
-		6DF0D4B81D0EAE7100E7C132 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = RSBTableViewManagerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.RSBTableViewManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		6DF0D4B91D0EAE7100E7C132 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = RSBTableViewManagerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.RSBTableViewManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -500,15 +371,6 @@
 			buildConfigurations = (
 				6D9DB69D1D0EACEE002F1F7F /* Debug */,
 				6D9DB69E1D0EACEE002F1F7F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6DF0D4BA1D0EAE7100E7C132 /* Build configuration list for PBXNativeTarget "RSBTableViewManagerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6DF0D4B81D0EAE7100E7C132 /* Debug */,
-				6DF0D4B91D0EAE7100E7C132 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
