@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		068F55B71E0BAD2000301D0F /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068F55B61E0BAD2000301D0F /* UITableView+Dequeue.swift */; };
 		0A1851DB1DF164C9004190FA /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D31DF164C9004190FA /* Array+Additions.swift */; };
 		0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D51DF164C9004190FA /* TableViewSectionItem.swift */; };
 		0A1851DD1DF164C9004190FA /* TableViewCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		068F55B61E0BAD2000301D0F /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
 		0A1851D31DF164C9004190FA /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
 		0A1851D51DF164C9004190FA /* TableViewSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionItem.swift; sourceTree = "<group>"; };
 		0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemProtocol.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		0A1851D21DF164C8004190FA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				068F55B61E0BAD2000301D0F /* UITableView+Dequeue.swift */,
 				0A1851D31DF164C9004190FA /* Array+Additions.swift */,
 			);
 			path = Extensions;
@@ -285,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				068F55B71E0BAD2000301D0F /* UITableView+Dequeue.swift in Sources */,
 				0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */,
 				0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */,
 				0A5832091E0A35D2000714A5 /* ClosureWrapper.swift in Sources */,
