@@ -18,13 +18,17 @@ extension TableViewManager: UITableViewDataSourcePrefetching {
             }
         }
         for (index, cellItem) in cellItems.enumerated() {
-            cellItem.prefetchData(for: tableView, at: indexPaths[index])
+            if let cellItem = cellItem as? TableViewCellItemDataSourcePrefetching {
+                cellItem.prefetchData(for: tableView, at: indexPaths[index])
+            }
         }
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            self[indexPath]?.cancelPrefetchingData(for: tableView, at: indexPath)
+            if let cellItem = self[indexPath] as? TableViewCellItemDataSourcePrefetching {
+                cellItem.cancelPrefetchingData(for: tableView, at: indexPath)
+            }
         }
     }
 }

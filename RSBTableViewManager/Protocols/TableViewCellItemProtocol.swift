@@ -1,5 +1,6 @@
 //
 //  TableViewCellItemProtocol.swift
+//  RSBTableViewManager
 //
 //  Created by Dmitry Frishbuter on 19/04/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
@@ -12,7 +13,7 @@ public typealias SelectionResolver = ((UITableView, IndexPath) -> IndexPath?)
 public typealias HighlightingHandler = ((UITableView, IndexPath) -> Void)
 public typealias HighlightingResolver = ((UITableView, IndexPath) -> Bool)
 
-public protocol TableViewCellItemProtocol: AnyObject, TableViewCellItemDataSourcePrefetching {
+public protocol TableViewCellItemProtocol: AnyObject {
     
     /// The closure that handles `tableView(_:shouldHighlightRowAt:)` method calling.
     var itemShouldHighlightHandler: HighlightingResolver? { get set }
@@ -264,8 +265,4 @@ extension TableViewCellItemProtocol {
     func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool { return false }
     func didRemove(from tableView: UITableView, at indexPath: IndexPath) {}
     func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}
-    
-    // MARK: - Prefetching
-    func prefetchData(for tableView: UITableView, at indexPath: IndexPath) {}
-    func cancelPrefetchingData(for tableView: UITableView, at indexPath: IndexPath) {}
 }

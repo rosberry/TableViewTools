@@ -1,5 +1,6 @@
 //
 //  TableViewManager.swift
+//  RSBTableViewManager
 //
 //  Created by Dmitry Frishbuter on 14/04/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
@@ -567,5 +568,27 @@ extension TableViewManager: UITableViewDelegate {
             return cellItem.indentationLevel(in: tableView, at: indexPath)
         }
         return 0
+    }
+    
+    // MARK: Copy/Paste
+    
+    public func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            return cellItem.shouldShowMenu(in: tableView, forRowAt: indexPath)
+        }
+        return false
+    }
+    
+    public func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            return cellItem.canPerformAction(action, in: tableView, forRowAt: indexPath, with: sender)
+        }
+        return false
+    }
+    
+    public func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            cellItem.performAction(action, in: tableView, forRowAt: indexPath, with: sender)
+        }
     }
 }

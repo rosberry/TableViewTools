@@ -1,5 +1,6 @@
 //
 //  TableViewSectionItemProtocol.swift
+//  RSBTableViewManager
 //
 //  Created by Dmitry Frishbuter on 19/04/16.
 //  Copyright © 2016 Rosberry. All rights reserved.
