@@ -383,11 +383,11 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     }
     
     private func reuseIdentifierForCellItem(_ cellItem: TableViewCellItemProtocol) -> (identifier: String, isStoryboard: Bool) {
-        let reuseIdentifier = NSStringFromClass(type(of: cellItem)).components(separatedBy: ".").last!
-        guard let storyboardReuseIdentifier = cellItem.storyboardPrototypeTableViewCellReuseIdentifier() else {
-            return (reuseIdentifier, false)
+        if let storyboardReuseIdentifier = cellItem.storyboardPrototypeTableViewCellReuseIdentifier() {
+            return (storyboardReuseIdentifier, true)
         }
-        return (storyboardReuseIdentifier, true)
+        let reuseIdentifier = NSStringFromClass(type(of: cellItem)).components(separatedBy: ".").last!
+        return (reuseIdentifier, false)
     }
     
     // MARK: UITableViewDelegate/UITableViewDataSource
