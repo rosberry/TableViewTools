@@ -8,7 +8,7 @@
 
 import UIKit.UITableView
 
-protocol TableViewManagerDelegate: class {
+public protocol TableViewManagerDelegate: class {
     
     func tableView(_ tableView: UITableView,
                    targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
