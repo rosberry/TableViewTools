@@ -1,5 +1,5 @@
 //
-//  UITableView+Dequeue.swift
+//  UITableView+Additions.swift
 //  VanHaren
 //
 //  Created by Artem Novichkov on 09/12/2016.
