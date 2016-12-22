@@ -17,4 +17,13 @@ extension UITableView {
     func dequeueReusableCell<T: UITableViewCell>() -> T {
         return dequeueReusableCell(withIdentifier: NSStringFromClass(T.self)) as! T
     }
+    
+    /// Calls `beginUpdates()` before execution of closure in parameter and `endUpdates()` after
+    ///
+    /// - Parameter closure: a closure with insertions, deletions or selections operations in `UITableView`
+    func update(_ closure: (() -> Void)) {
+        beginUpdates()
+        closure()
+        endUpdates()
+    }
 }

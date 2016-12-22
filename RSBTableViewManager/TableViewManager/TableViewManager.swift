@@ -70,11 +70,9 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
             indexPaths.append(IndexPath(row: row, section: section))
         }
         
-        tableView.beginUpdates()
-        
-        tableView.reloadRows(at: indexPaths, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            tableView.reloadRows(at: indexPaths, with: animation)
+        }
     }
     
     /// Removes cell items, that are contained inside specified section item, and then removes rows at the coressponding locations, with an option to animate the removing.
@@ -98,12 +96,10 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
             indexes.insert(row)
         }
         
-        tableView.beginUpdates()
-        
-        sectionItem.cellItems.removeElements(at: indexes)
-        tableView.deleteRows(at: indexPaths, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            sectionItem.cellItems.remove(at: indexes)
+            tableView.deleteRows(at: indexPaths, with: animation)
+        }
     }
     
     /// Removes cell items, that are preserved at specified indexes inside section item, and then removes rows at the coressponding locations, with an option to animate the removing.
@@ -116,12 +112,11 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
                                 fromSectionItemAt sectionIndex: Int,
                                 withRowAnimation animation: UITableViewRowAnimation) {
         let indexPaths = cellIndexes.map { IndexPath(row: $0, section: sectionIndex) }
-        tableView.beginUpdates()
         
-        sectionItems[sectionIndex].cellItems.removeElements(at: cellIndexes)
-        tableView.deleteRows(at: indexPaths, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            sectionItems[sectionIndex].cellItems.remove(at: cellIndexes)
+            tableView.deleteRows(at: indexPaths, with: animation)
+        }
     }
     
     /// Inserts cell items to the specified section item, and then inserts rows at the locations identified by array of corresponding index paths, with an option to animate the insertion.
@@ -144,12 +139,10 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
         let indexPaths = indexes.map { IndexPath(row: $0, section: section) }
         
-        tableView.beginUpdates()
-        
-        sectionItem.cellItems.insertElements(cellItems, at: indexes)
-        tableView.insertRows(at: indexPaths, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            sectionItem.cellItems.insert(cellItems, at: indexes)
+            tableView.insertRows(at: indexPaths, with: animation)
+        }
     }
     
     /// Appends cell items at the end of specified section item, and then inserts rows at the end of section, with an option to animate the insertion.
@@ -161,7 +154,8 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     public func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 toSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
-        let indexSet = IndexSet(integersIn: sectionItem.cellItems.count...sectionItem.cellItems.count + cellItems.count)
+        let count = sectionItem.cellItems.count
+        let indexSet = IndexSet(integersIn: count...count + cellItems.count)
         insertCellItems(cellItems, toSectionItem: &sectionItem, atIndexes: indexSet, withRowAnimation: animation)
     }
     
@@ -180,20 +174,22 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
             registerCellItem(cellItem)
         }
         
-        tableView.beginUpdates()
-        
-        sectionItem.cellItems.replaceSubrange(indexes.first!...indexes.last!, with: cellItems)
-        guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
-            return
+        tableView.update {
+            sectionItem.cellItems.replace(cellItems, at: indexes)
+            guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
+                return
+            }
+            let indexPaths = indexes.map { IndexPath(row: $0, section: section) }
+            tableView.reloadRows(at: indexPaths, with: animation)
         }
-        let indexPaths = indexes.map { IndexPath(row: $0, section: section) }
-        tableView.reloadRows(at: indexPaths, with: animation)
-        
-        tableView.endUpdates()
     }
     
     // MARK: Section Items
     
+    /// Deletes one or more section items, with an option to animate the deletion. Don't need to call `beginUpdates()` and `endUpdates() `methods. Be sure that `UITableViewManager` contains section items.
+    /// - Parameters:
+    ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
+    ///   - animation: A constant that either specifies the kind of animation to perform when deleting the section or requests no animation.
     public func removeSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                    withRowAnimation animation: UITableViewRowAnimation) {
         var indexes = IndexSet()
@@ -203,24 +199,30 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
             indexes.insert(section!)
         }
         
-        tableView.beginUpdates()
-        
-        self.sectionItems.removeElements(at: indexes)
-        tableView.deleteSections(indexes, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            self.sectionItems.remove(at: indexes)
+            tableView.deleteSections(indexes, with: animation)
+        }
     }
     
+    /// Deletes one or more section items, with an option to animate the deletion. Don't need to call `beginUpdates()` and `endUpdates() `methods.
+    /// - Parameters:
+    ///   - indexes: An index set that specifies the section items to delete. If a section exists after the specified index location, it is moved up one index location.
+    ///   - animation: A constant that either specifies the kind of animation to perform when deleting the section or requests no animation.
     public func removeSectionItems(at indexes: IndexSet,
                                    withRowAnimation animation: UITableViewRowAnimation) {
-        tableView.beginUpdates()
-        
-        self.sectionItems.removeElements(at: indexes)
-        tableView.deleteSections(indexes, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            self.sectionItems.remove(at: indexes)
+            tableView.deleteSections(indexes, with: animation)
+        }
     }
     
+    /// Inserts one or more section items, with an option to animate the insertion. Don't need to call `beginUpdates()` and `endUpdates() `methods.
+    ///
+    /// - Parameters:
+    ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
+    ///   - indexes: An index set that specifies the sections to insert in the table view. If a section already exists at the specified index location, it is moved down one index location.
+    ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     public func insertSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                    atIndexes indexes: IndexSet,
                                    withRowAnimation animation: UITableViewRowAnimation) {
@@ -229,21 +231,30 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
             registerSectionItem(sectionItem)
         }
         
-        tableView.beginUpdates()
-        
-        self.sectionItems.insertElements(sectionItems, at: indexes)
-        tableView.insertSections(indexes, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            self.sectionItems.insert(sectionItems, at: indexes)
+            tableView.insertSections(indexes, with: animation)
+        }
     }
     
+    /// Inserts one or more section items at the end of section items list, with an option to animate the insertion. Don't need to call `beginUpdates()` and `endUpdates() `methods.
+    ///
+    /// - Parameters:
+    ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
+    ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     public func appendSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
-                                   atIndexes indexes: IndexSet,
                                    withRowAnimation animation: UITableViewRowAnimation) {
-        let indexSet = IndexSet(integersIn: self.sectionItems.count...self.sectionItems.count + sectionItems.count)
+        let count = self.sectionItems.count
+        let indexSet = IndexSet(integersIn: count...count + sectionItems.count)
         insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
     }
     
+    /// Replaces one or more section items, with an option to animate the replacion. Don't need to call `beginUpdates()` and `endUpdates() `methods.
+    ///
+    /// - Parameters:
+    ///   - indexes: An index set that specifies the sections to replace in the table view.
+    ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
+    ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     public func replaceSectionItems(at indexes: IndexSet,
                                     withSectionItems sectionItems: [TableViewSectionItemProtocol],
                                     rowAnimation animation: UITableViewRowAnimation) {
@@ -252,12 +263,10 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
             registerSectionItem(sectionItem)
         }
         
-        tableView.beginUpdates()
-        
-        self.sectionItems.replaceSubrange(indexes.first!...indexes.last!, with: sectionItems)
-        tableView.reloadSections(indexes, with: animation)
-        
-        tableView.endUpdates()
+        tableView.update {
+            self.sectionItems.replace(sectionItems, at: indexes)
+            tableView.reloadSections(indexes, with: animation)
+        }
     }
     
     // MARK: Others
@@ -600,4 +609,4 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
     }
 }
-    
+
