@@ -18,7 +18,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
                     self.tableView.prefetchDataSource = self
                 }
                 else {
-                    fatalError("Prefetching allowed only on iOS versions greater than or equal to iOS 10.0")
+                    fatalError("Prefetching allowed only on iOS versions greater than or equal to 10.0")
                 }
             }
         }
@@ -41,8 +41,6 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         self.tableView.dataSource = self
     }
     
-    // MARK: - Public Methods
-    
     // MARK: Cell Items
     
     public subscript(index: Int) -> TableViewSectionItemProtocol {
@@ -53,6 +51,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         return cellItem(for: indexPath)
     }
     
+    /// Reloads rows, associated with passed cell items inside specified section, associated with passed section item
+    ///
+    /// - Parameters:
+    ///   - cellItems: Cell items to reload
+    ///   - sectionItem: Section item that contains cell items to reload
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func reloadCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 inSectionItem sectionItem: TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -71,6 +75,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    /// Removes cell items, that are contained inside specified section item, and then removes rows at the coressponding locations, with an option to animate the removing.
+    ///
+    /// - Parameters:
+    ///   - cellItems: Cell items to remove
+    ///   - sectionItem: Section item that contains cell items to remove
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func removeCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 fromSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -92,6 +102,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    /// Removes cell items, that are preserved at specified indexes inside section item, and then removes rows at the coressponding locations, with an option to animate the removing.
+    ///
+    /// - Parameters:
+    ///   - cellIndexes: IndexSet, that contains indexes of cell items to remove inside specified section item
+    ///   - sectionIndex: Index of section item that contains cell items to remove
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func removeCellItems(at cellIndexes: IndexSet,
                                 fromSectionItemAt sectionIndex: Int,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -103,6 +119,13 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    /// Inserts cell items to the specified section item, and then inserts rows at the locations identified by array of corresponding index paths, with an option to animate the insertion.
+    ///
+    /// - Parameters:
+    ///   - cellItems: An array of cell items to insert, each responds for cell configuration at specified index path
+    ///   - sectionItem: Section item to insert cell items
+    ///   - indexes: IndexSet of row positions inside specified section to insert rows
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func insertCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 toSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 atIndexes indexes: IndexSet,
@@ -122,6 +145,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    /// Appends cell items at the end of specified section item, and then inserts rows at the end of section, with an option to animate the insertion.
+    ///
+    /// - Parameters:
+    ///   - cellItems: An array of cell items to append, each responds for cell configuration at specified index path
+    ///   - sectionItem: Section item to append cell items
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 toSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -130,6 +159,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         insertCellItems(cellItems, toSectionItem: &sectionItem, atIndexes: indexSet, withRowAnimation: animation)
     }
     
+    /// Replaces cell items inside the specified section item, and then replaces corresponding rows within section, with an option to animate the insertion.
+    ///
+    /// - Parameters:
+    ///   - cellItems: An array of replacement cell items, each responds for cell configuration at specified index path
+    ///   - sectionItem: Section item to insert cell items
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func replaceCellItems(at indexes: IndexSet,
                                  withCellItems cellItems: [TableViewCellItemProtocol],
                                  inSectionItem sectionItem: inout TableViewSectionItemProtocol,
@@ -151,7 +186,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Section Items
     
-    /// Deletes one or more section items, with an option to animate the deletion. Don't need to call `beginUpdates()` and `endUpdates() `methods. Be sure that `UITableViewManager` contains section items.
+    /// Removes one or more section items, with an option to animate the deletion. Don't need to call `beginUpdates()` and `endUpdates() `methods. Be sure that `UITableViewManager` contains section items.
     /// - Parameters:
     ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
     ///   - animation: A constant that either specifies the kind of animation to perform when deleting the section or requests no animation.
@@ -170,7 +205,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
-    /// Deletes one or more section items, with an option to animate the deletion. Don't need to call `beginUpdates()` and `endUpdates() `methods.
+    /// Removes one or more section items, with an option to animate the deletion. Don't need to call `beginUpdates()` and `endUpdates() `methods.
     /// - Parameters:
     ///   - indexes: An index set that specifies the section items to delete. If a section exists after the specified index location, it is moved up one index location.
     ///   - animation: A constant that either specifies the kind of animation to perform when deleting the section or requests no animation.
@@ -214,7 +249,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
     }
     
-    /// Replaces one or more section items, with an option to animate the replacion. Don't need to call `beginUpdates()` and `endUpdates() `methods.
+    /// Replaces one or more section items, with an option to animate the replacing. Don't need to call `beginUpdates()` and `endUpdates() `methods.
     ///
     /// - Parameters:
     ///   - indexes: An index set that specifies the sections to replace in the table view.
@@ -236,6 +271,13 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Others
     
+    
+    /// Determines frame of the cell, associated with passed cell item
+    ///
+    /// - Parameters:
+    ///   - cellItem: `TableViewCellItemProtocol` object, that responds for configuration of cell at the specified index path.
+    ///   - sectionItem: `TableViewSectionItemProtocol` object, that contains passed cell item
+    /// - Returns: Frame of the cell, associated with passed cell item
     public func frameForCellItem(_ cellItem: TableViewCellItemProtocol,
                                  inSectionItem sectionItem: TableViewSectionItemProtocol) -> CGRect? {
         guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}),
@@ -246,6 +288,14 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         return tableView.rectForRow(at: indexPath)
     }
     
+    /// Scrolls through the table view until a row, associated with passed cell item is at a particular location on the screen.
+    /// Invoking this method does not cause the delegate to receive a scrollViewDidScroll(_:) message, as is normal for programmatically invoked user interface operations.
+    ///
+    /// - Parameters:
+    ///   - cellItem: `TableViewCellItemProtocol` object, that responds for configuration of cell at the specified index path.
+    ///   - sectionItem: `TableViewSectionItemProtocol` object, that contains passed cell item
+    ///   - scrollPosition: A constant that identifies a relative position in the table view (top, middle, bottom) for row when scrolling concludes. See UITableViewScrollPosition for descriptions of valid constants.
+    ///   - animated: true if you want to animate the change in position; false if it should be immediate.
     public func scrollToCellItem(_ cellItem: TableViewCellItemProtocol,
                                  inSectionItem sectionItem: TableViewSectionItemProtocol,
                                  atScrollPosition scrollPosition: UITableViewScrollPosition,
@@ -258,6 +308,10 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
     }
     
+    
+    /// Scrolls table view to most top position.
+    ///
+    /// - Parameter animated: true if you want to animate the change in position; false if it should be immediate.
     public func scrollToTopAnimated(animated: Bool) {
         guard let sectionItem = self.sectionItems.first,
             let cellItem = sectionItem.cellItems.first else {
@@ -271,6 +325,10 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Helpers
     
+    /// Returns the cell item at the specified index path.
+    ///
+    /// - Parameter indexPath: The index path locating the row in the table view.
+    /// - Returns: An cell item associated with cell of the table, or nil if the cell item wasn't added to manager or indexPath is out of range.
     public func cellItem(for indexPath: IndexPath) -> TableViewCellItemProtocol? {
         if let cellItems = self.sectionItem(for: indexPath)?.cellItems {
             if indexPath.row < cellItems.count {
@@ -280,6 +338,11 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         return nil
     }
     
+    
+    /// Returns the section item at the specified index path.
+    ///
+    /// - Parameter indexPath: The index path locating the section in the table view.
+    /// - Returns: A section item associated with section of the table, or nil if the section item wasn't added to manager or indexPath.section is out of range.
     public func sectionItem(for indexPath: IndexPath) -> TableViewSectionItemProtocol? {
         if indexPath.section < sectionItems.count {
             return sectionItems[indexPath.section]
