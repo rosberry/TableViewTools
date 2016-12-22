@@ -43,10 +43,16 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Cell Items
     
+    /// Accesses the section item at the specified position.
+    ///
+    /// - Parameter index: The index of the section item to access.
     public subscript(index: Int) -> TableViewSectionItemProtocol {
         return sectionItems[index]
     }
     
+    /// Accesses the cell item in the specified section and at the specified position.
+    ///
+    /// - Parameter indexPath: The index path of the cell item to access.
     public subscript(indexPath: IndexPath) -> TableViewCellItemProtocol? {
         return cellItem(for: indexPath)
     }
