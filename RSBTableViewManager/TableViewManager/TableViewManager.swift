@@ -35,9 +35,7 @@ public class TableViewManager: NSObject {
     /// Array of `TableViewSectionItemProtocol` objects, each responds for configuration of specified section in table view.
     var sectionItems = [TableViewSectionItemProtocol]() {
         didSet {
-            for sectionItem in sectionItems {
-                self.registerSectionItem(sectionItem)
-            }
+            sectionItems.forEach { registerSectionItem($0) }
             tableView.reloadData()
         }
     }
@@ -146,9 +144,7 @@ public class TableViewManager: NSObject {
                                 atIndexes indexes: IndexSet,
                                 withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.first! <= sectionItem.cellItems.count, "It's impossible to insert item at index that is larger than count of cell items in this section")
-        for cellItem in cellItems {
-            registerCellItem(cellItem)
-        }
+        cellItems.forEach { registerCellItem($0) }
         guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
             return
         }
@@ -185,9 +181,7 @@ public class TableViewManager: NSObject {
                                  inSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                  withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == cellItems.count, "It's impossible to replace not equal count of cell items")
-        for cellItem in cellItems {
-            registerCellItem(cellItem)
-        }
+        cellItems.forEach { registerCellItem($0) }
         
         tableView.update {
             sectionItem.cellItems.replace(cellItems, at: indexes)
@@ -242,9 +236,7 @@ public class TableViewManager: NSObject {
                                    atIndexes indexes: IndexSet,
                                    withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.first! <= self.sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
-        for sectionItem in sectionItems {
-            registerSectionItem(sectionItem)
-        }
+        sectionItems.forEach { registerSectionItem($0) }
         
         tableView.update {
             self.sectionItems.insert(sectionItems, at: indexes)
@@ -274,9 +266,7 @@ public class TableViewManager: NSObject {
                                     withSectionItems sectionItems: [TableViewSectionItemProtocol],
                                     rowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == sectionItems.count, "It's impossible to replace not equal count of section items")
-        for sectionItem in sectionItems {
-            registerSectionItem(sectionItem)
-        }
+        sectionItems.forEach { registerSectionItem($0) }
         
         tableView.update {
             self.sectionItems.replace(sectionItems, at: indexes)
@@ -363,9 +353,7 @@ public class TableViewManager: NSObject {
     }
     
     private func registerSectionItem(_ sectionItem : TableViewSectionItemProtocol) {
-        for cellItem in sectionItem.cellItems {
-            registerCellItem(cellItem)
-        }
+        sectionItem.cellItems.forEach { registerCellItem($0) }
     }
     
     private func registerCellItem(_ cellItem: TableViewCellItemProtocol) {
