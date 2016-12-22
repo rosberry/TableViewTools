@@ -20,7 +20,7 @@ extension TableViewManager: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellItem = self[indexPath]!
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierForCellItem(cellItem).identifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellItem.reuseType.identifier,
                                                  for: indexPath)
         cellItem.configureCell(cell, in: tableView, at: indexPath)
         return cell
