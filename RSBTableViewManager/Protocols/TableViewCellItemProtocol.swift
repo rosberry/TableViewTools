@@ -216,10 +216,6 @@ extension TableViewCellItemProtocol {
         set { ClosureWrapper<SelectionHandler>.setHandler(newValue, for: self, key: &AssociatedKeys.didDeselectHandler) }
     }
     
-    var storyboardPrototypeTableViewCellReuseIdentifier: String? { return nil }
-    var registeredTableViewCellNib: UINib? { return nil }
-    var registeredTableViewCellClass: AnyClass? { return nil }
-    
     // MARK: - Highlighting
     func shouldHighlightCell(in tableView: UITableView, at indexPath: IndexPath) -> Bool {
         if let itemShouldHighlightHandler = itemShouldHighlightHandler {
