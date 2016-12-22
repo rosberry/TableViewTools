@@ -365,21 +365,22 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     private func registerCellItem(_ cellItem: TableViewCellItemProtocol) {
         let reuseIdentifier = reuseIdentifierForCellItem(cellItem)
         
-        if !reuseIdentifier.isStoryboard {
-            if let cellNib = cellItem.registeredTableViewCellNib() {
-                tableView.register(cellNib, forCellReuseIdentifier: reuseIdentifier.identifier)
-            }
-            else if let cellClass = cellItem.registeredTableViewCellClass() {
-                tableView.register(cellClass, forCellReuseIdentifier: reuseIdentifier.identifier)
-            }
-            else {
-                fatalError("You have to provide at least one of the following methods: registeredTableViewCellNib, registeredTableViewCellClass or storyboardPrototypeTableViewCellReuseIdentifier.")
-            }
+        guard !reuseIdentifier.isStoryboard else {
+            return
+        }
+        if let cellNib = cellItem.registeredTableViewCellNib {
+            tableView.register(cellNib, forCellReuseIdentifier: reuseIdentifier.identifier)
+        }
+        else if let cellClass = cellItem.registeredTableViewCellClass {
+            tableView.register(cellClass, forCellReuseIdentifier: reuseIdentifier.identifier)
+        }
+        else {
+            fatalError("You have to provide at least one of the following methods: registeredTableViewCellNib, registeredTableViewCellClass or storyboardPrototypeTableViewCellReuseIdentifier.")
         }
     }
     
     private func reuseIdentifierForCellItem(_ cellItem: TableViewCellItemProtocol) -> (identifier: String, isStoryboard: Bool) {
-        if let storyboardReuseIdentifier = cellItem.storyboardPrototypeTableViewCellReuseIdentifier() {
+        if let storyboardReuseIdentifier = cellItem.storyboardPrototypeTableViewCellReuseIdentifier {
             return (storyboardReuseIdentifier, true)
         }
         let reuseIdentifier = NSStringFromClass(type(of: cellItem)).components(separatedBy: ".").last!
