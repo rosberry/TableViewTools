@@ -90,7 +90,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        sectionItem.cellItems.removeElements(at: indexes)
+        sectionItem.cellItems.remove(at: indexes)
         tableView.deleteRows(at: indexPaths, with: animation)
         
         tableView.endUpdates()
@@ -102,7 +102,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         let indexPaths = cellIndexes.map { IndexPath(row: $0, section: sectionIndex) }
         tableView.beginUpdates()
         
-        sectionItems[sectionIndex].cellItems.removeElements(at: cellIndexes)
+        sectionItems[sectionIndex].cellItems.remove(at: cellIndexes)
         tableView.deleteRows(at: indexPaths, with: animation)
         
         tableView.endUpdates()
@@ -123,7 +123,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        sectionItem.cellItems.insertElements(cellItems, at: indexes)
+        sectionItem.cellItems.insert(cellItems, at: indexes)
         tableView.insertRows(at: indexPaths, with: animation)
         
         tableView.endUpdates()
@@ -132,7 +132,8 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     public func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 toSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
-        let indexSet = IndexSet(integersIn: sectionItem.cellItems.count...sectionItem.cellItems.count + cellItems.count)
+        let count = sectionItem.cellItems.count
+        let indexSet = IndexSet(integersIn: count...count + cellItems.count)
         insertCellItems(cellItems, toSectionItem: &sectionItem, atIndexes: indexSet, withRowAnimation: animation)
     }
     
@@ -147,7 +148,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        sectionItem.cellItems.replaceSubrange(indexes.first!...indexes.last!, with: cellItems)
+        sectionItem.cellItems.replace(cellItems, at: indexes)
         guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
             return
         }
@@ -170,7 +171,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        self.sectionItems.removeElements(at: indexes)
+        self.sectionItems.remove(at: indexes)
         tableView.deleteSections(indexes, with: animation)
         
         tableView.endUpdates()
@@ -180,7 +181,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
                                    withRowAnimation animation: UITableViewRowAnimation) {
         tableView.beginUpdates()
         
-        self.sectionItems.removeElements(at: indexes)
+        self.sectionItems.remove(at: indexes)
         tableView.deleteSections(indexes, with: animation)
         
         tableView.endUpdates()
@@ -196,16 +197,16 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        self.sectionItems.insertElements(sectionItems, at: indexes)
+        self.sectionItems.insert(sectionItems, at: indexes)
         tableView.insertSections(indexes, with: animation)
         
         tableView.endUpdates()
     }
     
     public func appendSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
-                                   atIndexes indexes: IndexSet,
                                    withRowAnimation animation: UITableViewRowAnimation) {
-        let indexSet = IndexSet(integersIn: self.sectionItems.count...self.sectionItems.count + sectionItems.count)
+        let count = self.sectionItems.count
+        let indexSet = IndexSet(integersIn: count...count + sectionItems.count)
         insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
     }
     
@@ -219,7 +220,7 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         
         tableView.beginUpdates()
         
-        self.sectionItems.replaceSubrange(indexes.first!...indexes.last!, with: sectionItems)
+        self.sectionItems.replace(sectionItems, at: indexes)
         tableView.reloadSections(indexes, with: animation)
         
         tableView.endUpdates()

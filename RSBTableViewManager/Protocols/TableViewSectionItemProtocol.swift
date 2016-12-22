@@ -25,7 +25,7 @@ public protocol TableViewSectionItemProtocol: AnyObject {
     func didEndDisplayingFooterView(_ footerView: UIView, for section: Int)
 }
 
-extension TableViewSectionItemProtocol {
+public extension TableViewSectionItemProtocol {
 
     func titleForHeader(in tableView: UITableView) -> String? { return nil }
     func heightForHeader(in tableView: UITableView) -> CGFloat { return 0 }
