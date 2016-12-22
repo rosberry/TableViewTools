@@ -19,6 +19,8 @@
 		0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */; };
 		0A58320F1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A58320E1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift */; };
 		0A89CABB1E0BE54200E07CDA /* TableViewCellItemEditActionsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CABA1E0BE54200E07CDA /* TableViewCellItemEditActionsProtocol.swift */; };
+		0A89CABD1E0BEE9000E07CDA /* TableViewManager+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CABC1E0BEE9000E07CDA /* TableViewManager+UITableViewDelegate.swift */; };
+		0A89CABF1E0BEFC400E07CDA /* TableViewManager+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CABE1E0BEFC400E07CDA /* TableViewManager+UITableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewManagerDelegate.swift; sourceTree = "<group>"; };
 		0A58320E1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemDataSourcePrefetching.swift; sourceTree = "<group>"; };
 		0A89CABA1E0BE54200E07CDA /* TableViewCellItemEditActionsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemEditActionsProtocol.swift; sourceTree = "<group>"; };
+		0A89CABC1E0BEE9000E07CDA /* TableViewManager+UITableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewManager+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		0A89CABE1E0BEFC400E07CDA /* TableViewManager+UITableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewManager+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSBTableViewManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		6DF0D4C21D0EAEE600E7C132 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 			children = (
 				0A1851DA1DF164C9004190FA /* TableViewManager.swift */,
 				068F55B81E0BD05100301D0F /* TableViewManager+UIScrollViewDelegate.swift */,
+				0A89CABC1E0BEE9000E07CDA /* TableViewManager+UITableViewDelegate.swift */,
+				0A89CABE1E0BEFC400E07CDA /* TableViewManager+UITableViewDataSource.swift */,
 				068F55BA1E0BD08300301D0F /* TableViewManager+UITableViewDataSourcePrefetching.swift */,
 			);
 			path = TableViewManager;
@@ -221,10 +227,12 @@
 				0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */,
 				0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */,
 				0A5832091E0A35D2000714A5 /* ClosureWrapper.swift in Sources */,
+				0A89CABD1E0BEE9000E07CDA /* TableViewManager+UITableViewDelegate.swift in Sources */,
 				068F55B91E0BD05100301D0F /* TableViewManager+UIScrollViewDelegate.swift in Sources */,
 				0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */,
 				0A1851DB1DF164C9004190FA /* Array+Additions.swift in Sources */,
 				0A58320F1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift in Sources */,
+				0A89CABF1E0BEFC400E07CDA /* TableViewManager+UITableViewDataSource.swift in Sources */,
 				0A1851DE1DF164C9004190FA /* TableViewSectionItemProtocol.swift in Sources */,
 				0A1851DD1DF164C9004190FA /* TableViewCellItemProtocol.swift in Sources */,
 				068F55BB1E0BD08300301D0F /* TableViewManager+UITableViewDataSourcePrefetching.swift in Sources */,
