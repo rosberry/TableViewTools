@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		068F55B71E0BAD2000301D0F /* UITableView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068F55B61E0BAD2000301D0F /* UITableView+Additions.swift */; };
+		068F55B91E0BD05100301D0F /* TableViewManager+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068F55B81E0BD05100301D0F /* TableViewManager+UIScrollViewDelegate.swift */; };
+		068F55BB1E0BD08300301D0F /* TableViewManager+UITableViewDataSourcePrefetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 068F55BA1E0BD08300301D0F /* TableViewManager+UITableViewDataSourcePrefetching.swift */; };
 		0A1851DB1DF164C9004190FA /* Array+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D31DF164C9004190FA /* Array+Additions.swift */; };
 		0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D51DF164C9004190FA /* TableViewSectionItem.swift */; };
 		0A1851DD1DF164C9004190FA /* TableViewCellItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		068F55B61E0BAD2000301D0F /* UITableView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
+		068F55B81E0BD05100301D0F /* TableViewManager+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewManager+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
+		068F55BA1E0BD08300301D0F /* TableViewManager+UITableViewDataSourcePrefetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewManager+UITableViewDataSourcePrefetching.swift"; sourceTree = "<group>"; };
 		0A1851D31DF164C9004190FA /* Array+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Additions.swift"; sourceTree = "<group>"; };
 		0A1851D51DF164C9004190FA /* TableViewSectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSectionItem.swift; sourceTree = "<group>"; };
 		0A1851D71DF164C9004190FA /* TableViewCellItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemProtocol.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				0A1851DA1DF164C9004190FA /* TableViewManager.swift */,
+				068F55B81E0BD05100301D0F /* TableViewManager+UIScrollViewDelegate.swift */,
+				068F55BA1E0BD08300301D0F /* TableViewManager+UITableViewDataSourcePrefetching.swift */,
 			);
 			path = TableViewManager;
 			sourceTree = "<group>";
@@ -292,11 +298,13 @@
 				0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */,
 				0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */,
 				0A5832091E0A35D2000714A5 /* ClosureWrapper.swift in Sources */,
+				068F55B91E0BD05100301D0F /* TableViewManager+UIScrollViewDelegate.swift in Sources */,
 				0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */,
 				0A1851DB1DF164C9004190FA /* Array+Additions.swift in Sources */,
 				0A58320F1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift in Sources */,
 				0A1851DE1DF164C9004190FA /* TableViewSectionItemProtocol.swift in Sources */,
 				0A1851DD1DF164C9004190FA /* TableViewCellItemProtocol.swift in Sources */,
+				068F55BB1E0BD08300301D0F /* TableViewManager+UITableViewDataSourcePrefetching.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

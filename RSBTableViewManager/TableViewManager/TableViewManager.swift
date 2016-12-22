@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
+public class TableViewManager: NSObject {
     
     /// `UITableView` object for managing
     unowned let tableView: UITableView
@@ -32,9 +32,8 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
-    
     /// Array of `TableViewSectionItemProtocol` objects, each responds for configuration of specified section in table view.
-    var sectionItems: [TableViewSectionItemProtocol] = [TableViewSectionItemProtocol]() {
+    var sectionItems = [TableViewSectionItemProtocol]() {
         didSet {
             for sectionItem in sectionItems {
                 self.registerSectionItem(sectionItem)
@@ -287,7 +286,6 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     
     // MARK: Others
     
-    
     /// Determines frame of the cell, associated with passed cell item
     ///
     /// - Parameters:
@@ -324,7 +322,6 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
     }
     
-    
     /// Scrolls table view to most top position.
     ///
     /// - Parameter animated: true if you want to animate the change in position; false if it should be immediate.
@@ -353,7 +350,6 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
         return nil
     }
-    
     
     /// Returns the section item at the specified index path.
     ///
@@ -389,15 +385,17 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
-    private func reuseIdentifierForCellItem(_ cellItem: TableViewCellItemProtocol) -> (identifier: String, isStoryboard: Bool) {
+    fileprivate func reuseIdentifierForCellItem(_ cellItem: TableViewCellItemProtocol) -> (identifier: String, isStoryboard: Bool) {
         if let storyboardReuseIdentifier = cellItem.storyboardPrototypeTableViewCellReuseIdentifier {
             return (storyboardReuseIdentifier, true)
         }
         let reuseIdentifier = NSStringFromClass(type(of: cellItem)).components(separatedBy: ".").last!
         return (reuseIdentifier, false)
     }
-    
-    // MARK: UITableViewDelegate/UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+extension TableViewManager: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         return sectionItems.count
@@ -407,78 +405,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         return self[section].cellItems.count
     }
     
-    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self[indexPath]!.height(in: tableView)
-    }
-    
-    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        self[indexPath]?.willDisplayCell(cell, for: tableView, at: indexPath)
-    }
-    
-    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cellItem = self[indexPath]
-        cellItem?.didEndDisplayingCell(cell, for: tableView, at: indexPath)
-    }
-    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellItem = self[indexPath]!
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierForCellItem(cellItem).identifier,
                                                  for: indexPath)
         cellItem.configureCell(cell, in: tableView, at: indexPath)
         return cell
-    }
-    
-    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        if let cellItem = self[indexPath] {
-            return cellItem.shouldHighlightCell(in: tableView, at: indexPath)
-        }
-        return true
-    }
-    
-    public func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        self[indexPath]?.didHighlightCell(in: tableView, at: indexPath)
-    }
-    
-    public func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        self[indexPath]?.didUnhighlightCell(in: tableView, at: indexPath)
-    }
-    
-    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let cellItem = self[indexPath] {
-            return cellItem.willSelectCell(in: tableView, at: indexPath)
-        }
-        return indexPath
-    }
-    
-    public func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        if let cellItem = self[indexPath] {
-            return cellItem.willDeselectCell(in: tableView, at: indexPath)
-        }
-        return indexPath
-    }
-    
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self[indexPath]?.didSelectCell(in: tableView, at: indexPath)
-    }
-    
-    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        self[indexPath]?.didDeselectCell(in: tableView, at: indexPath)
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self[section].heightForHeader(in: tableView)
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self[section].heightForFooter(in: tableView)
-    }
-    
-    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self[section].viewForHeader(in: tableView)
-    }
-    
-    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return self[section].viewForFooter(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -516,42 +448,6 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
-    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if let cellItem = self[indexPath] {
-            return cellItem.editActions(in: tableView)
-        }
-        return nil
-    }
-    
-    public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        self[section].willDisplayHeaderView(view, for: section)
-    }
-    
-    public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        self[section].willDisplayFooterView(view, for: section)
-    }
-    
-    public func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        self[section].didEndDisplayingHeaderView(view, for: section)
-    }
-    
-    public func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
-        self[section].didEndDisplayingFooterView(view, for: section)
-    }
-    
-    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        guard let delegate = delegate else {
-            return proposedDestinationIndexPath
-        }
-        return delegate.tableView(tableView,
-                                  targetIndexPathForMoveFromRowAt: sourceIndexPath,
-                                  toProposedIndexPath: proposedDestinationIndexPath)
-    }
-    
-    public func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
-        return self[indexPath]!.indentationLevel(in: tableView, at: indexPath)
-    }
-    
     public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if let cellItem = self[indexPath] {
             return cellItem.canMoveRow(in: tableView, at: indexPath)
@@ -576,82 +472,112 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
     public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         delegate?.tableView(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
     }
+}
+
+// MARK: - UITableViewDelegate
+extension TableViewManager: UITableViewDelegate {
     
-    // MARK: - UITableViewDataSourcePrefetching
-    
-    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        var cellItems = [TableViewCellItemProtocol]()
-        for indexPath in indexPaths {
-            if let cellItem = self[indexPath] {
-                cellItems.append(cellItem)
-            }
-        }
-        for (index, cellItem) in cellItems.enumerated() {
-            cellItem.prefetchData(for: tableView, at: indexPaths[index])
-        }
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self[indexPath]!.height(in: tableView)
     }
-    
-    public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            self[indexPath]?.cancelPrefetchingData(for: tableView, at: indexPath)
-        }
+
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self[indexPath]?.willDisplayCell(cell, for: tableView, at: indexPath)
     }
-    
-    // MARK: UIScrollViewDelegate
-    
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidScroll?(scrollView)
+
+    public func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self[indexPath]?.didEndDisplayingCell(cell, for: tableView, at: indexPath)
     }
-    
-    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidZoom?(scrollView)
-    }
-    
-    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewWillBeginDragging?(scrollView)
-    }
-    
-    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        scrollDelegate?.scrollViewWillEndDragging?(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-    }
-    
-    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        scrollDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
-    }
-    
-    public func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewWillBeginDecelerating?(scrollView)
-    }
-    
-    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidEndDecelerating?(scrollView)
-    }
-    
-    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
-    }
-    
-    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return scrollDelegate?.viewForZooming?(in: scrollView)
-    }
-    
-    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        scrollDelegate?.scrollViewWillBeginZooming?(scrollView, with: view)
-    }
-    
-    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        scrollDelegate?.scrollViewDidEndZooming?(scrollView, with: view, atScale: scale)
-    }
-    
-    public func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
-        if let shouldScroll = scrollDelegate?.scrollViewShouldScrollToTop?(scrollView) {
-            return shouldScroll
+
+    public func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if let cellItem = self[indexPath] {
+            return cellItem.shouldHighlightCell(in: tableView, at: indexPath)
         }
         return true
     }
-    
-    public func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        scrollDelegate?.scrollViewDidScrollToTop?(scrollView)
+
+    public func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        self[indexPath]?.didHighlightCell(in: tableView, at: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        self[indexPath]?.didUnhighlightCell(in: tableView, at: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let cellItem = self[indexPath] {
+            return cellItem.willSelectCell(in: tableView, at: indexPath)
+        }
+        return indexPath
+    }
+
+    public func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        if let cellItem = self[indexPath] {
+            return cellItem.willDeselectCell(in: tableView, at: indexPath)
+        }
+        return indexPath
+    }
+
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self[indexPath]?.didSelectCell(in: tableView, at: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        self[indexPath]?.didDeselectCell(in: tableView, at: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return self[section].heightForHeader(in: tableView)
+    }
+
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return self[section].heightForFooter(in: tableView)
+    }
+
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return self[section].viewForHeader(in: tableView)
+    }
+
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return self[section].viewForFooter(in: tableView)
+    }
+
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if let cellItem = self[indexPath] {
+            return cellItem.editActions(in: tableView)
+        }
+        return nil
+    }
+
+    public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        self[section].willDisplayHeaderView(view, for: section)
+    }
+
+    public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        self[section].willDisplayFooterView(view, for: section)
+    }
+
+    public func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
+        self[section].didEndDisplayingHeaderView(view, for: section)
+    }
+
+    public func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
+        self[section].didEndDisplayingFooterView(view, for: section)
+    }
+
+    public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        guard let delegate = delegate else {
+            return proposedDestinationIndexPath
+        }
+        return delegate.tableView(tableView,
+                                  targetIndexPathForMoveFromRowAt: sourceIndexPath,
+                                  toProposedIndexPath: proposedDestinationIndexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
+        if let cellItem = self[indexPath] {
+            return cellItem.indentationLevel(in: tableView, at: indexPath)
+        }
+        return 0
     }
 }
-
