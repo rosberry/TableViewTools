@@ -41,8 +41,6 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         self.tableView.dataSource = self
     }
     
-    // MARK: - Public Methods
-    
     // MARK: Cell Items
     
     public subscript(index: Int) -> TableViewSectionItemProtocol {
@@ -53,6 +51,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         return cellItem(for: indexPath)
     }
     
+    /// Reloads rows, associated with passed cell items inside specified section, associated with passed section item
+    ///
+    /// - Parameters:
+    ///   - cellItems: Cell items to reload
+    ///   - sectionItem: Section item that contains cell items to reload
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func reloadCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 inSectionItem sectionItem: TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -73,6 +77,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.endUpdates()
     }
     
+    /// Removes cell items, that are contained inside specified section item, and then removes rows at the coressponding locations, with an option to animate the removing.
+    ///
+    /// - Parameters:
+    ///   - cellItems: Cell items to remove
+    ///   - sectionItem: Section item that contains cell items to remove
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func removeCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 fromSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -96,6 +106,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.endUpdates()
     }
     
+    /// Removes cell items, that are preserved at specified indexes inside section item, and then removes rows at the coressponding locations, with an option to animate the removing.
+    ///
+    /// - Parameters:
+    ///   - cellIndexes: IndexSet, that contains indexes of cell items to remove inside specified section item
+    ///   - sectionIndex: Index of section item that contains cell items to remove
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func removeCellItems(at cellIndexes: IndexSet,
                                 fromSectionItemAt sectionIndex: Int,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -108,6 +124,13 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.endUpdates()
     }
     
+    /// Inserts cell items to the specified section item, and then inserts rows at the locations identified by array of corresponding index paths, with an option to animate the insertion.
+    ///
+    /// - Parameters:
+    ///   - cellItems: An array of cell items to insert, each responds for cell configuration at specified index path
+    ///   - sectionItem: Section item to insert cell items
+    ///   - indexes: IndexSet of row positions inside specified section to insert rows
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func insertCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 toSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 atIndexes indexes: IndexSet,
@@ -129,6 +152,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         tableView.endUpdates()
     }
     
+    /// Appends cell items at the end of specified section item, and then inserts rows at the end of section, with an option to animate the insertion.
+    ///
+    /// - Parameters:
+    ///   - cellItems: An array of cell items to append, each responds for cell configuration at specified index path
+    ///   - sectionItem: Section item to append cell items
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 toSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
@@ -136,6 +165,12 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         insertCellItems(cellItems, toSectionItem: &sectionItem, atIndexes: indexSet, withRowAnimation: animation)
     }
     
+    /// Replaces cell items inside the specified section item, and then replaces corresponding rows within section, with an option to animate the insertion.
+    ///
+    /// - Parameters:
+    ///   - cellItems: An array of replacement cell items, each responds for cell configuration at specified index path
+    ///   - sectionItem: Section item to insert cell items
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func replaceCellItems(at indexes: IndexSet,
                                  withCellItems cellItems: [TableViewCellItemProtocol],
                                  inSectionItem sectionItem: inout TableViewSectionItemProtocol,
