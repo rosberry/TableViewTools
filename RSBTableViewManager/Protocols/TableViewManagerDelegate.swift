@@ -10,14 +10,38 @@ import UIKit.UITableView
 
 public protocol TableViewManagerDelegate: class {
     
+    /// Asks the delegate to return a new index path to retarget a proposed move of a row.
+    ///
+    /// - Parameters:
+    ///   - tableView: The table-view object that is requesting this information.
+    ///   - sourceIndexPath: An index-path object identifying the original location of a row (in its section) that is being dragged.
+    ///   - proposedDestinationIndexPath: An index-path object identifying the currently proposed destination of the row being dragged.
+    /// - Returns: An index-path object locating the desired row destination for the move operation. Return proposedDestinationIndexPath if that location is suitable.
     func tableView(_ tableView: UITableView,
                    targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
                    toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath
     
+    /// Tells the delegate to move a row at a specific location in the table view to another location.
+    ///
+    /// - Parameters:
+    ///   - tableView: The table-view object requesting this action.
+    ///   - sourceIndexPath: An index path locating the row to be moved in tableView.
+    ///   - destinationIndexPath: An index path locating the row in tableView that is the destination of the move.
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
     
+    /// Asks the delegate to return the titles for the sections for a table view.
+    ///
+    /// - Parameter tableView: The table-view object requesting this information.
+    /// - Returns: An array of strings that serve as the title of sections in the table view and appear in the index list on the right side of the table view. The table view must be in the plain style (UITableViewStylePlain). For example, for an alphabetized list, you could return an array containing strings “A” through “Z”.
     func sectionIndexTitles(for tableView: UITableView) -> [String]?
     
+    /// Asks the delegate to return the index of the section having the given title and section title index.
+    ///
+    /// - Parameters:
+    ///   - tableView: The table-view object requesting this information.
+    ///   - title: The title as displayed in the section index of tableView.
+    ///   - index: An index number identifying a section title in the array returned by sectionIndexTitles(for:).
+    /// - Returns: An index number identifying a section.
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int
 }
 
