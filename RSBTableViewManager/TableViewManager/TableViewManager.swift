@@ -8,9 +8,17 @@
 import UIKit
 
 public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
+    
+    /// `UITableView` object for managing
     unowned let tableView: UITableView
+    
+    /// The delegate of a `TableViewManager` object can adopt the `TableViewManagerDelegate` protocol. Optional methods of the protocol allow the delegate to configure section index titles, move rows from one index path to another, and perform other actions.
     weak var delegate: TableViewManagerDelegate?
+    
+    /// The methods declared by the UIScrollViewDelegate protocol allow the adopting delegate to respond to messages from the UIScrollView class and thus respond to, and in some affect, operations such as scrolling, zooming, deceleration of scrolled content, and scrolling animations.
     weak var scrollDelegate: UIScrollViewDelegate?
+    
+    /// The property that determines whether should be used data source prefetching. Prefetching allowed only on iOS versions greater than or equal to 10.0
     var isPrefetchingEnabled = false {
         didSet {
             if isPrefetchingEnabled {
@@ -24,6 +32,8 @@ public class TableViewManager: NSObject, UITableViewDataSource, UITableViewDeleg
         }
     }
     
+    
+    /// Array of `TableViewSectionItemProtocol` objects, each responds for configuration of specified section in table view.
     var sectionItems: [TableViewSectionItemProtocol] = [TableViewSectionItemProtocol]() {
         didSet {
             for sectionItem in sectionItems {
