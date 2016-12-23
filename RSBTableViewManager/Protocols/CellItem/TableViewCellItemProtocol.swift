@@ -116,27 +116,6 @@ public protocol TableViewCellItemProtocol: AnyObject {
     ///   - indexPath: The index path of the cell.
     func didEndDisplayingCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath)
     
-    /// Asks the cell item to verify that the cell is editable.
-    ///
-    /// - Parameters:
-    ///   - tableView: The table-view object that removed the view.
-    /// - Returns: true if the cell is editable; otherwise, false.
-    func canEdit(in tableView: UITableView) -> Bool
-    
-    /// Asks the cell item if the cell can commit editing style.
-    ///
-    /// - Parameters:
-    ///   - editingStyle: The cell editing style corresponding to a insertion or deletion requested for the cell. Possible editing styles are insert or delete.
-    ///   - tableView: The table-view object requesting this information.
-    /// - Returns: true if the cell item can commit editing style; otherwise, false.
-    func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool
-    
-    /// Asks the cell item for the actions to display in response to a swipe in the cell.
-    ///
-    /// - Parameter tableView: The table view object requesting this information.
-    /// - Returns: An array of `UITableViewRowAction` objects representing the actions for the cell. Each action you provide is used to create a button that the user can tap.
-    func editActions(in tableView: UITableView) -> [UITableViewRowAction]?
-    
     /// Asks the cell item to return the level of indentation for a cell in a given section.
     ///
     /// - Parameters:
@@ -152,20 +131,6 @@ public protocol TableViewCellItemProtocol: AnyObject {
     ///   - indexPath: An index path locating the cell in tableView.
     /// - Returns: true if the cell can be moved; otherwise false.
     func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool
-    
-    /// Tells the cell item that the cell was removed.
-    ///
-    /// - Parameters:
-    ///   - tableView: The table-view object requesting this information.
-    ///   - indexPath: An index path locating the cell in tableView.
-    func didRemove(from tableView: UITableView, at indexPath: IndexPath)
-    
-    /// Tells the cell item that the cell successfully finished removing animation.
-    ///
-    /// - Parameters:
-    ///   - tableView: The table-view object requesting this information.
-    ///   - indexPath: An index path locating the cell in tableView.
-    func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath)
 }
 
 private struct AssociatedKeys {
@@ -248,12 +213,9 @@ extension TableViewCellItemProtocol {
     func willDisplayCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath) {}
     func didEndDisplayingCell(_ cell: UITableViewCell, for tableView: UITableView, at indexPath: IndexPath) {}
     
-    // MARK: - Editing
-    func canEdit(in tableView: UITableView) -> Bool { return false }
-    func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
-    func editActions(in tableView: UITableView) -> [UITableViewRowAction]? { return nil }
+    // MARK: - Indentation
     func indentationLevel(in tableView: UITableView, at indexPath: IndexPath) -> Int { return 0 }
+    
+    // MARK: - Moving
     func canMoveRow(in tableView: UITableView, at indexPath: IndexPath) -> Bool { return false }
-    func didRemove(from tableView: UITableView, at indexPath: IndexPath) {}
-    func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}
 }

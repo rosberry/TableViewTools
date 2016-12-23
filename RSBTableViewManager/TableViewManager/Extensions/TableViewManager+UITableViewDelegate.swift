@@ -75,27 +75,28 @@ extension TableViewManager: UITableViewDelegate {
         return self[section].viewForFooter(in: tableView)
     }
     
-    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        if let cellItem = self[indexPath] {
-            return cellItem.editActions(in: tableView)
-        }
-        return nil
-    }
-    
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        self[section].willDisplayHeaderView(view, for: section)
+        if let sectionItem = self[section] as? TableViewSectionItemHeaderFooterDisplaying {
+            sectionItem.willDisplayHeaderView(view, for: section)
+        }
     }
     
     public func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        self[section].willDisplayFooterView(view, for: section)
+        if let sectionItem = self[section] as? TableViewSectionItemHeaderFooterDisplaying {
+            sectionItem.willDisplayFooterView(view, for: section)
+        }
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        self[section].didEndDisplayingHeaderView(view, for: section)
+        if let sectionItem = self[section] as? TableViewSectionItemHeaderFooterDisplaying {
+            sectionItem.didEndDisplayingHeaderView(view, for: section)
+        }
     }
     
     public func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
-        self[section].didEndDisplayingFooterView(view, for: section)
+        if let sectionItem = self[section] as? TableViewSectionItemHeaderFooterDisplaying {
+            sectionItem.didEndDisplayingFooterView(view, for: section)
+        }
     }
     
     public func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
@@ -116,24 +117,44 @@ extension TableViewManager: UITableViewDelegate {
     
     // MARK: - Editing
     
+    public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            return cellItem.editActions(in: tableView)
+        }
+        return nil
+    }
+    
     public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        <#code#>
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            return cellItem.shouldIndentWhileEditing(in: tableView, at: indexPath)
+        }
+        return true
     }
     
     public func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
-        <#code#>
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            cellItem.willBeginEditing(in: tableView, at: indexPath)
+        }
     }
     
     public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
-        <#code#>
+        if let indexPath = indexPath, let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            cellItem.didEndEditing(in: tableView, at: indexPath)
+        }
     }
     
     public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        <#code#>
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            return cellItem.editingStyle(in: tableView, at: indexPath)
+        }
+        return .delete
     }
     
     public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        <#code#>
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            return cellItem.titleForDeleteConfirmationButton(in: tableView, at: indexPath)
+        }
+        return nil
     }
     
     // MARK: Copy/Paste
@@ -157,4 +178,8 @@ extension TableViewManager: UITableViewDelegate {
             cellItem.performAction(action, in: tableView, forRowAt: indexPath, with: sender)
         }
     }
+
+    // MARK: - Focus
+    // UIKit on tvOS provides the Focus Engine, which controls focus movement and handles interaction with the new Siri Remote.
+    // This engine is not usable on iOS. In this reason it's not necessary to implement focus-handling methods on RSBTableViewMananger.
 }

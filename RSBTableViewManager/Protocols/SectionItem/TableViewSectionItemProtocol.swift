@@ -52,34 +52,6 @@ public protocol TableViewSectionItemProtocol: AnyObject {
     /// - Parameter tableView: The table-view object asking for the view object.
     /// - Returns: A view object to be displayed in the footer of section.
     func viewForFooter(in tableView: UITableView) -> UIView?
-    
-    /// Tells the section item that a header view is about to be displayed for the section associated with this item.
-    ///
-    /// - Parameters:
-    ///   - headerView: The header view that is about to be displayed.
-    ///   - section: An index number identifying a section of tableView.
-    func willDisplayHeaderView(_ headerView: UIView, for section: Int)
-    
-    /// Tells the section item that a footer view is about to be displayed for the section associated with this item.
-    ///
-    /// - Parameters:
-    ///   - footerView: The footer view that is about to be displayed.
-    ///   - section: An index number identifying a section of tableView.
-    func willDisplayFooterView(_ footerView: UIView, for section: Int)
-    
-    /// Tells the section item that the specified header view was removed from the table.
-    ///
-    /// - Parameters:
-    ///   - headerView: The header view that was removed.
-    ///   - section: The index of the section that contained the header.
-    func didEndDisplayingHeaderView(_ headerView: UIView, for section: Int)
-    
-    /// Tells the section item that the specified footer view was removed from the table.
-    ///
-    /// - Parameters:
-    ///   - footerView: The footer view that was removed.
-    ///   - section: The index of the section that contained the header.
-    func didEndDisplayingFooterView(_ footerView: UIView, for section: Int)
 }
 
 public extension TableViewSectionItemProtocol {
@@ -90,9 +62,4 @@ public extension TableViewSectionItemProtocol {
     func titleForFooter(in tableView: UITableView) -> String? { return nil }
     func heightForFooter(in tableView: UITableView) -> CGFloat { return 0 }
     func viewForFooter(in tableView: UITableView) -> UIView? { return nil }
-    
-    func willDisplayHeaderView(_ headerView: UIView, for section: Int) {}
-    func willDisplayFooterView(_ footerView: UIView, for section: Int) {}
-    func didEndDisplayingHeaderView(_ headerView: UIView, for section: Int) {}
-    func didEndDisplayingFooterView(_ footerView: UIView, for section: Int) {}
 }

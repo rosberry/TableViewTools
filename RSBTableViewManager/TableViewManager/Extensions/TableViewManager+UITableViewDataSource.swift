@@ -34,33 +34,6 @@ extension TableViewManager: UITableViewDataSource {
         return self[section].titleForFooter(in: tableView)
     }
     
-    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if let cellItem = self[indexPath] {
-            return cellItem.canEdit(in: tableView)
-        }
-        return false
-    }
-    
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        var sectionItem = self[indexPath.row]
-        let cellItem = self[indexPath]
-        if editingStyle == .delete {
-            guard let cellItem = cellItem else {
-                return
-            }
-            if cellItem.canCommitEditingStyle(editingStyle, in: tableView) {
-                CATransaction.begin()
-                CATransaction.setCompletionBlock {
-                    cellItem.didFinishRemovingAnimation(in: tableView, at: indexPath)
-                }
-                removeCellItems([cellItem], fromSectionItem: &sectionItem, withRowAnimation: .automatic)
-                CATransaction.commit()
-                
-                cellItem.didRemove(from: tableView, at: indexPath)
-            }
-        }
-    }
-    
     public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         if let cellItem = self[indexPath] {
             return cellItem.canMoveRow(in: tableView, at: indexPath)
@@ -85,5 +58,36 @@ extension TableViewManager: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         delegate?.tableView(tableView, moveRowAt: sourceIndexPath, to: destinationIndexPath)
     }
+    
+    // MARK: - Editing
+    
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
+            return cellItem.canEdit(in: tableView)
+        }
+        return false
+    }
+    
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        var sectionItem = self[indexPath.row]
+        let cellItem = self[indexPath]
+        if editingStyle == .delete {
+            guard let cellItem = cellItem,
+                let editableCellItem = cellItem as? TableViewCellItemEditActionsProtocol else {
+                    return
+            }
+            if editableCellItem.canCommitEditingStyle(editingStyle, in: tableView) {
+                CATransaction.begin()
+                CATransaction.setCompletionBlock {
+                    editableCellItem.didFinishRemovingAnimation(in: tableView, at: indexPath)
+                }
+                removeCellItems([cellItem], fromSectionItem: &sectionItem, withRowAnimation: .automatic)
+                CATransaction.commit()
+                
+                editableCellItem.didRemove(from: tableView, at: indexPath)
+            }
+        }
+    }
+
 }
 
