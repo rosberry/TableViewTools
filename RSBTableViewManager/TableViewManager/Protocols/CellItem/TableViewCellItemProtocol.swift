@@ -32,6 +32,7 @@ public protocol TableViewCellItemProtocol: AnyObject {
     /// The closure that handles `tableView(_:willDeselectRowAt:)` method calling.
     var itemWillDeselectHandler: SelectionResolver? { get set }
     
+    /// The enum for simple reuse type settings. You can create an reuse type via initializer to use cell type as identifier.
     var reuseType: ReuseType { get }
     
     /// Asks the cell item for the height to use for a related cell. The method allows the cell item to specify cells with varying heights. If this method is implemented, the value it returns overrides the value specified for the rowHeight property of UITableView for the given row.
