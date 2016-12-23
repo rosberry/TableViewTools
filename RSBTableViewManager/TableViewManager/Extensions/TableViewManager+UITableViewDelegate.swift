@@ -114,6 +114,28 @@ extension TableViewManager: UITableViewDelegate {
         return 0
     }
     
+    // MARK: - Editing
+    
+    public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        <#code#>
+    }
+    
+    public func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        <#code#>
+    }
+    
+    public func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        <#code#>
+    }
+    
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        <#code#>
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        <#code#>
+    }
+    
     // MARK: Copy/Paste
     
     public func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
