@@ -21,6 +21,7 @@
 		0A89CAC61E0BF12400E07CDA /* TableViewManager+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CAC21E0BF12400E07CDA /* TableViewManager+UITableViewDataSource.swift */; };
 		0A89CAC71E0BF12400E07CDA /* TableViewManager+UITableViewDataSourcePrefetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CAC31E0BF12400E07CDA /* TableViewManager+UITableViewDataSourcePrefetching.swift */; };
 		0A89CAC81E0BF12400E07CDA /* TableViewManager+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CAC41E0BF12400E07CDA /* TableViewManager+UITableViewDelegate.swift */; };
+		0A89CACC1E0CD9B600E07CDA /* TableViewCellItemEditingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CACB1E0CD9B600E07CDA /* TableViewCellItemEditingProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0A89CAC21E0BF12400E07CDA /* TableViewManager+UITableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewManager+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		0A89CAC31E0BF12400E07CDA /* TableViewManager+UITableViewDataSourcePrefetching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewManager+UITableViewDataSourcePrefetching.swift"; sourceTree = "<group>"; };
 		0A89CAC41E0BF12400E07CDA /* TableViewManager+UITableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TableViewManager+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		0A89CACB1E0CD9B600E07CDA /* TableViewCellItemEditingProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellItemEditingProtocol.swift; sourceTree = "<group>"; };
 		6D9DB6941D0EACEE002F1F7F /* RSBTableViewManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSBTableViewManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DF0D4C01D0EAEDD00E7C132 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		6DF0D4C21D0EAEE600E7C132 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				0A1851D81DF164C9004190FA /* TableViewSectionItemProtocol.swift */,
 				0A58320A1E0A5D7B000714A5 /* TableViewManagerDelegate.swift */,
 				0A58320E1E0A7379000714A5 /* TableViewCellItemDataSourcePrefetching.swift */,
+				0A89CACB1E0CD9B600E07CDA /* TableViewCellItemEditingProtocol.swift */,
 				0A89CABA1E0BE54200E07CDA /* TableViewCellItemEditActionsProtocol.swift */,
 			);
 			path = Protocols;
@@ -234,6 +237,7 @@
 				0A89CAC71E0BF12400E07CDA /* TableViewManager+UITableViewDataSourcePrefetching.swift in Sources */,
 				068F55B71E0BAD2000301D0F /* UITableView+Additions.swift in Sources */,
 				0A1851DF1DF164C9004190FA /* TableViewManager.swift in Sources */,
+				0A89CACC1E0CD9B600E07CDA /* TableViewCellItemEditingProtocol.swift in Sources */,
 				0A58320B1E0A5D7B000714A5 /* TableViewManagerDelegate.swift in Sources */,
 				0A5832091E0A35D2000714A5 /* ClosureWrapper.swift in Sources */,
 				0A1851DC1DF164C9004190FA /* TableViewSectionItem.swift in Sources */,
