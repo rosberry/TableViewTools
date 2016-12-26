@@ -1,12 +1,12 @@
 //
 //  UITableView+Additions.swift
-//  VanHaren
+//  RSBTableViewManager
 //
 //  Created by Artem Novichkov on 09/12/2016.
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-import UIKit
+import UIKit.UITableView
 
 public enum ReuseType {
     case byStoryboard(identifier: String)
