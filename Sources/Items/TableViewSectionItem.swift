@@ -5,7 +5,7 @@
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-import UIKit
+import UIKit.UITableView
 
 open class TableViewSectionItem: TableViewSectionItemProtocol {
     
