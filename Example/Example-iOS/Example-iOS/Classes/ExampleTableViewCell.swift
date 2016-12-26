@@ -31,7 +31,7 @@ class ExampleTableViewCell: UITableViewCell {
         
         titleLabel.sizeToFit()
         if let text = titleLabel.text {
-            let width = contentView.bounds.width - 132
+            let width = contentView.bounds.width - 32
             titleLabel.frame = CGRect(x: 16,
                                       y: (contentView.bounds.height - titleLabel.bounds.height) / 2,
                                       width: width,
@@ -42,6 +42,6 @@ class ExampleTableViewCell: UITableViewCell {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         setNeedsLayout()
         layoutIfNeeded()
-        return CGSize(width: titleLabel.bounds.width, height: titleLabel.bounds.height + 16)
+        return CGSize(width: size.width, height: titleLabel.bounds.height + 16)
     }
 }
