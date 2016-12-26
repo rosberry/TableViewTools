@@ -152,7 +152,6 @@ public class TableViewManager: NSObject {
         let indexPaths = indexes.map { IndexPath(row: $0, section: section) }
         
         tableView.update {
-            print(indexes.sorted())
             sectionItem.cellItems.insert(cellItems, at: indexes)
             tableView.insertRows(at: indexPaths, with: animation)
         }
