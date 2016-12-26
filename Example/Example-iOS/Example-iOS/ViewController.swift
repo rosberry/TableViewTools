@@ -9,7 +9,7 @@
 import UIKit
 import RSBTableViewManager
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TableViewManagerDelegate {
     
     let tableView = UITableView()
     let manager: TableViewManager
@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         manager = TableViewManager(tableView: tableView)
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .green
+        manager.delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -73,6 +74,17 @@ class ViewController: UIViewController {
     func insertAction(sender: Any?) {
         let newItem = ExampleTableViewCellItem(title: "Inserted cell")
         manager.appendCellItems([newItem], toSectionItemAt: 0, withRowAnimation: .automatic)
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let sourceSectionItem = manager[sourceIndexPath.section]
+        let destinationSectionItem = manager[destinationIndexPath.section]
+        
+        let sourceCellItem = sourceSectionItem.cellItems[sourceIndexPath.row]
+        guard let index = sourceSectionItem.cellItems.index(where: {$0 === sourceCellItem}) else { return }
+        sourceSectionItem.cellItems.remove(at: index)
+        
+        destinationSectionItem.cellItems.insert(sourceCellItem, at: destinationIndexPath.row)
     }
 }
 

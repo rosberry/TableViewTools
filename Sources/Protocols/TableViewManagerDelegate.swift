@@ -45,15 +45,15 @@ public protocol TableViewManagerDelegate: class {
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int
 }
 
-extension TableViewManagerDelegate {
+public extension TableViewManagerDelegate {
     
     func tableView(_ tableView: UITableView,
                    targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
                    toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
         return proposedDestinationIndexPath
     }
-    
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {}
+    
     func sectionIndexTitles(for tableView: UITableView) -> [String]? { return nil }
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int { return 0 }
 }
