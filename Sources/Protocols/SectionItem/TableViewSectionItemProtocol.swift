@@ -6,7 +6,7 @@
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-import UIKit
+import UIKit.UITableView
 
 public protocol TableViewSectionItemProtocol: AnyObject {
     
