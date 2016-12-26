@@ -6,9 +6,9 @@
 //  Copyright © 2016 Rosberry. All rights reserved.
 //
 
-import UIKit
+import UIKit.UITableView
 
-public class TableViewManager: NSObject {
+open class TableViewManager: NSObject {
     
     /// `UITableView` object for managing
     public unowned let tableView: UITableView
