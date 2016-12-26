@@ -34,7 +34,7 @@ public class TableViewManager: NSObject {
     }
     
     /// Array of `TableViewSectionItemProtocol` objects, each responds for configuration of specified section in table view.
-    var sectionItems = [TableViewSectionItemProtocol]() {
+    public var sectionItems = [TableViewSectionItemProtocol]() {
         didSet {
             sectionItems.forEach { registerSectionItem($0) }
             tableView.reloadData()
@@ -116,7 +116,7 @@ public class TableViewManager: NSObject {
         }
     }
     
-    /// Removes cell items, that are preserved at specified indexes inside section item, and then removes rows at the coressponding locations, with an option to animate the removing.
+    /// Removes cell items, that are preserved at specified indexes inside section item, and then removes rows at the corresponding locations, with an option to animate the removing.
     ///
     /// - Parameters:
     ///   - cellIndexes: IndexSet, that contains indexes of cell items to remove inside specified section item
@@ -152,6 +152,7 @@ public class TableViewManager: NSObject {
         let indexPaths = indexes.map { IndexPath(row: $0, section: section) }
         
         tableView.update {
+            print(indexes.sorted())
             sectionItem.cellItems.insert(cellItems, at: indexes)
             tableView.insertRows(at: indexPaths, with: animation)
         }
@@ -160,15 +161,28 @@ public class TableViewManager: NSObject {
     /// Appends cell items at the end of specified section item, and then inserts rows at the end of section, with an option to animate the insertion.
     ///
     /// - Parameters:
-    ///   - cellItems: An array of cell items to append, each responds for cell configuration at specified index path
-    ///   - sectionItem: Section item to append cell items
+    ///   - cellItems: An array of cell items to append, each responds for cell configuration at specified index path.
+    ///   - sectionItem: Section item to append cell items.
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     public func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
                                 toSectionItem sectionItem: inout TableViewSectionItemProtocol,
                                 withRowAnimation animation: UITableViewRowAnimation) {
         let count = sectionItem.cellItems.count
-        let indexSet = IndexSet(integersIn: count...count + cellItems.count)
+        let indexSet = IndexSet(integersIn: count...(count + cellItems.count - 1))
         insertCellItems(cellItems, toSectionItem: &sectionItem, atIndexes: indexSet, withRowAnimation: animation)
+    }
+    
+    /// Appends cell items at the end of specified section item at specified index, and then inserts rows at the end of section, with an option to animate the insertion.
+    ///
+    /// - Parameters:
+    ///   - cellItems: An array of cell items to append, each responds for cell configuration at specified index path.
+    ///   - sectionIndex: Index of section to append cell items.
+    ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
+    public func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
+                                toSectionItemAt sectionIndex: Int,
+                                withRowAnimation animation: UITableViewRowAnimation) {
+        var sectionItem = self[sectionIndex]
+        appendCellItems(cellItems, toSectionItem: &sectionItem, withRowAnimation: animation)
     }
     
     /// Replaces cell items inside the specified section item, and then replaces corresponding rows within section, with an option to animate the insertion.
@@ -253,7 +267,7 @@ public class TableViewManager: NSObject {
     public func appendSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                    withRowAnimation animation: UITableViewRowAnimation) {
         let count = self.sectionItems.count
-        let indexSet = IndexSet(integersIn: count...count + sectionItems.count)
+        let indexSet = IndexSet(integersIn: count...(count + sectionItems.count - 1))
         insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
     }
     

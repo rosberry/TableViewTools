@@ -13,7 +13,7 @@ public enum ReuseType {
     case byNib(nib: UINib, identifier: String)
     case byClass(cellClass: UITableViewCell.Type, identifier: String)
     
-    var identifier: String {
+    public var identifier: String {
         switch self {
         case let .byStoryboard(identifier): return identifier
         case let .byNib(_, identifier: identifier): return identifier
@@ -21,13 +21,12 @@ public enum ReuseType {
         }
     }
     
-    init(cellClass: UITableViewCell.Type) {
-        let identifier = NSStringFromClass(cellClass).components(separatedBy: ".").last!
-        self = .byClass(cellClass: cellClass, identifier: identifier)
+    public init(cellClass: UITableViewCell.Type) {
+        self = .byClass(cellClass: cellClass, identifier: NSStringFromClass(cellClass))
     }
 }
 
-extension UITableView {
+public extension UITableView {
     
     func register(by type: ReuseType) {
         switch type {

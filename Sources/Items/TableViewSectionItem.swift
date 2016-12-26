@@ -13,11 +13,11 @@ open class TableViewSectionItem: TableViewSectionItemProtocol {
     public var headerTitle: String?
     public var footerTitle: String?
     
-    convenience init() {
+    public convenience init() {
         self.init(cellItems: [])
     }
     
-    init(cellItems: [TableViewCellItemProtocol]) {
+    public init(cellItems: [TableViewCellItemProtocol]) {
         self.cellItems = cellItems
     }
     

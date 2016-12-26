@@ -40,13 +40,19 @@ public protocol TableViewCellItemProtocol: AnyObject {
     /// - Returns: A nonnegative floating-point value that specifies the height (in points) that cell should be.
     func height(in tableView: UITableView) -> CGFloat
     
-    /// Configures dequeued cell
+    /// Asks the cell item for the estimated height of a row.
+    /// Providing an estimate the height of rows can improve the user experience when loading the table view. If the table contains variable height rows, it might be expensive to calculate all their heights and so lead to a longer load time. Using estimation allows you to defer some of the cost of geometry calculation from load time to scrolling time.
     ///
-    /// - Parameters:
-    ///   - cell: An object inheriting from UITableViewCell that the table view can use for the specified row.
+    /// - Parameter tableView: The table-view object requesting this information.
+    /// - Returns: A nonnegative floating-point value that estimates the height (in points) that row should be. Return UITableViewAutomaticDimension if you have no estimate.
+    func estimatedHeight(in tableView:UITableView) -> CGFloat
+    
+    /// Asks the cell item for cell configured for displayong at specified index path
+    ///
     ///   - tableView: The table-view object requesting this information.
     ///   - indexPath: An index path locating a row in tableView.
-    func configureCell(_ cell: UITableViewCell, in tableView: UITableView, at indexPath: IndexPath)
+    /// - Returns: An object inheriting from UITableViewCell that the table view can use for the specified row.
+    func cellForTableView(tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
     
     /// Asks the cell item if the cell should be highlighted.
     ///
@@ -143,7 +149,7 @@ private struct AssociatedKeys {
     static var didDeselectHandler     = "rsb_didDeselectHandler"
 }
 
-extension TableViewCellItemProtocol {
+public extension TableViewCellItemProtocol {
     
     // MARK: - Handlers
     var itemShouldHighlightHandler: HighlightingResolver? {
@@ -180,6 +186,8 @@ extension TableViewCellItemProtocol {
         get { return ClosureWrapper<SelectionHandler>.handler(for: self, key: &AssociatedKeys.didDeselectHandler) }
         set { ClosureWrapper<SelectionHandler>.setHandler(newValue, for: self, key: &AssociatedKeys.didDeselectHandler) }
     }
+    
+    func estimatedHeight(in tableView: UITableView) -> CGFloat { return 2 }
     
     // MARK: - Highlighting
     func shouldHighlightCell(in tableView: UITableView, at indexPath: IndexPath) -> Bool {

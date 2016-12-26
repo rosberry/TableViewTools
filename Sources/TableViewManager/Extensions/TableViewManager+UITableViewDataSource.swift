@@ -20,9 +20,7 @@ extension TableViewManager: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellItem = self[indexPath]!
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellItem.reuseType.identifier,
-                                                 for: indexPath)
-        cellItem.configureCell(cell, in: tableView, at: indexPath)
+        let cell = cellItem.cellForTableView(tableView: tableView, at: indexPath)
         return cell
     }
     
@@ -69,7 +67,7 @@ extension TableViewManager: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        var sectionItem = self[indexPath.row]
+        var sectionItem = self[indexPath.section]
         let cellItem = self[indexPath]
         if editingStyle == .delete {
             guard let cellItem = cellItem,

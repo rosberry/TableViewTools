@@ -115,11 +115,18 @@ extension TableViewManager: UITableViewDelegate {
         return 0
     }
     
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let cellItem = self[indexPath] {
+            return cellItem.estimatedHeight(in: tableView)
+        }
+        return 0
+    }
+    
     // MARK: - Editing
     
     public func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
-            return cellItem.editActions(in: tableView)
+            return cellItem.editActions(in: tableView, at: indexPath)
         }
         return nil
     }

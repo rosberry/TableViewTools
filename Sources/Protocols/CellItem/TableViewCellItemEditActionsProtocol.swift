@@ -124,18 +124,18 @@ public protocol TableViewCellItemEditActionsProtocol {
     func performAction(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?)
 }
 
-extension TableViewCellItemEditActionsProtocol {
+public extension TableViewCellItemEditActionsProtocol {
 
     func canEdit(in tableView: UITableView) -> Bool { return false }
     func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
-    func editActions(in tableView: UITableView) -> [UITableViewRowAction]? { return nil }
+    func editActions(in tableView: UITableView, at indexPath: IndexPath) -> [UITableViewRowAction]? { return nil }
     
     func editingStyle(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCellEditingStyle { return .delete }
-    func titleForDeleteConfirmationButton(in tableView: UITableView, at indexPath: IndexPath) -> String? { return nil }
+    func titleForDeleteConfirmationButton(in tableView: UITableView, at indexPath: IndexPath) -> String? { return "Delete" }
     func shouldIndentWhileEditing(in tableView: UITableView, at indexPath: IndexPath) -> Bool { return true }
     
-    func willBeginEditing(in tableView: UITableView, at indexPath: IndexPath) {  }
-    func didEndEditing(in tableView: UITableView, at indexPath: IndexPath?) {  }
+    func willBeginEditing(in tableView: UITableView, at indexPath: IndexPath) {}
+    func didEndEditing(in tableView: UITableView, at indexPath: IndexPath?) {}
     
     func didRemove(from tableView: UITableView, at indexPath: IndexPath) {}
     func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}

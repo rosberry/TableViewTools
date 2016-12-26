@@ -39,7 +39,7 @@ public protocol TableViewSectionItemHeaderFooterDisplaying {
     func didEndDisplayingFooterView(_ footerView: UIView, for section: Int)
 }
 
-extension TableViewSectionItemHeaderFooterDisplaying {
+public extension TableViewSectionItemHeaderFooterDisplaying {
     
     func willDisplayHeaderView(_ headerView: UIView, for section: Int) {}
     func willDisplayFooterView(_ footerView: UIView, for section: Int) {}
