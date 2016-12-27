@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
 [![License](https://img.shields.io/cocoapods/l/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
 [![Platform](https://img.shields.io/cocoapods/p/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
+[![carthage compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](https://github.com/Carthage/Carthage) 
 
 ## Example
 
