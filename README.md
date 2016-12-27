@@ -55,7 +55,7 @@ Then run `carthage update --platform iOS` command. For details of the installati
 	let titles = ["Item 1", "Item 2", "Item 3"]
     var cellItems = [ExampleTableViewCellItem]()
     titles.forEach { title in
-        let cellItem = ExampleTableViewCellItem(title: title)
+        let cellItem = ExampleTableViewCellItem()
         cellItem.itemDidSelectHandler = { tableView, indexPath in
             print(cellItem.title)
         }
@@ -74,19 +74,22 @@ Then run `carthage update --platform iOS` command. For details of the installati
 For basic usage, inside cell item should be implemented these entries from TableViewCellItemProtocol:
 
 ```swift
-	var reuseType: ReuseType {
-        return ReuseType(cellClass: ExampleTableViewCell.self)
-    }
-    
-    func height(in tableView: UITableView) -> CGFloat {
-        return 100
-    }
-    
-    func cellForTableView(tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-        let cell: ExampleTableViewCell = tableView.dequeueReusableCell()
-        cell.titleLabel.text = title
-        return cell
-    }
+
+	class ExampleTableViewCellItem: TableViewCellItemProtocol {
+
+		var reuseType: ReuseType {
+	        return ReuseType(cellClass: ExampleTableViewCell.self)
+	    }
+	    
+	    func height(in tableView: UITableView) -> CGFloat {
+	        return 100
+	    }
+	    
+	    func cellForTableView(tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+	        let cell: ExampleTableViewCell = tableView.dequeueReusableCell()
+	        return cell
+	    }
+	}
 ```
 
 ## Authors
