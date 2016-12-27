@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0A2239081E122E830055C4A2"
-               BuildableName = "TableViewManager.framework"
-               BlueprintName = "TableViewManager"
-               ReferencedContainer = "container:TableViewManager.xcodeproj">
+               BlueprintIdentifier = "0A4063541E12558C005EF407"
+               BuildableName = "TableViewTools.framework"
+               BlueprintName = "TableViewTools"
+               ReferencedContainer = "container:TableViewTools.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0A2239081E122E830055C4A2"
-            BuildableName = "TableViewManager.framework"
-            BlueprintName = "TableViewManager"
-            ReferencedContainer = "container:TableViewManager.xcodeproj">
+            BlueprintIdentifier = "0A4063541E12558C005EF407"
+            BuildableName = "TableViewTools.framework"
+            BlueprintName = "TableViewTools"
+            ReferencedContainer = "container:TableViewTools.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0A2239081E122E830055C4A2"
-            BuildableName = "TableViewManager.framework"
-            BlueprintName = "TableViewManager"
-            ReferencedContainer = "container:TableViewManager.xcodeproj">
+            BlueprintIdentifier = "0A4063541E12558C005EF407"
+            BuildableName = "TableViewTools.framework"
+            BlueprintName = "TableViewTools"
+            ReferencedContainer = "container:TableViewTools.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

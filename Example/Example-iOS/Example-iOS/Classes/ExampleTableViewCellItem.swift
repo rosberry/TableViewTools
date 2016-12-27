@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import TableViewManager
+import TableViewTools
 
 class ExampleTableViewCellItem: TableViewCellItemProtocol, TableViewCellItemEditActionsProtocol {
     

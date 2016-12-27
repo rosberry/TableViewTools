@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A4063921E125735005EF407 /* TableViewTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4063911E125728005EF407 /* TableViewTools.framework */; };
+		0A4063931E125735005EF407 /* TableViewTools.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A4063911E125728005EF407 /* TableViewTools.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A707BE61E1236CA005019A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A707BE51E1236CA005019A8 /* AppDelegate.swift */; };
 		0A707BE81E1236CA005019A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A707BE71E1236CA005019A8 /* ViewController.swift */; };
 		0A707BED1E1236CA005019A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A707BEC1E1236CA005019A8 /* Assets.xcassets */; };
@@ -14,24 +16,22 @@
 		0A707BFC1E123741005019A8 /* ExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A707BF81E123741005019A8 /* ExampleTableViewCell.swift */; };
 		0A707BFD1E123741005019A8 /* ExampleTableViewCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A707BF91E123741005019A8 /* ExampleTableViewCellItem.swift */; };
 		0A707BFE1E123741005019A8 /* String+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A707BFB1E123741005019A8 /* String+Size.swift */; };
-		0A707C051E1237EB005019A8 /* TableViewManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A707C041E1237DB005019A8 /* TableViewManager.framework */; };
-		0A707C061E1237EB005019A8 /* TableViewManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A707C041E1237DB005019A8 /* TableViewManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0A707C031E1237DB005019A8 /* PBXContainerItemProxy */ = {
+		0A4063901E125728005EF407 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0A707BFF1E1237DA005019A8 /* TableViewManager.xcodeproj */;
+			containerPortal = 0A40638C1E125728005EF407 /* TableViewTools.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 0A2239091E122E830055C4A2;
-			remoteInfo = TableViewManager;
+			remoteGlobalIDString = 0A4063551E12558C005EF407;
+			remoteInfo = TableViewTools;
 		};
-		0A707C071E1237EB005019A8 /* PBXContainerItemProxy */ = {
+		0A4063941E125735005EF407 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 0A707BFF1E1237DA005019A8 /* TableViewManager.xcodeproj */;
+			containerPortal = 0A40638C1E125728005EF407 /* TableViewTools.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 0A2239081E122E830055C4A2;
-			remoteInfo = TableViewManager;
+			remoteGlobalIDString = 0A4063541E12558C005EF407;
+			remoteInfo = TableViewTools;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -42,7 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0A707C061E1237EB005019A8 /* TableViewManager.framework in Embed Frameworks */,
+				0A4063931E125735005EF407 /* TableViewTools.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A40638C1E125728005EF407 /* TableViewTools.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TableViewTools.xcodeproj; path = ../../TableViewTools.xcodeproj; sourceTree = "<group>"; };
 		0A707BE21E1236CA005019A8 /* Example-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A707BE51E1236CA005019A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A707BE71E1236CA005019A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		0A707BF81E123741005019A8 /* ExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewCell.swift; sourceTree = "<group>"; };
 		0A707BF91E123741005019A8 /* ExampleTableViewCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleTableViewCellItem.swift; sourceTree = "<group>"; };
 		0A707BFB1E123741005019A8 /* String+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Size.swift"; sourceTree = "<group>"; };
-		0A707BFF1E1237DA005019A8 /* TableViewManager.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TableViewManager.xcodeproj; path = ../../TableViewManager.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,19 +67,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A707C051E1237EB005019A8 /* TableViewManager.framework in Frameworks */,
+				0A4063921E125735005EF407 /* TableViewTools.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A40638D1E125728005EF407 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A4063911E125728005EF407 /* TableViewTools.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0A707BD91E1236C9005019A8 = {
 			isa = PBXGroup;
 			children = (
 				0A707BE41E1236CA005019A8 /* Example-iOS */,
 				0A707BE31E1236CA005019A8 /* Products */,
-				0A707BFF1E1237DA005019A8 /* TableViewManager.xcodeproj */,
+				0A40638C1E125728005EF407 /* TableViewTools.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,14 +130,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		0A707C001E1237DA005019A8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0A707C041E1237DB005019A8 /* TableViewManager.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,7 +145,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				0A707C081E1237EB005019A8 /* PBXTargetDependency */,
+				0A4063951E125735005EF407 /* PBXTargetDependency */,
 			);
 			name = "Example-iOS";
 			productName = "Example-iOS";
@@ -182,8 +182,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 0A707C001E1237DA005019A8 /* Products */;
-					ProjectRef = 0A707BFF1E1237DA005019A8 /* TableViewManager.xcodeproj */;
+					ProductGroup = 0A40638D1E125728005EF407 /* Products */;
+					ProjectRef = 0A40638C1E125728005EF407 /* TableViewTools.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -194,11 +194,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0A707C041E1237DB005019A8 /* TableViewManager.framework */ = {
+		0A4063911E125728005EF407 /* TableViewTools.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
-			path = TableViewManager.framework;
-			remoteRef = 0A707C031E1237DB005019A8 /* PBXContainerItemProxy */;
+			path = TableViewTools.framework;
+			remoteRef = 0A4063901E125728005EF407 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -231,10 +231,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0A707C081E1237EB005019A8 /* PBXTargetDependency */ = {
+		0A4063951E125735005EF407 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TableViewManager;
-			targetProxy = 0A707C071E1237EB005019A8 /* PBXContainerItemProxy */;
+			name = TableViewTools;
+			targetProxy = 0A4063941E125735005EF407 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
