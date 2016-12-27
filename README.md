@@ -12,6 +12,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 ## Installation
+### CocoaPods
 
 TableViewTools is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
@@ -19,6 +20,18 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod "TableViewTools"
 ```
+
+Then run `pod install` command. For details of the installation and usage of CocoaPods, visit [its official website](https://cocoapods.org).
+
+### Carthage
+
+To install TableViewTools using Carthage, add the following lines to your `Cartfile`:
+
+```ruby
+github "Rosberry/TableViewTools"
+```
+
+Then run `carthage update --platform iOS` command. For details of the installation and usage of Carthage, visit [its  repo website](https://github.com/Carthage/Carthage).
 
 ## Author
 
