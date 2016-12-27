@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:RSBTableViewManager.xcodeproj">
+      location = "self:TableViewManager.xcodeproj">
    </FileRef>
 </Workspace>

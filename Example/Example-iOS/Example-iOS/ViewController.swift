@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import RSBTableViewManager
+import TableViewManager
 
 class ViewController: UIViewController, TableViewManagerDelegate {
     
     let tableView = UITableView()
     let manager: TableViewManager
-    
+
     init() {
         manager = TableViewManager(tableView: tableView)
         super.init(nibName: nil, bundle: nil)

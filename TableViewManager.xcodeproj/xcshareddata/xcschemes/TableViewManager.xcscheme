@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6D9DB6931D0EACEE002F1F7F"
-               BuildableName = "RSBTableViewManager.framework"
-               BlueprintName = "RSBTableViewManager"
-               ReferencedContainer = "container:RSBTableViewManager.xcodeproj">
+               BlueprintIdentifier = "0A2239081E122E830055C4A2"
+               BuildableName = "TableViewManager.framework"
+               BlueprintName = "TableViewManager"
+               ReferencedContainer = "container:TableViewManager.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6D9DB6931D0EACEE002F1F7F"
-            BuildableName = "RSBTableViewManager.framework"
-            BlueprintName = "RSBTableViewManager"
-            ReferencedContainer = "container:RSBTableViewManager.xcodeproj">
+            BlueprintIdentifier = "0A2239081E122E830055C4A2"
+            BuildableName = "TableViewManager.framework"
+            BlueprintName = "TableViewManager"
+            ReferencedContainer = "container:TableViewManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6D9DB6931D0EACEE002F1F7F"
-            BuildableName = "RSBTableViewManager.framework"
-            BlueprintName = "RSBTableViewManager"
-            ReferencedContainer = "container:RSBTableViewManager.xcodeproj">
+            BlueprintIdentifier = "0A2239081E122E830055C4A2"
+            BuildableName = "TableViewManager.framework"
+            BlueprintName = "TableViewManager"
+            ReferencedContainer = "container:TableViewManager.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

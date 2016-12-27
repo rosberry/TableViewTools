@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint RSBTableViewManager.podspec' to ensure this is a
+# Be sure to run `pod lib lint TableViewManager.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'RSBTableViewManager'
+  s.name             = 'TableViewManager'
   s.version          = '0.0.4'
   s.summary          = 'High-performance UITableView managing in Swift.'
 
@@ -21,17 +21,17 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/rosberry/RSBTableViewManager'
+  s.homepage         = 'https://github.com/rosberry/TableViewManager'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Dmitry Frishbuter' => 'dmitry.frishbuter@rosberry.com' }
-  s.source           = { :git => 'https://github.com/rosberry/RSBTableViewManager.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/rosberry/TableViewManager.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'Sources/**/*'
   
   # s.resource_bundles = {
-  #   'RSBTableViewManager' => ['Assets/*.png']
+  #   'TableViewManager' => ['Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'

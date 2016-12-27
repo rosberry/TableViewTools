@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RSBTableViewManager
+import TableViewManager
 
 class ExampleTableViewCellItem: TableViewCellItemProtocol, TableViewCellItemEditActionsProtocol {
     
