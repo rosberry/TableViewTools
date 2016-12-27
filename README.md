@@ -8,7 +8,7 @@
 
 ## Overview
 
-This repo contains the powerful tool for making your UITableView usage simply and comfortable! At allows you to move your UITableView configuration logic to separated objects, such as inheritors of TableViewSectionItemProtocol and TableViewCellItemProtocol, and simply register, add and remove cells from your table view.
+This repo contains the powerful tool for making your UITableView usage simply and comfortable! It allows you to move your UITableView configuration logic to separated objects, such as inheritors of TableViewSectionItemProtocol and TableViewCellItemProtocol, and simply register, add and remove cells from your table view.
 
 ## Example
 
@@ -45,7 +45,7 @@ Then run `carthage update --platform iOS` command. For details of the installati
 ### Creating manager
 
 ```swift
-	self.manager = TableViewManager(tableView: self.tableView)
+	manager = TableViewManager(tableView: tableView)
 
 ```
 
@@ -55,16 +55,11 @@ Then run `carthage update --platform iOS` command. For details of the installati
 	let titles = ["Item 1", "Item 2", "Item 3"]
     var cellItems = [ExampleTableViewCellItem]()
     titles.forEach { title in
-        let cellItem = ExampleTableViewCellItem()
-        cellItem.itemDidSelectHandler = { tableView, indexPath in
-            print(cellItem.title)
-        }
+        let cellItem = ExampleTableViewCellItem(title: title)
         cellItems.append(cellItem)
     }
     
     let sectionItem = TableViewSectionItem(cellItems: cellItems)
-    sectionItem.headerTitle = "Header title"
-    sectionItem.footerTitle = "Footer Title"
     manager.sectionItems = [sectionItem]
 
 ```
@@ -94,9 +89,9 @@ For basic usage, inside cell item should be implemented these entries from Table
 
 ## Authors
 
-Dmitry Frishbuter, dmitry.frishbuter@rosberry.com
-Artem Novichkov, artem.novichkov@rosberry.com
-Nikita Ermolenko, nikita.ermolenko@rosberry.com
+* Dmitry Frishbuter, dmitry.frishbuter@rosberry.com
+* Artem Novichkov, artem.novichkov@rosberry.com
+* Nikita Ermolenko, nikita.ermolenko@rosberry.com
 
 ## License
 
