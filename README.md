@@ -8,7 +8,7 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, run `pod try`, or simply clone the repo and open project Example-iOS.
 
 ## Requirements
 
