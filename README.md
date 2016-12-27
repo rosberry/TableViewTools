@@ -6,6 +6,10 @@
 [![Platform](https://img.shields.io/cocoapods/p/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
 [![carthage compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](https://github.com/Carthage/Carthage) 
 
+## Overview
+
+This repo contains the powerful tool for making your UITableView usage simply and comfortable! At allows you to move your UITableView configuration logic to separated objects, such as inheritors of TableViewSectionItemProtocol and TableViewCellItemProtocol, and simply register, add and remove cells from your table view.
+
 ## Example
 
 To run the example project, run `pod try`, or simply clone the repo and open project Example-iOS.
@@ -50,7 +54,7 @@ Then run `carthage update --platform iOS` command. For details of the installati
 ```swift
 	let titles = ["Item 1", "Item 2", "Item 3"]
     var cellItems = [ExampleTableViewCellItem]()
-    proverbs.forEach { title in
+    titles.forEach { title in
         let cellItem = ExampleTableViewCellItem(title: title)
         cellItem.itemDidSelectHandler = { tableView, indexPath in
             print(cellItem.title)
@@ -85,9 +89,11 @@ For basic usage, inside cell item should be implemented these entries from Table
     }
 ```
 
-## Author
+## Authors
 
 Dmitry Frishbuter, dmitry.frishbuter@rosberry.com
+Artem Novichkov, artem.novichkov@rosberry.com
+Nikita Ermolenko, nikita.ermolenko@rosberry.com
 
 ## License
 
