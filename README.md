@@ -34,6 +34,57 @@ github "Rosberry/TableViewTools"
 
 Then run `carthage update --platform iOS` command. For details of the installation and usage of Carthage, visit [its  repo website](https://github.com/Carthage/Carthage).
 
+---
+
+## Basic usage
+
+### Creating manager
+
+```swift
+	self.manager = TableViewManager(tableView: self.tableView)
+
+```
+
+### Creating section with header and footer title
+
+```swift
+	let titles = ["Item 1", "Item 2", "Item 3"]
+    var cellItems = [ExampleTableViewCellItem]()
+    proverbs.forEach { title in
+        let cellItem = ExampleTableViewCellItem(title: title)
+        cellItem.itemDidSelectHandler = { tableView, indexPath in
+            print(cellItem.title)
+        }
+        cellItems.append(cellItem)
+    }
+    
+    let sectionItem = TableViewSectionItem(cellItems: cellItems)
+    sectionItem.headerTitle = "Header title"
+    sectionItem.footerTitle = "Footer Title"
+    manager.sectionItems = [sectionItem]
+
+```
+
+### Cell item implementation
+
+For basic usage, inside cell item should be implemented these entries from TableViewCellItemProtocol:
+
+```swift
+	var reuseType: ReuseType {
+        return ReuseType(cellClass: ExampleTableViewCell.self)
+    }
+    
+    func height(in tableView: UITableView) -> CGFloat {
+        return 100
+    }
+    
+    func cellForTableView(tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        let cell: ExampleTableViewCell = tableView.dequeueReusableCell()
+        cell.titleLabel.text = title
+        return cell
+    }
+```
+
 ## Author
 
 Dmitry Frishbuter, dmitry.frishbuter@rosberry.com

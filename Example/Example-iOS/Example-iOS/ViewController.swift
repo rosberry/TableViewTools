@@ -54,9 +54,9 @@ class ViewController: UIViewController, TableViewManagerDelegate {
             cellItems.append(cellItem)
         }
         
-        let sectionItem = TableViewSectionItem()
-        sectionItem.cellItems = cellItems
-        
+        let sectionItem = TableViewSectionItem(cellItems: cellItems)
+        sectionItem.headerTitle = "Header title"
+        sectionItem.footerTitle = "Footer Title"
         manager.sectionItems = [sectionItem]
     }
     
