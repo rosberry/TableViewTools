@@ -1,6 +1,6 @@
 //
 //  TableViewSectionItemHeaderFooterDisplaying.swift
-//  RSBTableViewManager
+//  TableViewTools
 //
 //  Created by Dmitry Frishbuter on 23/12/2016.
 //  Copyright © 2016 Rosberry. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  TableViewManager+UITableViewDataSource.swift
-//  RSBTableViewManager
+//  TableViewTools
 //
 //  Created by Dmitry Frishbuter on 22/12/2016.
 //  Copyright © 2016 Rosberry. All rights reserved.

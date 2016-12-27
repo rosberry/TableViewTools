@@ -1,6 +1,6 @@
 //
 //  TableViewManager+UITableViewDataSourcePrefetching.swift
-//  RSBTableViewManager
+//  TableViewTools
 //
 //  Created by Artem Novichkov on 22/12/2016.
 //  Copyright © 2016 Rosberry. All rights reserved.
