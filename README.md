@@ -49,7 +49,7 @@ Then run `carthage update --platform iOS` command. For details of the installati
 
 ```
 
-### Creating section with header and footer title
+### Creating section
 
 ```swift
 	let titles = ["Item 1", "Item 2", "Item 3"]
