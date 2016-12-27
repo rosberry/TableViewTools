@@ -22,33 +22,33 @@ open class TableViewSectionItem: TableViewSectionItemProtocol {
         self.cellItems = cellItems
     }
     
-    public func titleForHeader(in tableView: UITableView) -> String? {
+    open func titleForHeader(in tableView: UITableView) -> String? {
         return headerTitle!
     }
     
-    public func heightForHeader(in tableView: UITableView) -> CGFloat {
+    open func heightForHeader(in tableView: UITableView) -> CGFloat {
         if headerTitle != nil {
             return 22.0
         }
         return 0.0
     }
     
-    public func viewForHeader(in tableView: UITableView) -> UIView? {
+    open func viewForHeader(in tableView: UITableView) -> UIView? {
         return nil
     }
     
-    public func titleForFooter(in tableView: UITableView) -> String? {
+    open func titleForFooter(in tableView: UITableView) -> String? {
         return footerTitle!
     }
     
-    public func heightForFooter(in tableView: UITableView) -> CGFloat {
+    open func heightForFooter(in tableView: UITableView) -> CGFloat {
         if footerTitle != nil {
             return 22.0
         }
         return 0.0
     }
     
-    public func viewForFooter(in tableView: UITableView) -> UIView? {
+    open func viewForFooter(in tableView: UITableView) -> UIView? {
         return nil
     }
 }
