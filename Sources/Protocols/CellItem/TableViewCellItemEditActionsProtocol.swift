@@ -25,7 +25,7 @@ public protocol TableViewCellItemEditActionsProtocol {
     ///   - editingStyle: The cell editing style corresponding to a insertion or deletion requested for the cell. Possible editing styles are insert or delete.
     ///   - tableView: The `UITableView` object requesting this information.
     /// - Returns: true if the cell item can commit editing style; otherwise, false.
-    func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool
+    func canCommit(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool
     
     /// Asks the cell item for the actions to display in response to a swipe in the cell.
     ///
@@ -112,7 +112,7 @@ public protocol TableViewCellItemEditActionsProtocol {
     ///   - indexPath: An `IndexPath` object locating the row in its section.
     ///   - sender: The object that initially sent the copy: or paste: message. T
     /// - Returns: true if the command corresponding to action should appear in the editing menu, otherwise false. The default value is false.
-    func canPerformAction(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?) -> Bool
+    func canPerform(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?) -> Bool
     
     /// Tells the cell item to perform a copy or paste operation on the content of a given row.
     ///
@@ -121,13 +121,13 @@ public protocol TableViewCellItemEditActionsProtocol {
     ///   - tableView: The `UITableView` object that is making this request.
     ///   - indexPath: An `IndexPath` object locating the row in its section.
     ///   - sender: The object that initially sent the copy: or paste: message.
-    func performAction(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?)
+    func perform(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?)
 }
 
 public extension TableViewCellItemEditActionsProtocol {
 
     func canEdit(in tableView: UITableView) -> Bool { return false }
-    func canCommitEditingStyle(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
+    func canCommit(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
     func editActions(in tableView: UITableView, at indexPath: IndexPath) -> [UITableViewRowAction]? { return nil }
     
     func editingStyle(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCellEditingStyle { return .delete }
@@ -141,6 +141,6 @@ public extension TableViewCellItemEditActionsProtocol {
     func didFinishRemovingAnimation(in tableView: UITableView, at indexPath: IndexPath) {}
     
     func shouldShowMenu(in tableView: UITableView, forRowAt indexPath: IndexPath) -> Bool { return false }
-    func canPerformAction(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?) -> Bool { return false }
-    func performAction(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?) {}
+    func canPerform(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?) -> Bool { return false }
+    func perform(_ action: Selector, in tableView: UITableView, forRowAt indexPath: IndexPath, with sender: Any?) {}
 }

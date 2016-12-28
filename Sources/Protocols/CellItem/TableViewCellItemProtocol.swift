@@ -52,7 +52,7 @@ public protocol TableViewCellItemProtocol: AnyObject {
     ///   - tableView: The table-view object requesting this information.
     ///   - indexPath: An index path locating a row in tableView.
     /// - Returns: An object inheriting from UITableViewCell that the table view can use for the specified row.
-    func cellForTableView(tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
+    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell
     
     /// Asks the cell item if the cell should be highlighted.
     ///

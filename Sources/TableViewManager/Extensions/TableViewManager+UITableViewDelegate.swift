@@ -175,14 +175,14 @@ extension TableViewManager: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
-            return cellItem.canPerformAction(action, in: tableView, forRowAt: indexPath, with: sender)
+            return cellItem.canPerform(action, in: tableView, forRowAt: indexPath, with: sender)
         }
         return false
     }
     
     public func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
-            cellItem.performAction(action, in: tableView, forRowAt: indexPath, with: sender)
+            cellItem.perform(action, in: tableView, forRowAt: indexPath, with: sender)
         }
     }
 

@@ -20,7 +20,7 @@ extension TableViewManager: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellItem = self[indexPath]!
-        let cell = cellItem.cellForTableView(tableView: tableView, at: indexPath)
+        let cell = cellItem.cell(for: tableView, at: indexPath)
         return cell
     }
     
@@ -74,7 +74,7 @@ extension TableViewManager: UITableViewDataSource {
                 let editableCellItem = cellItem as? TableViewCellItemEditActionsProtocol else {
                     return
             }
-            if editableCellItem.canCommitEditingStyle(editingStyle, in: tableView) {
+            if editableCellItem.canCommit(editingStyle, in: tableView) {
                 CATransaction.begin()
                 CATransaction.setCompletionBlock {
                     editableCellItem.didFinishRemovingAnimation(in: tableView, at: indexPath)

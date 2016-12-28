@@ -72,8 +72,8 @@ open class TableViewManager: NSObject {
     ///   - sectionItem: Section item that contains cell items to reload
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     open func reloadCellItems(_ cellItems: [TableViewCellItemProtocol],
-                                inSectionItem sectionItem: TableViewSectionItemProtocol,
-                                withRowAnimation animation: UITableViewRowAnimation) {
+                              inSectionItem sectionItem: TableViewSectionItemProtocol,
+                              withRowAnimation animation: UITableViewRowAnimation) {
         let section = sectionItems.index(where: {$0 === sectionItem})!
         var indexPaths = [IndexPath]()
         
@@ -96,8 +96,8 @@ open class TableViewManager: NSObject {
     ///   - sectionItem: Section item that contains cell items to remove
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     open func removeCellItems(_ cellItems: [TableViewCellItemProtocol],
-                                fromSectionItem sectionItem: inout TableViewSectionItemProtocol,
-                                withRowAnimation animation: UITableViewRowAnimation) {
+                              fromSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                              withRowAnimation animation: UITableViewRowAnimation) {
         let section = sectionItems.index(where: {$0 === sectionItem})!
         var indexPaths = [IndexPath]()
         var indexes = IndexSet()
@@ -123,8 +123,8 @@ open class TableViewManager: NSObject {
     ///   - sectionIndex: Index of section item that contains cell items to remove
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     open func removeCellItems(at cellIndexes: IndexSet,
-                                fromSectionItemAt sectionIndex: Int,
-                                withRowAnimation animation: UITableViewRowAnimation) {
+                              fromSectionItemAt sectionIndex: Int,
+                              withRowAnimation animation: UITableViewRowAnimation) {
         let indexPaths = cellIndexes.map { IndexPath(row: $0, section: sectionIndex) }
         
         tableView.update {
@@ -141,9 +141,9 @@ open class TableViewManager: NSObject {
     ///   - indexes: IndexSet of row positions inside specified section to insert rows
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     open func insertCellItems(_ cellItems: [TableViewCellItemProtocol],
-                                toSectionItem sectionItem: inout TableViewSectionItemProtocol,
-                                atIndexes indexes: IndexSet,
-                                withRowAnimation animation: UITableViewRowAnimation) {
+                              toSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                              atIndexes indexes: IndexSet,
+                              withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.first! <= sectionItem.cellItems.count, "It's impossible to insert item at index that is larger than count of cell items in this section")
         cellItems.forEach { registerCellItem($0) }
         guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
@@ -164,8 +164,8 @@ open class TableViewManager: NSObject {
     ///   - sectionItem: Section item to append cell items.
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     open func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
-                                toSectionItem sectionItem: inout TableViewSectionItemProtocol,
-                                withRowAnimation animation: UITableViewRowAnimation) {
+                              toSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                              withRowAnimation animation: UITableViewRowAnimation) {
         let count = sectionItem.cellItems.count
         let indexSet = IndexSet(integersIn: count...(count + cellItems.count - 1))
         insertCellItems(cellItems, toSectionItem: &sectionItem, atIndexes: indexSet, withRowAnimation: animation)
@@ -178,8 +178,8 @@ open class TableViewManager: NSObject {
     ///   - sectionIndex: Index of section to append cell items.
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     open func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
-                                toSectionItemAt sectionIndex: Int,
-                                withRowAnimation animation: UITableViewRowAnimation) {
+                              toSectionItemAt sectionIndex: Int,
+                              withRowAnimation animation: UITableViewRowAnimation) {
         var sectionItem = self[sectionIndex]
         appendCellItems(cellItems, toSectionItem: &sectionItem, withRowAnimation: animation)
     }
@@ -191,9 +191,9 @@ open class TableViewManager: NSObject {
     ///   - sectionItem: Section item to insert cell items
     ///   - animation: A constant that either specifies the kind of animation to perform when inserting the cell or requests no animation. See UITableViewRowAnimation for descriptions of the constants.
     open func replaceCellItems(at indexes: IndexSet,
-                                 withCellItems cellItems: [TableViewCellItemProtocol],
-                                 inSectionItem sectionItem: inout TableViewSectionItemProtocol,
-                                 withRowAnimation animation: UITableViewRowAnimation) {
+                               withCellItems cellItems: [TableViewCellItemProtocol],
+                               inSectionItem sectionItem: inout TableViewSectionItemProtocol,
+                               withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == cellItems.count, "It's impossible to replace not equal count of cell items")
         cellItems.forEach { registerCellItem($0) }
         
@@ -214,7 +214,7 @@ open class TableViewManager: NSObject {
     ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
     ///   - animation: A constant that either specifies the kind of animation to perform when deleting the section or requests no animation.
     open func removeSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
-                                   withRowAnimation animation: UITableViewRowAnimation) {
+                                 withRowAnimation animation: UITableViewRowAnimation) {
         var indexes = IndexSet()
         for sectionItem in sectionItems {
             let section = self.sectionItems.index(where: {$0 === sectionItem})
@@ -233,7 +233,7 @@ open class TableViewManager: NSObject {
     ///   - indexes: An index set that specifies the section items to delete. If a section exists after the specified index location, it is moved up one index location.
     ///   - animation: A constant that either specifies the kind of animation to perform when deleting the section or requests no animation.
     open func removeSectionItems(at indexes: IndexSet,
-                                   withRowAnimation animation: UITableViewRowAnimation) {
+                                 withRowAnimation animation: UITableViewRowAnimation) {
         tableView.update {
             self.sectionItems.remove(at: indexes)
             tableView.deleteSections(indexes, with: animation)
@@ -247,8 +247,8 @@ open class TableViewManager: NSObject {
     ///   - indexes: An index set that specifies the sections to insert in the table view. If a section already exists at the specified index location, it is moved down one index location.
     ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     open func insertSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
-                                   atIndexes indexes: IndexSet,
-                                   withRowAnimation animation: UITableViewRowAnimation) {
+                                 atIndexes indexes: IndexSet,
+                                 withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.first! <= self.sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
         sectionItems.forEach { registerSectionItem($0) }
         
@@ -264,7 +264,7 @@ open class TableViewManager: NSObject {
     ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
     ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     open func appendSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
-                                   withRowAnimation animation: UITableViewRowAnimation) {
+                                 withRowAnimation animation: UITableViewRowAnimation) {
         let count = self.sectionItems.count
         let indexSet = IndexSet(integersIn: count...(count + sectionItems.count - 1))
         insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
@@ -277,8 +277,8 @@ open class TableViewManager: NSObject {
     ///   - sectionItems: An array of `TableViewSectionItemProtocol` objects
     ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     open func replaceSectionItems(at indexes: IndexSet,
-                                    withSectionItems sectionItems: [TableViewSectionItemProtocol],
-                                    rowAnimation animation: UITableViewRowAnimation) {
+                                  withSectionItems sectionItems: [TableViewSectionItemProtocol],
+                                  rowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.count == sectionItems.count, "It's impossible to replace not equal count of section items")
         sectionItems.forEach { registerSectionItem($0) }
         
@@ -297,7 +297,7 @@ open class TableViewManager: NSObject {
     ///   - sectionItem: `TableViewSectionItemProtocol` object, that contains passed cell item
     /// - Returns: Frame of the cell, associated with passed cell item
     open func frameForCellItem(_ cellItem: TableViewCellItemProtocol,
-                                 inSectionItem sectionItem: TableViewSectionItemProtocol) -> CGRect? {
+                               inSectionItem sectionItem: TableViewSectionItemProtocol) -> CGRect? {
         guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}),
             let cellItemIndex = sectionItem.cellItems.index(where: {$0 === cellItem}) else {
                 return nil
@@ -315,9 +315,9 @@ open class TableViewManager: NSObject {
     ///   - scrollPosition: A constant that identifies a relative position in the table view (top, middle, bottom) for row when scrolling concludes. See UITableViewScrollPosition for descriptions of valid constants.
     ///   - animated: true if you want to animate the change in position; false if it should be immediate.
     open func scrollToCellItem(_ cellItem: TableViewCellItemProtocol,
-                                 inSectionItem sectionItem: TableViewSectionItemProtocol,
-                                 atScrollPosition scrollPosition: UITableViewScrollPosition,
-                                 animated: Bool) {
+                               inSectionItem sectionItem: TableViewSectionItemProtocol,
+                               atScrollPosition scrollPosition: UITableViewScrollPosition,
+                               animated: Bool) {
         guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}),
             let cellItemIndex = sectionItem.cellItems.index(where: {$0 === cellItem}) else {
                 return
