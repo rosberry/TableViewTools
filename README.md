@@ -80,7 +80,7 @@ For basic usage, inside cell item should be implemented these entries from Table
 	        return 100
 	    }
 	    
-	    func cellForTableView(tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+	    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
 	        let cell: ExampleTableViewCell = tableView.dequeueReusableCell()
 	        return cell
 	    }
