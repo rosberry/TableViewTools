@@ -72,7 +72,7 @@ For basic usage, inside cell item should be implemented these entries from Table
 
 	class ExampleTableViewCellItem: TableViewCellItemProtocol {
 
-		var reuseType: ReuseType = ReuseType(cellClass: ExampleTableViewCell.self)
+		var reuseType = ReuseType(cellClass: ExampleTableViewCell.self)
 	    
 	    func height(in tableView: UITableView) -> CGFloat {
 	        return 100
