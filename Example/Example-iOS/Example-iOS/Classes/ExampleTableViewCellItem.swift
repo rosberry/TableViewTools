@@ -12,14 +12,12 @@ import TableViewTools
 class ExampleTableViewCellItem: TableViewCellItemProtocol, TableViewCellItemEditActionsProtocol {
     
     var itemDidSelectHandler: SelectionHandler?
+    var reuseType = ReuseType(cellClass: ExampleTableViewCell.self)
+    
     var title: String
     
     init(title: String) {
         self.title = title
-    }
-    
-    var reuseType: ReuseType {
-        return ReuseType(cellClass: ExampleTableViewCell.self)
     }
     
     func height(in tableView: UITableView) -> CGFloat {
