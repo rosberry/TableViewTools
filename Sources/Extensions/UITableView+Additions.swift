@@ -9,20 +9,20 @@
 import UIKit.UITableView
 
 public enum ReuseType {
-    case byStoryboard(identifier: String)
-    case byNib(nib: UINib, identifier: String)
-    case byClass(cellClass: UITableViewCell.Type, identifier: String)
+    case byStoryboardIdentifier(String)
+    case byNib(UINib, identifier: String)
+    case byClass(UITableViewCell.Type, identifier: String)
     
     public var identifier: String {
         switch self {
-        case let .byStoryboard(identifier): return identifier
-        case let .byNib(_, identifier: identifier): return identifier
-        case let .byClass(cellClass: _, identifier: identifier): return identifier
+        case let .byStoryboardIdentifier(identifier):   return identifier
+        case let .byNib(_, identifier: identifier):     return identifier
+        case let .byClass(_, identifier: identifier):   return identifier
         }
     }
     
     public init(cellClass: UITableViewCell.Type) {
-        self = .byClass(cellClass: cellClass, identifier: NSStringFromClass(cellClass))
+        self = .byClass(cellClass, identifier: NSStringFromClass(cellClass))
     }
 }
 
@@ -30,10 +30,8 @@ public extension UITableView {
     
     func register(by type: ReuseType) {
         switch type {
-        case let .byNib(nib: nib, identifier: identifier):
-            register(nib, forCellReuseIdentifier: identifier)
-        case let .byClass(cellClass: cellClass, identifier: identifier):
-            register(cellClass, forCellReuseIdentifier: identifier)
+        case let .byNib(nib, identifier: identifier):          register(nib, forCellReuseIdentifier: identifier)
+        case let .byClass(cellClass, identifier: identifier):  register(cellClass, forCellReuseIdentifier: identifier)
         default: break
         }
     }
