@@ -1,6 +1,6 @@
 //
 //  ClosureWrapper.swift
-//  VanHaren
+//  TableViewTools
 //
 //  Created by Nikita Ermolenko on 09/12/2016.
 //  Copyright © 2016 Rosberry. All rights reserved.
