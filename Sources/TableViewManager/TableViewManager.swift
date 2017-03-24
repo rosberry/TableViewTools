@@ -55,6 +55,7 @@ open class TableViewManager: NSObject {
     ///
     /// - Parameter index: The index of the section item to access.
     public subscript(index: Int) -> TableViewSectionItemProtocol? {
+        guard index < sectionItems.count else { return nil }
         return sectionItems[index]
     }
     
