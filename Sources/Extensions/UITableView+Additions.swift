@@ -37,7 +37,7 @@ public extension UITableView {
     }
     
     func dequeueReusableCell<T: UITableViewCell>() -> T {
-        return dequeueReusableCell(withIdentifier: NSStringFromClass(T.self)) as! T
+        return dequeueReusableCell(withIdentifier: NSStringFromClass(T.self)) as! T // swiftlint:disable:this force_cast
     }
     
     /// Calls `beginUpdates()` before execution of closure in parameter and `endUpdates()` after

@@ -11,7 +11,7 @@ import UIKit.UITableView
 public protocol TableViewSectionItemProtocol: AnyObject {
     
     /// Array of `TableViewCellItemProtocol` objects, each responds for configuration of cell at specified index path in table view.
-    var cellItems : [TableViewCellItemProtocol]  { get set }
+    var cellItems: [TableViewCellItemProtocol]  { get set }
 
     /// Should return the title of the header of the specified section of the table view.
     ///

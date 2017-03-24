@@ -368,7 +368,7 @@ open class TableViewManager: NSObject {
     
     // MARK: - Private
     
-    private func registerSectionItem(_ sectionItem : TableViewSectionItemProtocol) {
+    private func registerSectionItem(_ sectionItem: TableViewSectionItemProtocol) {
         sectionItem.cellItems.forEach { registerCellItem($0) }
     }
     

@@ -18,17 +18,17 @@ public protocol TableViewCellItemProtocol: AnyObject {
     /// The closure that handles `tableView(_:shouldHighlightRowAt:)` method calling.
     var itemShouldHighlightHandler: HighlightingResolver? { get set }
     /// The closure that handles `tableView(_:didHighlightRowAt:)` method calling.
-    var itemDidHighlightHandler:    HighlightingHandler? { get set }
+    var itemDidHighlightHandler: HighlightingHandler? { get set }
     /// The closure that handles `tableView(_:didUnhighlightRowAt:)` method calling.
-    var itemDidUnhighlightHandler:  HighlightingHandler? { get set }
+    var itemDidUnhighlightHandler: HighlightingHandler? { get set }
     
     /// The closure that handles `tableView(_:didSelectRowAt:)` method calling.
-    var itemDidSelectHandler:   SelectionHandler? { get set }
+    var itemDidSelectHandler: SelectionHandler? { get set }
     /// The closure that handles `tableView(_:didDeselectRowAt:)` method calling.
     var itemDidDeselectHandler: SelectionHandler? { get set }
     
     /// The closure that handles `tableView(_:willSelectRowAt:)` method calling.
-    var itemWillSelectHandler:   SelectionResolver? { get set }
+    var itemWillSelectHandler: SelectionResolver? { get set }
     /// The closure that handles `tableView(_:willDeselectRowAt:)` method calling.
     var itemWillDeselectHandler: SelectionResolver? { get set }
     
@@ -45,7 +45,7 @@ public protocol TableViewCellItemProtocol: AnyObject {
     ///
     /// - Parameter tableView: The table-view object requesting this information.
     /// - Returns: A nonnegative floating-point value that estimates the height (in points) that row should be. Return UITableViewAutomaticDimension if you have no estimate.
-    func estimatedHeight(in tableView:UITableView) -> CGFloat
+    func estimatedHeight(in tableView: UITableView) -> CGFloat
     
     /// Asks the cell item for cell configured for displayong at specified index path
     ///

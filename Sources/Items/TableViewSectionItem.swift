@@ -10,7 +10,7 @@ import UIKit.UITableView
 
 open class TableViewSectionItem: TableViewSectionItemProtocol {
     
-    public var cellItems : [TableViewCellItemProtocol]
+    public var cellItems: [TableViewCellItemProtocol]
     public var headerTitle: String?
     public var footerTitle: String?
     

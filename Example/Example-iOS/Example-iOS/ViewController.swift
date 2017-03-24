@@ -87,4 +87,3 @@ class ViewController: UIViewController, TableViewManagerDelegate {
         destinationSectionItem.cellItems.insert(sourceCellItem, at: destinationIndexPath.row)
     }
 }
-
