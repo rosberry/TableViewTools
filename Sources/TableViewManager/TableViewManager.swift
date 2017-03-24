@@ -54,7 +54,7 @@ open class TableViewManager: NSObject {
     /// Accesses the section item at the specified position.
     ///
     /// - Parameter index: The index of the section item to access.
-    public subscript(index: Int) -> TableViewSectionItemProtocol {
+    public subscript(index: Int) -> TableViewSectionItemProtocol? {
         return sectionItems[index]
     }
     
@@ -180,7 +180,7 @@ open class TableViewManager: NSObject {
     open func appendCellItems(_ cellItems: [TableViewCellItemProtocol],
                               toSectionItemAt sectionIndex: Int,
                               withRowAnimation animation: UITableViewRowAnimation) {
-        var sectionItem = self[sectionIndex]
+        guard var sectionItem = self[sectionIndex] else { return }
         appendCellItems(cellItems, toSectionItem: &sectionItem, withRowAnimation: animation)
     }
     

@@ -15,7 +15,8 @@ extension TableViewManager: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self[section].cellItems.count
+        guard let sectionItem = self[section] else { return 0 }
+        return sectionItem.cellItems.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -25,11 +26,11 @@ extension TableViewManager: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self[section].titleForHeader(in: tableView)
+        return self[section]?.titleForHeader(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return self[section].titleForFooter(in: tableView)
+        return self[section]?.titleForFooter(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -67,10 +68,9 @@ extension TableViewManager: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        var sectionItem = self[indexPath.section]
-        let cellItem = self[indexPath]
         if editingStyle == .delete {
-            guard let cellItem = cellItem,
+            guard var sectionItem = self[indexPath.section],
+                let cellItem = self[indexPath],
                 let editableCellItem = cellItem as? TableViewCellItemEditActionsProtocol else {
                     return
             }
@@ -86,6 +86,6 @@ extension TableViewManager: UITableViewDataSource {
             }
         }
     }
-
+    
 }
 

@@ -60,19 +60,21 @@ extension TableViewManager: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self[section].heightForHeader(in: tableView)
+        guard let sectionItem = self[section] else { return 0 }
+        return sectionItem.heightForHeader(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return self[section].heightForFooter(in: tableView)
+        guard let sectionItem = self[section] else { return 0 }
+        return sectionItem.heightForFooter(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self[section].viewForHeader(in: tableView)
+        return self[section]?.viewForHeader(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return self[section].viewForFooter(in: tableView)
+        return self[section]?.viewForFooter(in: tableView)
     }
     
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
