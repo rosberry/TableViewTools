@@ -1,6 +1,5 @@
 # TableViewTools
 
-[![CI Status](http://img.shields.io/travis/Dmitry Frishbuter/TableViewTools.svg?style=flat)](https://travis-ci.org/Dmitry Frishbuter/TableViewTools)
 [![Version](https://img.shields.io/cocoapods/v/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
 [![License](https://img.shields.io/cocoapods/l/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
 [![Platform](https://img.shields.io/cocoapods/p/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
@@ -8,7 +7,7 @@
 
 ## Overview
 
-This repo contains the powerful tool for making your UITableView usage simply and comfortable! It allows you to move your UITableView configuration logic to separated objects, such as inheritors of TableViewSectionItemProtocol and TableViewCellItemProtocol, and simply register, add and remove cells from your table view.
+This repo contains the powerful tool for making your `UITableView` usage simply and comfortable! It allows you to move your `UITableView` configuration logic to separated objects, such as inheritors of `TableViewSectionItemProtocol` and `TableViewCellItemProtocol`, and simply register, add and remove cells from your table view.
 
 ## Example
 
@@ -45,44 +44,41 @@ Then run `carthage update --platform iOS` command. For details of the installati
 ### Creating manager
 
 ```swift
-	manager = TableViewManager(tableView: tableView)
-
+manager = TableViewManager(tableView: tableView)
 ```
 
 ### Creating section
 
 ```swift
-	let titles = ["Item 1", "Item 2", "Item 3"]
-    var cellItems = [ExampleTableViewCellItem]()
-    titles.forEach { title in
-        let cellItem = ExampleTableViewCellItem(title: title)
-        cellItems.append(cellItem)
-    }
-    
-    let sectionItem = TableViewSectionItem(cellItems: cellItems)
-    manager.sectionItems = [sectionItem]
+let titles = ["Item 1", "Item 2", "Item 3"]
+var cellItems = [ExampleTableViewCellItem]()
+titles.forEach { title in
+let cellItem = ExampleTableViewCellItem(title: title)
+    cellItems.append(cellItem)
+}
 
+let sectionItem = TableViewSectionItem(cellItems: cellItems)
+manager.sectionItems = [sectionItem]
 ```
 
 ### Cell item implementation
 
-For basic usage, inside cell item should be implemented these entries from TableViewCellItemProtocol:
+For basic usage, inside cell item should be implemented these entries from `TableViewCellItemProtocol`:
 
 ```swift
+class ExampleTableViewCellItem: TableViewCellItemProtocol {
 
-	class ExampleTableViewCellItem: TableViewCellItemProtocol {
-
-		var reuseType = ReuseType(cellClass: ExampleTableViewCell.self)
+    var reuseType = ReuseType(cellClass: ExampleTableViewCell.self)
 	    
-	    func height(in tableView: UITableView) -> CGFloat {
-	        return 100
-	    }
+    func height(in tableView: UITableView) -> CGFloat {
+        return 100
+    }
 	    
-	    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-	        let cell: ExampleTableViewCell = tableView.dequeueReusableCell()
-	        return cell
-	    }
-	}
+    func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
+        let cell: ExampleTableViewCell = tableView.dequeueReusableCell()
+        return cell
+    }
+}
 ```
 
 ## Authors
