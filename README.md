@@ -1,43 +1,39 @@
 # TableViewTools
 
-[![Version](https://img.shields.io/cocoapods/v/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
-[![License](https://img.shields.io/cocoapods/l/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
 [![Platform](https://img.shields.io/cocoapods/p/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
-[![carthage compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](https://github.com/Carthage/Carthage) 
+[![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg)](https://swift.org/)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](https://github.com/Carthage/Carthage)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/TableViewTools.svg)]
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
-## Overview
-
-This repo contains the powerful tool for making your `UITableView` usage simply and comfortable! It allows you to move your `UITableView` configuration logic to separated objects, such as inheritors of `TableViewSectionItemProtocol` and `TableViewCellItemProtocol`, and simply register, add and remove cells from your table view.
-
-## Example
-
-To run the example project, run `pod try`, or simply clone the repo and open project Example-iOS.
+Powerful tool for making your `UITableView` usage simply and comfortable. It allows you to move your `UITableView` configuration logic to separated objects and simply register, add and remove cells from your table view.
 
 ## Requirements
 
+- iOS 8.0+
+- Xcode 8.0+
+
 ## Installation
-### CocoaPods
 
-TableViewTools is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+#### Carthage
+Create a `Cartfile` that lists the framework and run `carthage update`. Follow the [instructions](https://github.com/Carthage/Carthage#adding-frameworks-to-an-application) to add the framework to your project.
+
+```
+github "rosberry/TableViewTools"
+``` 
+
+#### CocoaPods
+You can use [CocoaPods](http://cocoapods.org/) to install TableViewTools by adding it to your `Podfile`:
 
 ```ruby
-pod "TableViewTools"
+platform :ios, '8.0'
+use_frameworks!
+pod 'TableViewTools'
 ```
 
-Then run `pod install` command. For details of the installation and usage of CocoaPods, visit [its official website](https://cocoapods.org).
+#### Manually
 
-### Carthage
-
-To install TableViewTools using Carthage, add the following lines to your `Cartfile`:
-
-```ruby
-github "Rosberry/TableViewTools"
-```
-
-Then run `carthage update --platform iOS` command. For details of the installation and usage of Carthage, visit [its  repo website](https://github.com/Carthage/Carthage).
-
----
+Drag `Sources` folder from [last release](https://github.com/rosberry/TableViewTools/releases) into your project.
 
 ## Basic usage
 
@@ -86,6 +82,12 @@ class ExampleTableViewCellItem: TableViewCellItemProtocol {
 * Dmitry Frishbuter, dmitry.frishbuter@rosberry.com
 * Artem Novichkov, artem.novichkov@rosberry.com
 * Nikita Ermolenko, nikita.ermolenko@rosberry.com
+
+## About
+
+This project is owned and maintained by Rosberry. We build mobile apps for users worldwide 🌏
+
+Check out our [open source projects](https://github.com/rosberry) or give us a high-five on 🐦 [@rosberryapps](http://twitter.com/RosberryApps)
 
 ## License
 
