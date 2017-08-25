@@ -6,7 +6,7 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/TableViewTools.svg)](https://img.shields.io/cocoapods/v/TableViewTools.svg)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
-Powerful tool for making your `UITableView` usage simply and comfortable. It allows you to move your `UITableView` configuration logic to separated objects and simply register, add and remove cells from your table view.
+Powerful tool for making your `UITableView` usage simple and comfortable. It allows you to move your `UITableView` configuration logic to separated objects and simply register, add and remove cells from your table view.
 
 ## Requirements
 
