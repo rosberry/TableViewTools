@@ -33,10 +33,19 @@ open class TableViewManager: NSObject {
         }
     }
     
-    /// Array of `TableViewSectionItemProtocol` objects, each responds for configuration of specified section in table view.
-    public var sectionItems = [TableViewSectionItemProtocol]() {
+    internal var _sectionItems = [TableViewSectionItemProtocol]() { // swiftlint:disable:this variable_name
         didSet {
-            sectionItems.forEach { registerSectionItem($0) }
+            _sectionItems.forEach { registerSectionItem($0) }
+        }
+    }
+    
+    /// Array of `TableViewSectionItemProtocol` objects, each responds for configuration of specified section in table view.
+    public var sectionItems: [TableViewSectionItemProtocol] {
+        get {
+            return _sectionItems
+        }
+        set {
+            _sectionItems = newValue
             tableView.reloadData()
         }
     }
@@ -55,8 +64,8 @@ open class TableViewManager: NSObject {
     ///
     /// - Parameter index: The index of the section item to access.
     public subscript(index: Int) -> TableViewSectionItemProtocol? {
-        guard index < sectionItems.count else { return nil }
-        return sectionItems[index]
+        guard index < _sectionItems.count else { return nil }
+        return _sectionItems[index]
     }
     
     /// Accesses the cell item in the specified section and at the specified position.
@@ -75,7 +84,7 @@ open class TableViewManager: NSObject {
     open func reloadCellItems(_ cellItems: [TableViewCellItemProtocol],
                               inSectionItem sectionItem: TableViewSectionItemProtocol,
                               withRowAnimation animation: UITableViewRowAnimation) {
-        let section = sectionItems.index(where: {$0 === sectionItem})!
+        let section = _sectionItems.index(where: {$0 === sectionItem})!
         var indexPaths = [IndexPath]()
         
         for cellItem in cellItems {
@@ -99,7 +108,7 @@ open class TableViewManager: NSObject {
     open func removeCellItems(_ cellItems: [TableViewCellItemProtocol],
                               fromSectionItem sectionItem: inout TableViewSectionItemProtocol,
                               withRowAnimation animation: UITableViewRowAnimation) {
-        let section = sectionItems.index(where: {$0 === sectionItem})!
+        let section = _sectionItems.index(where: {$0 === sectionItem})!
         var indexPaths = [IndexPath]()
         var indexes = IndexSet()
         
@@ -129,7 +138,7 @@ open class TableViewManager: NSObject {
         let indexPaths = cellIndexes.map { IndexPath(row: $0, section: sectionIndex) }
         
         tableView.update {
-            sectionItems[sectionIndex].cellItems.remove(at: cellIndexes)
+            _sectionItems[sectionIndex].cellItems.remove(at: cellIndexes)
             tableView.deleteRows(at: indexPaths, with: animation)
         }
     }
@@ -147,7 +156,7 @@ open class TableViewManager: NSObject {
                               withRowAnimation animation: UITableViewRowAnimation) {
         precondition(indexes.first! <= sectionItem.cellItems.count, "It's impossible to insert item at index that is larger than count of cell items in this section")
         cellItems.forEach { registerCellItem($0) }
-        guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
+        guard let section = _sectionItems.index(where: {$0 === sectionItem}) else {
             return
         }
         let indexPaths = indexes.map { IndexPath(row: $0, section: section) }
@@ -200,7 +209,7 @@ open class TableViewManager: NSObject {
         
         tableView.update {
             sectionItem.cellItems.replace(cellItems, at: indexes)
-            guard let section = sectionItems.index(where: {$0 === sectionItem}) else {
+            guard let section = _sectionItems.index(where: {$0 === sectionItem}) else {
                 return
             }
             let indexPaths = indexes.map { IndexPath(row: $0, section: section) }
@@ -218,13 +227,13 @@ open class TableViewManager: NSObject {
                                  withRowAnimation animation: UITableViewRowAnimation) {
         var indexes = IndexSet()
         for sectionItem in sectionItems {
-            let section = self.sectionItems.index(where: {$0 === sectionItem})
+            let section = self._sectionItems.index(where: {$0 === sectionItem})
             precondition(section != nil, "It's impossible to remove section items that are not contained in section items array")
             indexes.insert(section!)
         }
         
         tableView.update {
-            self.sectionItems.remove(at: indexes)
+            self._sectionItems.remove(at: indexes)
             tableView.deleteSections(indexes, with: animation)
         }
     }
@@ -236,7 +245,7 @@ open class TableViewManager: NSObject {
     open func removeSectionItems(at indexes: IndexSet,
                                  withRowAnimation animation: UITableViewRowAnimation) {
         tableView.update {
-            self.sectionItems.remove(at: indexes)
+            self._sectionItems.remove(at: indexes)
             tableView.deleteSections(indexes, with: animation)
         }
     }
@@ -250,11 +259,11 @@ open class TableViewManager: NSObject {
     open func insertSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                  atIndexes indexes: IndexSet,
                                  withRowAnimation animation: UITableViewRowAnimation) {
-        precondition(indexes.first! <= self.sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
+        precondition(indexes.first! <= self._sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
         sectionItems.forEach { registerSectionItem($0) }
         
         tableView.update {
-            self.sectionItems.insert(sectionItems, at: indexes)
+            self._sectionItems.insert(sectionItems, at: indexes)
             tableView.insertSections(indexes, with: animation)
         }
     }
@@ -266,7 +275,7 @@ open class TableViewManager: NSObject {
     ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     open func appendSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                  withRowAnimation animation: UITableViewRowAnimation) {
-        let count = self.sectionItems.count
+        let count = self._sectionItems.count
         let indexSet = IndexSet(integersIn: count...(count + sectionItems.count - 1))
         insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
     }
@@ -284,7 +293,7 @@ open class TableViewManager: NSObject {
         sectionItems.forEach { registerSectionItem($0) }
         
         tableView.update {
-            self.sectionItems.replace(sectionItems, at: indexes)
+            self._sectionItems.replace(sectionItems, at: indexes)
             tableView.reloadSections(indexes, with: animation)
         }
     }
@@ -299,7 +308,7 @@ open class TableViewManager: NSObject {
     /// - Returns: Frame of the cell, associated with passed cell item
     open func frameForCellItem(_ cellItem: TableViewCellItemProtocol,
                                inSectionItem sectionItem: TableViewSectionItemProtocol) -> CGRect? {
-        guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}),
+        guard let sectionItemIndex = _sectionItems.index(where: {$0 === sectionItem}),
             let cellItemIndex = sectionItem.cellItems.index(where: {$0 === cellItem}) else {
                 return nil
         }
@@ -319,7 +328,7 @@ open class TableViewManager: NSObject {
                                inSectionItem sectionItem: TableViewSectionItemProtocol,
                                atScrollPosition scrollPosition: UITableViewScrollPosition,
                                animated: Bool) {
-        guard let sectionItemIndex = sectionItems.index(where: {$0 === sectionItem}),
+        guard let sectionItemIndex = _sectionItems.index(where: {$0 === sectionItem}),
             let cellItemIndex = sectionItem.cellItems.index(where: {$0 === cellItem}) else {
                 return
         }
@@ -331,7 +340,7 @@ open class TableViewManager: NSObject {
     ///
     /// - Parameter animated: true if you want to animate the change in position; false if it should be immediate.
     open func scrollToTopAnimated(animated: Bool) {
-        guard let sectionItem = self.sectionItems.first,
+        guard let sectionItem = self._sectionItems.first,
             let cellItem = sectionItem.cellItems.first else {
                 return
         }
@@ -361,8 +370,8 @@ open class TableViewManager: NSObject {
     /// - Parameter indexPath: The index path locating the section in the table view.
     /// - Returns: A section item associated with section of the table, or nil if the section item wasn't added to manager or indexPath.section is out of range.
     open func sectionItem(for indexPath: IndexPath) -> TableViewSectionItemProtocol? {
-        if indexPath.section < sectionItems.count {
-            return sectionItems[indexPath.section]
+        if indexPath.section < _sectionItems.count {
+            return _sectionItems[indexPath.section]
         }
         return nil
     }
