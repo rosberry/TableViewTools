@@ -11,7 +11,7 @@ import UIKit.UITableView
 extension TableViewManager: UITableViewDataSource {
     
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return _sectionItems.count
+        return sectionItems.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

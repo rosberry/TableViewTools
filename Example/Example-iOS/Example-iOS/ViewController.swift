@@ -77,8 +77,8 @@ class ViewController: UIViewController, TableViewManagerDelegate {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard let sourceSectionItem = manager[sourceIndexPath.section] else { return }
-        guard let destinationSectionItem = manager[destinationIndexPath.section] else { return }
+        let sourceSectionItem = manager[sourceIndexPath.section]
+        let destinationSectionItem = manager[destinationIndexPath.section]
         
         let sourceCellItem = sourceSectionItem.cellItems[sourceIndexPath.row]
         guard let index = sourceSectionItem.cellItems.index(where: {$0 === sourceCellItem}) else { return }
