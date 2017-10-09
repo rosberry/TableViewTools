@@ -24,7 +24,7 @@ open class TableViewManager: NSObject {
         didSet {
             if isPrefetchingEnabled {
                 if #available(iOS 10.0, *) {
-                    self.tableView.prefetchDataSource = self
+                    tableView.prefetchDataSource = self
                 }
                 else {
                     fatalError("Prefetching allowed only on iOS versions greater than or equal to 10.0")
@@ -218,7 +218,7 @@ open class TableViewManager: NSObject {
                                  withRowAnimation animation: UITableViewRowAnimation) {
         var indexes = IndexSet()
         for sectionItem in sectionItems {
-            let section = self.sectionItems.index(where: {$0 === sectionItem})
+            let section = sectionItems.index(where: {$0 === sectionItem})
             precondition(section != nil, "It's impossible to remove section items that are not contained in section items array")
             indexes.insert(section!)
         }
@@ -250,7 +250,7 @@ open class TableViewManager: NSObject {
     open func insertSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                  atIndexes indexes: IndexSet,
                                  withRowAnimation animation: UITableViewRowAnimation) {
-        precondition(indexes.first! <= self.sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
+        precondition(indexes.first! <= sectionItems.count, "It's impossible to insert item at index that is larger than count of section items")
         sectionItems.forEach { registerSectionItem($0) }
         
         tableView.update {
@@ -266,7 +266,7 @@ open class TableViewManager: NSObject {
     ///   - animation: A constant that indicates how the insertion is to be animated, for example, fade in or slide in from the left. See UITableViewRowAnimation for descriptions of these constants.
     open func appendSectionItems(_ sectionItems: [TableViewSectionItemProtocol],
                                  withRowAnimation animation: UITableViewRowAnimation) {
-        let count = self.sectionItems.count
+        let count = sectionItems.count
         let indexSet = IndexSet(integersIn: count...(count + sectionItems.count - 1))
         insertSectionItems(sectionItems, atIndexes: indexSet, withRowAnimation: animation)
     }
@@ -331,7 +331,7 @@ open class TableViewManager: NSObject {
     ///
     /// - Parameter animated: true if you want to animate the change in position; false if it should be immediate.
     open func scrollToTopAnimated(animated: Bool) {
-        guard let sectionItem = self.sectionItems.first,
+        guard let sectionItem = sectionItems.first,
             let cellItem = sectionItem.cellItems.first else {
                 return
         }
@@ -348,7 +348,7 @@ open class TableViewManager: NSObject {
     /// - Parameter indexPath: The index path locating the row in the table view.
     /// - Returns: An cell item associated with cell of the table, or nil if the cell item wasn't added to manager or indexPath is out of range.
     open func cellItem(for indexPath: IndexPath) -> TableViewCellItemProtocol? {
-        if let cellItems = self.sectionItem(for: indexPath)?.cellItems {
+        if let cellItems = sectionItem(for: indexPath)?.cellItems {
             if indexPath.row < cellItems.count {
                 return cellItems[indexPath.row]
             }
