@@ -28,8 +28,8 @@ class ViewController: UIViewController, TableViewManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAction(sender:)))
-        let plusItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertAction(sender:)))
+        let editItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editAction))
+        let plusItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertAction))
         navigationItem.rightBarButtonItems = [editItem, plusItem]
         view.addSubview(tableView)
         
@@ -66,19 +66,19 @@ class ViewController: UIViewController, TableViewManagerDelegate {
         tableView.frame = view.bounds
     }
     
-    func editAction(sender: Any?) {
+    @objc func editAction() {
         tableView.isEditing = !tableView.isEditing
         tableView.reloadData()
     }
     
-    func insertAction(sender: Any?) {
+    @objc func insertAction() {
         let newItem = ExampleTableViewCellItem(title: "Inserted cell")
         manager.appendCellItems([newItem], toSectionItemAt: 0, withRowAnimation: .automatic)
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        guard let sourceSectionItem = manager[sourceIndexPath.section] else { return }
-        guard let destinationSectionItem = manager[destinationIndexPath.section] else { return }
+        guard let sourceSectionItem = manager[sourceIndexPath.section],
+            let destinationSectionItem = manager[destinationIndexPath.section] else { return }
         
         let sourceCellItem = sourceSectionItem.cellItems[sourceIndexPath.row]
         guard let index = sourceSectionItem.cellItems.index(where: {$0 === sourceCellItem}) else { return }
