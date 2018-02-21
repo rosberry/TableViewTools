@@ -23,7 +23,7 @@ open class TableViewSectionItem: TableViewSectionItemProtocol {
     }
     
     open func titleForHeader(in tableView: UITableView) -> String? {
-        return headerTitle!
+        return headerTitle
     }
     
     open func heightForHeader(in tableView: UITableView) -> CGFloat {
@@ -38,7 +38,7 @@ open class TableViewSectionItem: TableViewSectionItemProtocol {
     }
     
     open func titleForFooter(in tableView: UITableView) -> String? {
-        return footerTitle!
+        return footerTitle
     }
     
     open func heightForFooter(in tableView: UITableView) -> CGFloat {
