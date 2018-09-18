@@ -25,7 +25,7 @@ public protocol TableViewCellItemEditActionsProtocol {
     ///   - editingStyle: The cell editing style corresponding to a insertion or deletion requested for the cell. Possible editing styles are insert or delete.
     ///   - tableView: The `UITableView` object requesting this information.
     /// - Returns: true if the cell item can commit editing style; otherwise, false.
-    func canCommit(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool
+    func canCommit(_ editingStyle: UITableViewCell.EditingStyle, in tableView: UITableView) -> Bool
     
     /// Asks the cell item for the actions to display in response to a swipe in the cell.
     ///
@@ -42,7 +42,7 @@ public protocol TableViewCellItemEditActionsProtocol {
     ///   - tableView: The table view requesting this information.
     ///   - indexPath: An index path locating a row in tableView.
     /// - Returns: The editing style of the cell for the row identified by indexPath.
-    func editingStyle(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCellEditingStyle
+    func editingStyle(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell.EditingStyle
     
     /// Changes the default title of the delete-confirmation button.
     /// By default, the delete-confirmation button, which appears on the right side of the cell, has the title of “Delete”. The table view displays this button when the user attempts to delete a row, either by swiping the row or tapping the red minus icon in editing mode. You can implement this method to return an alternative title, which should be localized.
@@ -127,10 +127,10 @@ public protocol TableViewCellItemEditActionsProtocol {
 public extension TableViewCellItemEditActionsProtocol {
 
     func canEdit(in tableView: UITableView) -> Bool { return false }
-    func canCommit(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool { return false }
+    func canCommit(_ editingStyle: UITableViewCell.EditingStyle, in tableView: UITableView) -> Bool { return false }
     func editActions(in tableView: UITableView, at indexPath: IndexPath) -> [UITableViewRowAction]? { return nil }
     
-    func editingStyle(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCellEditingStyle { return .delete }
+    func editingStyle(in tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell.EditingStyle { return .delete }
     func titleForDeleteConfirmationButton(in tableView: UITableView, at indexPath: IndexPath) -> String? { return "Delete" }
     func shouldIndentWhileEditing(in tableView: UITableView, at indexPath: IndexPath) -> Bool { return true }
     

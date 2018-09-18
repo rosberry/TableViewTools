@@ -152,7 +152,7 @@ extension TableViewManager: UITableViewDelegate {
         }
     }
     
-    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    public func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if let cellItem = self[indexPath] as? TableViewCellItemEditActionsProtocol {
             return cellItem.editingStyle(in: tableView, at: indexPath)
         }
