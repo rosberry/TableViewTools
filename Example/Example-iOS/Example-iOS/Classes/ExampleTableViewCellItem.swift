@@ -21,7 +21,7 @@ class ExampleTableViewCellItem: TableViewCellItemProtocol, TableViewCellItemEdit
     }
     
     func height(in tableView: UITableView) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return UITableView.automaticDimension
     }
     
     func cell(for tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
@@ -34,7 +34,7 @@ class ExampleTableViewCellItem: TableViewCellItemProtocol, TableViewCellItemEdit
         return true
     }
 
-    func canCommit(_ editingStyle: UITableViewCellEditingStyle, in tableView: UITableView) -> Bool {
+    func canCommit(_ editingStyle: UITableViewCell.EditingStyle, in tableView: UITableView) -> Bool {
         return true
     }
     

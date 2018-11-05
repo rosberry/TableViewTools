@@ -9,6 +9,12 @@
 import UIKit.UITableView
 
 extension TableViewManager: UITableViewDataSource {
+
+    #if swift(>=4.2)
+    public typealias EditingStyle = UITableViewCell.EditingStyle
+    #else
+    public typealias EditingStyle = UITableViewCellEditingStyle
+    #endif
     
     public func numberOfSections(in tableView: UITableView) -> Int {
         return sectionItems.count
@@ -67,7 +73,7 @@ extension TableViewManager: UITableViewDataSource {
         return false
     }
     
-    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, commit editingStyle: EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             guard var sectionItem = self[indexPath.section],
                 let cellItem = self[indexPath],

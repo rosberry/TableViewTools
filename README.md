@@ -1,7 +1,7 @@
 # TableViewTools
 
 [![Platform](https://img.shields.io/cocoapods/p/TableViewTools.svg?style=flat)](http://cocoapods.org/pods/TableViewTools)
-[![Swift Version](https://img.shields.io/badge/swift-4.0-orange.svg)](https://swift.org/)
+[![Swift Version](https://img.shields.io/badge/swift-4.0+-orange.svg)](https://swift.org/)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-blue.svg)](https://github.com/Carthage/Carthage)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/TableViewTools.svg)](https://img.shields.io/cocoapods/v/TableViewTools.svg)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
@@ -20,7 +20,7 @@ Create a `Cartfile` that lists the framework and run `carthage update`. Follow t
 
 ```
 github "rosberry/TableViewTools"
-``` 
+```
 
 #### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install TableViewTools by adding it to your `Podfile`:
